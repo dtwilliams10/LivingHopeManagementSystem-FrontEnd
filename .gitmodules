@@ -1,0 +1,3 @@
+[submodule "lhmsapi"]
+	path = lhmsapi
+	url = https://dtwilliams10@bitbucket.org/livinghopemanagementsystem/lhmsapi.git
