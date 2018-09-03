@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './RTF.js';
+import RTF from './RTF.js';
 import logo from './LIVINGHOPEwhite.png';
 import './App.css';
 
