@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './RTF.js';
 import logo from './LIVINGHOPEwhite.png';
 import './App.css';
 
@@ -11,14 +12,10 @@ class App extends Component {
           <h1 className="App-title">Welcome to the Living Hope Management System</h1>
         </header>
         <form>
-          <label>
-            System Report:
-              <input type="textarea"/>
-            </label>
+          <RTF/>
         </form>
       </div>
     );
   }
 }
-
 export default App;
