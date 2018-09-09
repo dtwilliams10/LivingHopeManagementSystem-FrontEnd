@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import RTF from './RTF.js';
+//import RTF from './RTF.js';
+import MyUsers from './users.js';
 import logo from './LIVINGHOPEwhite.png';
 import './App.css';
 
@@ -9,11 +10,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to the Living Hope Management System</h1>
+          <h1 className="App-title">
+            Welcome to the Living Hope Management System
+          </h1>
         </header>
-        <form>
-          <RTF/>
-        </form>
+        <MyUsers />
       </div>
     );
   }
