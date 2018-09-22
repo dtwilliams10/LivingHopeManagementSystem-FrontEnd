@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import RTF from './RTF.js';
-import MyUsers from './users.js';
+import MyUsers from './components/users.js';
 import logo from './LIVINGHOPEwhite.png';
 import './App.css';
 
