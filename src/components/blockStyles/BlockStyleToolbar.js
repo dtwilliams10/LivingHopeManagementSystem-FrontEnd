@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { BLOCK_TYPES, BlockStyleButton } from './BlockStyleButton';
-import { HeaderStyleDropdown, HEADER_TYPES } from './HeaderStyleDropdown';
+import {
+  BLOCK_TYPES,
+  HEADER_TYPES,
+  BlockStyleButton
+} from './BlockStyleButton';
+import HeaderStyleDropdown from './HeaderStyleDropdown';
 
 class BlockStyleToolbar extends Component {
   render() {
