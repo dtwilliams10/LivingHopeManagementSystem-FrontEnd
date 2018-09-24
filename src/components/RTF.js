@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
-import './Draft.css';
+import { EditorState, RichUtils, Editor } from 'draft-js';
+import createHighlightPlugin from './plugins/HighlightPlugin';
 import BlockStyleToolbar, {
   getBlockStyle
 } from './blockStyles/BlockStyleToolbar';
+
+const highlightPlugin = createHighlightPlugin();
+
 class RTF extends Component {
   constructor(props) {
     super(props);
     this.state = { editorState: EditorState.createEmpty() };
+
+    this.plugins = [highlightPlugin];
   }
 
   onChange = editorState => {
@@ -67,6 +72,7 @@ class RTF extends Component {
         <div className="editors">
           <Editor
             blockStyleFn={getBlockStyle}
+            plugins={this.plugins}
             editorState={this.state.editorState}
             handleKeyCommand={this.handleKeyCommand}
             onChange={this.onChange}

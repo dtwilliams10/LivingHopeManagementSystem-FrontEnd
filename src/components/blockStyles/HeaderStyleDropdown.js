@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class HeaderStyleDropdown extends Component {
+class HeaderStyleDropdown extends React.Component {
   onToggle = event => {
     let value = event.target.value;
     this.props.onToggle(value);
@@ -8,10 +8,14 @@ class HeaderStyleDropdown extends Component {
 
   render() {
     return (
-      <select value={this.props.active} onChange={this.ontoggle}>
+      <select value={this.props.active} onChange={this.onToggle}>
         <option value="">Header Levels</option>
         {this.props.headerOptions.map(heading => {
-          return <option value={heading.style}>{heading.label}</option>;
+          return (
+            <option key={heading.key} value={heading.style}>
+              {heading.label}
+            </option>
+          );
         })}
       </select>
     );

@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
-import {
-  BLOCK_TYPES,
-  HEADER_TYPES,
-  BlockStyleButton
-} from './BlockStyleButton';
+import BlockStyleButton from './BlockStyleButton';
 import HeaderStyleDropdown from './HeaderStyleDropdown';
+
+export const BLOCK_TYPES = [
+  { key: 1, label: ' “ ” ', style: 'blockquote' },
+  { key: 2, label: 'UL', style: 'unordered-list-item' },
+  { key: 3, label: 'OL', style: 'ordered-list-item' },
+  { key: 4, label: '{ }', style: 'code-block' }
+];
+export const HEADER_TYPES = [
+  { key: 1, label: 'H1', style: 'header-one' },
+  { key: 2, label: 'H2', style: 'header-two' },
+  { key: 3, label: 'H3', style: 'header-three' },
+  { key: 4, label: 'H4', style: 'header-four' },
+  { key: 5, label: 'H5', style: 'header-five' },
+  { key: 6, label: 'H6', style: 'header-six' }
+];
+
+export function getBlockStyle(block) {
+  switch (block.getType()) {
+    case 'blockquote':
+      return 'RichEditor-blockquote';
+    default:
+      return null;
+  }
+}
 
 class BlockStyleToolbar extends Component {
   render() {
@@ -41,5 +61,4 @@ class BlockStyleToolbar extends Component {
     );
   }
 }
-
 export default BlockStyleToolbar;
