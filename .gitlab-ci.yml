@@ -27,10 +27,8 @@ build:
   script:
     - docker build -t lhms-app .
 
-deploy_staging:
-  stage: deploy
-  script:
-    - echo "Deploy to staging server"
-  environment:
-    name: staging
-    url: https://lhms.dtwilliams10.com
+deploy-containers:
+ stage: deploy
+ script:
+ - export DOCKER_HOST=tcp://192.168.1.105:2375
+ - docker run -d -v ${PWD}:/usr/src/app -v /usr/src/app/node_modules -p 3000:3000 --name=lhms-app lhms-app;
