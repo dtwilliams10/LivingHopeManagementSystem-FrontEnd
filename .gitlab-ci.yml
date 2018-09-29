@@ -1,34 +1,11 @@
-image: node:latest
-image: docker:stable
-
-variables:
-  # When using dind service we need to instruct docker, to talk with the
-  # daemon started inside of the service. The daemon is available with
-  # a network connection instead of the default /var/run/docker.sock socket.
-  #
-  # The 'docker' hostname is the alias of the service container as described at
-  # https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#accessing-the-services
-  #
-  # Note that if you're using Kubernetes executor, the variable should be set to
-  # tcp://localhost:2375 because of how Kubernetes executor connects services
-  # to the job container
-  #DOCKER_HOST: tcp://192.168.1.105:2375/
-  # When using dind, it's wise to use the overlayfs driver for
-  # improved performance.
-  #DOCKER_DRIVER: overlay2
-
-before_script:
-  - docker info
+stages:
+ - build
+ #- deploy
 
 build:
+  image: docker:latest
   stage: build
   script:
+    - docker login -u dtwilliams10 -p ty135907 dtwilliams10/lhms
     - docker build -t lhms-app .
-    - docker tag lhms-app:latest dtwilliams10/lhms
     - docker push dtwilliams10/lhms
-
-#deploy-containers:
-# stage: deploy
-# script:
-# - export DOCKER_HOST=tcp://192.168.1.105:2375
-# - docker run -d -v ${PWD}:/usr/src/app -v /usr/src/app/node_modules -p 3000:3000 --name=lhms-app lhms-app;
