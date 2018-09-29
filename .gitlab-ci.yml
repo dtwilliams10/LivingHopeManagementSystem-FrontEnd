@@ -10,4 +10,4 @@ build:
     - docker build -t lhms-app .
     - docker stop lhms-app
     - docker rm lhms-app
-    - docker run -d -p 3000:3000 -e "NODE_ENV=production" --name=lhms-app lhms-app;
+    - docker run -d -p 3000:3000 -v ${PWD}:/usr/src/app -v /usr/src/app/node_modules -e "NODE_ENV=production" --name=lhms-app lhms-app;
