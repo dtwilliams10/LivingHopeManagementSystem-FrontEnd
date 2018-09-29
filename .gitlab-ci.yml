@@ -9,7 +9,8 @@ build:
     - docker build -t lhms-app .
 deploy: 
   stage: deploy
-  script:
+  before_script:
     - docker stop lhms-app
     - docker rm lhms-app
+  script:
     - docker run -d -p 3000:3000 --name=lhms-app lhms-app;
