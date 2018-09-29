@@ -11,6 +11,7 @@ build:
 
 pre-deploy:
   stage: pre-deploy
+  script:
     - docker stop lhms-app
     - docker rm lhms-app
   allow_failure: true
