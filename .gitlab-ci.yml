@@ -1,4 +1,5 @@
 image: node:latest
+image: docker:stable
 
 before_script:
   - docker info
