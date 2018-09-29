@@ -6,6 +6,6 @@ build:
   image: docker:latest
   stage: build
   script:
-    - docker login -u dtwilliams10 -p ty135907 dtwilliams10/lhms
+    #- docker login -u dtwilliams10 -p ty135907 dtwilliams10/lhms
     - docker build -t lhms-app .
     - docker push dtwilliams10/lhms
