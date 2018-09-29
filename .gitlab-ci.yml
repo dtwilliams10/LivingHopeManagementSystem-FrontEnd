@@ -8,12 +8,7 @@ build:
   script:
     #- docker login -u dtwilliams10 -p ty135907 dtwilliams10/lhms
     - docker build -t lhms-app .
-    - docker run -d -v ${PWD}:/usr/src/app -v /usr/src/app/node_modules -p 3000:3000 --name=lhms-app lhms-app;
-    #- docker tag lhms 
-    #- docker push dtwilliams10/lhms
-
-#deploy:
-#  image: lhms-app
-#  stage: deploy
-#  script:
-#    - docker run -d -v ${PWD}:/usr/src/app -v /usr/src/app/node_modules -p 3000:3000 --name=lhms-app lhms-app;
+  stage: deploy
+    - docker stop lhms-app
+    - docker rm lhms-app
+    - docker run -d -p 3000:3000 -e "NODE_ENV=production" --name=lhms-app lhms-app;
