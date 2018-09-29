@@ -4,11 +4,10 @@ stages:
 
 build:
   image: docker:latest
-  stage: build, deploy
+  stage: build
   script:
     #- docker login -u dtwilliams10 -p ty135907 dtwilliams10/lhms
     - docker build -t lhms-app .
-  stage: deploy
     - docker stop lhms-app
     - docker rm lhms-app
     - docker run -d -p 3000:3000 -e "NODE_ENV=production" --name=lhms-app lhms-app;
