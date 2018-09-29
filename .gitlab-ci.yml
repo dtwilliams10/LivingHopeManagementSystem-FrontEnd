@@ -19,4 +19,4 @@ pre-deploy:
 deploy: 
   stage: deploy
   script:
-    - docker run -d -e LETSENCRYPT_EMAIL=david.williams110913@gmail.com -e LETSENCRYPT_HOST=lhms.dtwilliams10.com -e VIRTUAL_HOST=lhms.dtwilliams10.com --name=lhms-app lhms-app;
+    - docker run -d -e LETSENCRYPT_EMAIL=david.williams110913@gmail.com -e LETSENCRYPT_HOST=lhms.dtwilliams10.com -e VIRTUAL_HOST=lhms.dtwilliams10.com -p 3000 --name=lhms-app lhms-app;
