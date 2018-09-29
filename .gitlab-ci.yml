@@ -8,6 +8,8 @@ build:
   script:
     #- docker login -u dtwilliams10 -p ty135907 dtwilliams10/lhms
     - docker build -t lhms-app .
+deploy: 
+  stage: deploy  
     - docker stop lhms-app
     - docker rm lhms-app
-    - ddocker run -d -p 3000:3000 --name=lhms-app lhms-app;
+    - docker run -d -p 3000:3000 --name=lhms-app lhms-app;
