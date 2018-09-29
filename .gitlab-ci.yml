@@ -4,7 +4,7 @@ stages:
 
 build:
   image: docker:latest
-  stage: build
+  stage: build, deploy
   script:
     #- docker login -u dtwilliams10 -p ty135907 dtwilliams10/lhms
     - docker build -t lhms-app .
