@@ -17,7 +17,7 @@ pre-deploy:
   allow_failure: true
 
 deploy: 
-  image: docker/compose:latest
+  image: docker/compose:1.22.0
   stage: deploy
   script:
     - docker-compose -f "docker-compose.yml" up -d --build
