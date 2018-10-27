@@ -17,8 +17,8 @@ services:
         image: lhmsapi
         restart: always
         container_name: lhmsapi
-        ports:
-            - "5000:5000"
+        #ports:
+           # - "5000:5000"
         volumes:
             - ./api:/api
             - /api/node_modules

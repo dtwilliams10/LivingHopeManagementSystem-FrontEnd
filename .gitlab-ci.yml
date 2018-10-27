@@ -1,6 +1,5 @@
 stages:
  - build
- - pre-deploy
  - deploy
 
 build:
@@ -8,13 +7,6 @@ build:
   stage: build
   script:
     - docker build -t lhms-app .
-
-pre-deploy:
-  stage: pre-deploy
-  script:
-    - docker stop lhms-app
-    - docker rm lhms-app
-  allow_failure: true
 
 deploy: 
   image: 
