@@ -5,7 +5,7 @@ services:
         restart: always
         container_name: lhms-app
         ports:
-            - "3000:3000"
+            - 3000:3000
         environment:
             - LETSENCRYPT_EMAIL=david.williams110913@gmail.com 
             - LETSENCRYPT_HOST=lhms.dtwilliams10.com
@@ -14,15 +14,15 @@ services:
             - ./client:/client
             - /client/node_modules
         links:
-            - lhmsapi
+            - api
         networks:
             - webappnetwork
-    lhmsapi:
+    api:
         image: lhmsapi
         restart: always
         container_name: lhmsapi
-        #ports:
-           # - "5000:5000"
+        ports:
+            - 127.0.0.1:5000:5000
         volumes:
             - ./api:/api
             - /api/node_modules
@@ -36,9 +36,9 @@ services:
         container_name: mongodb
         volumes:
             - ./data-node:/data/db
-        #ports:
-        #    - 27017:27017
-        command: mongod
+        ports:
+            - 127.0.0.1:27017:27017
+        #command: mongod
         networks:
             - webappnetwork
 networks:
