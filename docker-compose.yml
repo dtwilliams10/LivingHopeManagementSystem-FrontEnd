@@ -14,7 +14,7 @@ services:
             - ./client:/client
             - /client/node_modules
         links:
-            - api
+            - lhmsapi
         networks:
             - webappnetwork
     lhmsapi:
