@@ -6,6 +6,10 @@ services:
         container_name: lhms-app
         ports:
             - "3000:3000"
+        environment:
+            - LETSENCRYPT_EMAIL=david.williams110913@gmail.com 
+            - LETSENCRYPT_HOST=lhms.dtwilliams10.com
+            - VIRTUAL_HOST=lhms.dtwilliams10.com
         volumes:
             - ./client:/client
             - /client/node_modules
@@ -13,7 +17,7 @@ services:
             - api
         networks:
             - webappnetwork
-    api:
+    lhmsapi:
         image: lhmsapi
         restart: always
         container_name: lhmsapi
