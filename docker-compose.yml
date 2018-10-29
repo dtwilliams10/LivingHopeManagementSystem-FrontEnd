@@ -10,7 +10,7 @@ services:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com 
             LETSENCRYPT_HOST: lhms.dtwilliams10.com
             VIRTUAL_HOST: lhms.dtwilliams10.com
-            VIRTUAL_PORT: 5000
+            VIRTUAL_PORT: 3000
         volumes:
             - ./client:/client
             - /client/node_modules
