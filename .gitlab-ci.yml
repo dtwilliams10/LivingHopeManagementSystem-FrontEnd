@@ -1,6 +1,5 @@
 stages:
  - build
- - pre-deploy
  - deploy
 
 build:
@@ -9,16 +8,11 @@ build:
   script:
     - docker build -t lhms-app .
 
-pre-deploy:
-  stage: pre-deploy
-  script:
-    - docker-compose down
-  allow_failure: true
-
 deploy: 
   image: 
     name: docker/compose:1.22.0
     entrypoint: ["/bin/sh", "-c"]
   stage: deploy
   script:
+    - docker-compose down
     - docker-compose -f "docker-compose.yml" up -d --build
