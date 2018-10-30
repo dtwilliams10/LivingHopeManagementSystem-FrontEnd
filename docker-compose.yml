@@ -4,13 +4,13 @@ services:
         image: lhms-app
         restart: always
         container_name: lhms-app
-        #ports:
-            #- "3000"
+        ports:
+            - "3000"
         environment:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com 
             LETSENCRYPT_HOST: lhms.dtwilliams10.com
             VIRTUAL_HOST: lhms.dtwilliams10.com
-            VIRTUAL_PORT: 3000
+            #VIRTUAL_PORT: 3000
         volumes:
             - ./client:/client
             - /client/node_modules
