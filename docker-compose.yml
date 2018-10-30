@@ -5,7 +5,7 @@ services:
         restart: always
         container_name: lhms-app
         ports:
-            - target: 3000
+            target: 3000
             published: 80
             protocol: tcp
             mode: host
