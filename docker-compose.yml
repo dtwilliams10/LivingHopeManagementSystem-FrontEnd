@@ -4,11 +4,7 @@ services:
         image: lhms-app
         restart: always
         container_name: lhms-app
-        ports:
-            target: 3000
-            published: 80
-            protocol: tcp
-            mode: host
+        ports: 3000:3000
         environment:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com 
             LETSENCRYPT_HOST: lhms.dtwilliams10.com
