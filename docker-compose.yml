@@ -38,7 +38,8 @@ services:
         volumes:
             - ./data-node:/data/db
         ports:
-            - "127.0.0.1:27017:27017"
+            #- "127.0.0.1:27017:27017"
+            - "27017"
         #command: mongod
         networks:
             - webappnetwork
