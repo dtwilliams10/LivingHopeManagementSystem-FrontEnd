@@ -9,9 +9,7 @@ class MyUsers extends Component {
   };
 
   async componentDidMount() {
-    const result = await fetch(
-      'http://lhmsapi.lhms-frontend_webappnetwork:5000/api/users'
-    );
+    const result = await fetch('https://lhmsapi.dtwilliams10.com/api/users');
     const users = await result.json();
     this.setState({ users });
   }
