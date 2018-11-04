@@ -25,17 +25,17 @@ services:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com 
             LETSENCRYPT_HOST: lhmsapi.dtwilliams10.com
             VIRTUAL_HOST: lhmsapi.dtwilliams10.com
-            - ASPNETCORE_ENVIRONMENT=Development
-            - ASPNETCORE_URLS=https://lhmsapi.dtwilliams10.com;http://lhmsapi.dtwilliams10.com
-            - ASPNETCORE_HTTPS_PORT=5001
+            ASPNETCORE_ENVIRONMENT: Development
+            ASPNETCORE_URLS: https://lhmsapi.dtwilliams10.com;http://lhmsapi.dtwilliams10.com
+            ASPNETCORE_HTTPS_PORT: 5001
         ports:
             - "5000:80"
             - "5001:443"
         volumes:
             - ./api:/api
             - /api/node_modules
-            - ${APPDATA}/Microsoft/UserSecrets/:/root/.microsoft/usersecrets
-            - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https/
+            #- ${APPDATA}/Microsoft/UserSecrets/:/root/.microsoft/usersecrets
+            #- ${APPDATA}/ASP.NET/Https:/root/.aspnet/https/
         depends_on:
             - mongodb
         networks:
