@@ -10,7 +10,6 @@ services:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com 
             LETSENCRYPT_HOST: lhms.dtwilliams10.com
             VIRTUAL_HOST: lhms.dtwilliams10.com
-            #VIRTUAL_PORT: 3000
         volumes:
             - ./client:/client
             - /client/node_modules
@@ -22,11 +21,18 @@ services:
         image: lhmsapi
         restart: always
         container_name: lhmsapi
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=https://lhmsapi;http://lhmsapi
+            - ASPNETCORE_HTTPS_PORT=5001
         ports:
-            - "5000:5000"
+            - "5000:80"
+            - "5001:443"
         volumes:
             - ./api:/api
             - /api/node_modules
+            - ${APPDATA}/Microsoft/UserSecrets/:/root/.microsoft/usersecrets
+            - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https/
         depends_on:
             - mongodb
         networks:
@@ -38,9 +44,7 @@ services:
         volumes:
             - ./data-node:/data/db
         ports:
-            #- "127.0.0.1:27017:27017"
             - "27017"
-        #command: mongod
         networks:
             - webappnetwork
 networks:
