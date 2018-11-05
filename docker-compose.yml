@@ -29,8 +29,8 @@ services:
             ASPNETCORE_URLS: https://lhmsapi.dtwilliams10.com;http://lhmsapi.dtwilliams10.com
             #ASPNETCORE_HTTPS_PORT: 5001
         ports:
-            - "80:5000"
-            - "443:5001"
+            - "5000:5000"
+            - "5001:5001"
         volumes:
             - ./api:/api
             - /api/node_modules
