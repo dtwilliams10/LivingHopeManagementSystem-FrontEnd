@@ -8,8 +8,8 @@ services:
             - "3000:3000"
         environment:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com 
-            LETSENCRYPT_HOST: lhms.dtwilliams10.com
-            VIRTUAL_HOST: lhms.dtwilliams10.com
+            LETSENCRYPT_HOST: lhms.homeserver.dtwilliams10.com
+            VIRTUAL_HOST: lhms.homeserver.dtwilliams10.com
         volumes:
             - ./client:/client
             - /client/node_modules
@@ -23,10 +23,10 @@ services:
         container_name: lhmsapi
         environment:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com 
-            LETSENCRYPT_HOST: lhmsapi.dtwilliams10.com
-            VIRTUAL_HOST: lhmsapi.dtwilliams10.com
+            LETSENCRYPT_HOST: lhmsapi.homeserver.dtwilliams10.com
+            VIRTUAL_HOST: lhmsapi.homeserver.dtwilliams10.com
             ASPNETCORE_ENVIRONMENT: Development
-            ASPNETCORE_URLS: https://lhmsapi.dtwilliams10.com;http://lhmsapi.dtwilliams10.com
+            ASPNETCORE_URLS: https://lhmsapi.homeserver.dtwilliams10.com;http://lhmsapi.homeserver.dtwilliams10.com
             #ASPNETCORE_HTTPS_PORT: 5001
         ports:
             - "5000:5000"
