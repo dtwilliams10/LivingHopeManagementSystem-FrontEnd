@@ -1,6 +1,5 @@
 stages:
  - build
- - pre-deploy
  - deploy
 
 build:
@@ -9,14 +8,13 @@ build:
   script:
     - docker build -t lhms-app .
 
-pre-deploy:
-  stage: pre-deploy
-  script:
-    - docker stop lhms-app
-    - docker rm lhms-app
-  allow_failure: true
-
 deploy: 
+  image: 
+    name: docker/compose:1.22.0
+    entrypoint: ["/bin/sh", "-c"]
   stage: deploy
   script:
-    - docker run -d -e LETSENCRYPT_EMAIL=david.williams110913@gmail.com -e LETSENCRYPT_HOST=lhms.dtwilliams10.com -e VIRTUAL_HOST=lhms.dtwilliams10.com -p 3000 --name=lhms-app lhms-app;
+    - docker network disconnect lhms-frontend_webappnetwork proxy 
+    - docker-compose down
+    - docker-compose -f "docker-compose.yml" up -d --build
+    - docker network connect lhms-frontend_webappnetwork proxy
