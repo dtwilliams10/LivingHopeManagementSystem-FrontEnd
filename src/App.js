@@ -20,8 +20,6 @@ class App extends Component {
         </header>
         <RTF />
         <MyUsers />
-        <p className="systemstatus">{this.state.apiResponse}</p>
-        <p className="systemStatus">{this.state.dbResponse}</p>
       </div>
     );
   }
