@@ -7,29 +7,6 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      apiResponse: '',
-      dbResponse: ''
-    };
-  }
-
-  callAPI() {
-    fetch('http://localhost:5000/api/values')
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }))
-      .catch(err => err);
-  }
-
-  callDB() {
-    fetch('http://localhost:5000/api/users')
-      .then(res => res.text())
-      .then(res => this.setState({ dbResponse: res }))
-      .catch(err => err);
-  }
-
-  componenetDidMount() {
-    this.callAPI();
-    this.callDB();
   }
 
   render() {
