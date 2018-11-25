@@ -4,6 +4,7 @@ import createHighlightPlugin from './plugins/HighlightPlugin';
 import BlockStyleToolbar, {
   getBlockStyle
 } from './blockStyles/BlockStyleToolbar';
+import 'draft-js/dist/Draft.css';
 
 const highlightPlugin = createHighlightPlugin();
 
@@ -57,7 +58,7 @@ class RTF extends Component {
 
   render() {
     return (
-      <div className="editorContainer">
+      <div className="DraftEditor-editorContainer, DraftEditor-alignCenter">
         <BlockStyleToolbar
           editorState={this.state.editorState}
           onToggle={this.toggleBlocktype}
@@ -69,7 +70,7 @@ class RTF extends Component {
         <button onClick={this.onItalicClick}>
           <em>I</em>
         </button>
-        <div className="editors">
+        <div className="DraftEditor-editorContainer">
           <Editor
             blockStyleFn={getBlockStyle}
             plugins={this.plugins}
