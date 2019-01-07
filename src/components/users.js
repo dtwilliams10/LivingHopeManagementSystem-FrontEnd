@@ -33,5 +33,4 @@ class MyUsers extends Component {
     );
   }
 }
-
 export default MyUsers;

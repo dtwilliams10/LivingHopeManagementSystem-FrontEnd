@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
-import { EditorState, RichUtils, Editor } from 'draft-js';
-import createHighlightPlugin from './plugins/HighlightPlugin';
-import BlockStyleToolbar, {
-  getBlockStyle
-} from './blockStyles/BlockStyleToolbar';
+import { EditorState, RichUtils } from 'draft-js';
+import Editor from 'draft-js-plugins-editor';
 import 'draft-js/dist/Draft.css';
-
-const highlightPlugin = createHighlightPlugin();
 
 class RTF extends Component {
   constructor(props) {
     super(props);
     this.state = { editorState: EditorState.createEmpty() };
-
-    this.plugins = [highlightPlugin];
   }
 
   onChange = editorState => {
-    this.setState({
-      editorState
-    });
+    this.setState({ editorState });
   };
 
   handleKeyCommand = command => {
@@ -36,49 +27,26 @@ class RTF extends Component {
     return 'not-handled';
   };
 
-  toggleBlocktype = blocktype => {
-    this.onChange(RichUtils.toggleBlockType(this.state.editorState, blocktype));
+  onToggleCode = () => {
+    this.onChange(RichUtils.toggleCode(this.state.editorState));
   };
 
-  onUnderlineClick = () => {
+  onToggleUnderline = () => {
     this.onChange(
       RichUtils.toggleInlineStyle(this.state.editorState, 'UNDERLINE')
     );
   };
 
-  onBoldClick = () => {
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
-  };
-
-  onItalicClick = () => {
-    this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC')
-    );
-  };
-
   render() {
     return (
-      <div className="DraftEditor-editorContainer, DraftEditor-alignCenter">
-        <BlockStyleToolbar
+      <div>
+        <button onClick={this.onUnderlineClick}>Underline</button>
+        <button onClick={this.onToggleCode}>Code Block</button>
+        <Editor
           editorState={this.state.editorState}
-          onToggle={this.toggleBlocktype}
+          handleKeyCommand={this.handleKeyCommand}
+          onChange={this.onChange}
         />
-        <button onClick={this.onUnderlineClick}>U</button>
-        <button onClick={this.onBoldClick}>
-          <b>B</b>
-        </button>
-        <button onClick={this.onItalicClick}>
-          <em>I</em>
-        </button>
-        <div className="DraftEditor-editorContainer">
-          <Editor
-            blockStyleFn={getBlockStyle}
-            plugins={this.plugins}
-            editorState={this.state.editorState}
-            handleKeyCommand={this.handleKeyCommand}
-            onChange={this.onChange}
-          />
-        </div>
       </div>
     );
   }

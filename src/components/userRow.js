@@ -7,7 +7,7 @@ class UserRow extends Component {
         <td className="name">{this.props.user.name}</td>
         <td className="summary">{this.props.user.summary}</td>
         <td className="actions">
-          <button>This is a Button</button>
+          <button>Button</button>
         </td>
       </tr>
     );

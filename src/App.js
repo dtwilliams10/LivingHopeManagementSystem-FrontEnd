@@ -15,6 +15,10 @@ class App extends Component {
           </h1>
         </header>
         <RTF />
+        <RTF />
+        <RTF />
+        <RTF />
+        <RTF />
         <MyUsers />
       </div>
     );
