@@ -32,7 +32,7 @@ pre {
 
 .public-DraftEditor-content {
   background: #fff;
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   left: 0;
@@ -53,4 +53,15 @@ button {
   padding: 0.7em 1.3em;
   font-weight: bold;
   color: white;
+}
+.user-list {
+  padding: 1em;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-content: center;
+}
+
+.user {
+  border: 1px solid #ccc;
 }

@@ -1,15 +1,38 @@
 import React, { Component } from 'react';
-import { EditorState, RichUtils } from 'draft-js';
-import Editor from 'draft-js-plugins-editor';
-import 'draft-js/dist/Draft.css';
+import {
+  EditorState,
+  RichUtils,
+  Editor,
+  convertToRaw,
+  convertFromRaw
+} from 'draft-js';
+import debounce from 'lodash/debounce';
 
 class RTF extends Component {
   constructor(props) {
     super(props);
-    this.state = { editorState: EditorState.createEmpty() };
+    this.state = {};
+  }
+
+  componentDidMount() {
+    fetch('https://lhmsapi.homeserver.dtwilliams10.com/api/systemreport')
+      .then(val => val.json())
+      .then(rawContent => {
+        if (rawContent) {
+          this.setState({
+            editorState: EditorState.createWithContent(
+              convertFromRaw(rawContent)
+            )
+          });
+        } else {
+          this.setState({ editorState: EditorState.createEmpty() });
+        }
+      });
   }
 
   onChange = editorState => {
+    const contentState = editorState.getCurrentContent();
+    console.log('content state', convertToRaw(contentState));
     this.setState({ editorState });
   };
 
@@ -38,6 +61,9 @@ class RTF extends Component {
   };
 
   render() {
+    if (!this.state.editorState) {
+      return <h3 className="loading">Laoding...</h3>;
+    }
     return (
       <div>
         <button onClick={this.onUnderlineClick}>Underline</button>
