@@ -10,11 +10,11 @@ build:
 
 deploy:
   image:
-    name: docker/compose:1.22.0
+    name: docker/compose:latest
     entrypoint: ["/bin/sh", "-c"]
   stage: deploy
   script:
-    - docker network disconnect lhms-frontend_webappnetwork proxy 
+    - docker network disconnect lhms-frontend_webappnetwork proxy
     - docker-compose down
     - docker-compose -f "docker-compose.yml" up -d --build
     - docker network connect lhms-frontend_webappnetwork proxy

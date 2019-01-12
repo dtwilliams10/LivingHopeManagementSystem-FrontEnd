@@ -14,6 +14,18 @@ class RTF extends Component {
     this.state = {};
   }
 
+  saveContent = debounce(content => {
+    fetch('https://lhmsapi.homeserver.dtwilliams10.com/api/systemreport', {
+      method: 'POST',
+      body: JSON.stringify({
+        content: convertToRaw(content)
+      }),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    });
+  }, 1000);
+
   componentDidMount() {
     fetch('https://lhmsapi.homeserver.dtwilliams10.com/api/systemreport')
       .then(val => val.json())
@@ -32,7 +44,7 @@ class RTF extends Component {
 
   onChange = editorState => {
     const contentState = editorState.getCurrentContent();
-    console.log('content state', convertToRaw(contentState));
+    this.saveContent(contentState);
     this.setState({ editorState });
   };
 
@@ -62,7 +74,7 @@ class RTF extends Component {
 
   render() {
     if (!this.state.editorState) {
-      return <h3 className="loading">Laoding...</h3>;
+      return <h3 className="loading">Loading...</h3>;
     }
     return (
       <div>
@@ -73,6 +85,7 @@ class RTF extends Component {
           handleKeyCommand={this.handleKeyCommand}
           onChange={this.onChange}
         />
+        <button onClick={this.saveContent}>Save Changes</button>
       </div>
     );
   }
