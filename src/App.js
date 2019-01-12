@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-//import RTF from './RTF.js';
-import MyUsers from './users.js';
+import RTF from './components/RTF.js';
+import MyUsers from './components/users';
 import logo from './LIVINGHOPEwhite.png';
 import './App.css';
 
@@ -14,6 +14,7 @@ class App extends Component {
             Welcome to the Living Hope Management System
           </h1>
         </header>
+        <RTF />
         <MyUsers />
       </div>
     );

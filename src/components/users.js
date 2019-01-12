@@ -9,7 +9,9 @@ class MyUsers extends Component {
   };
 
   async componentDidMount() {
-    const result = await fetch('http://localhost:5000/api/users');
+    const result = await fetch(
+      'https://lhmsapi.homeserver.dtwilliams10.com/api/users'
+    );
     const users = await result.json();
     this.setState({ users });
   }
@@ -22,7 +24,7 @@ class MyUsers extends Component {
           <table className="user-list">
             <tbody>
               {this.state.users.map(user => (
-                <UserRow key={user.id} user={user} />
+                <UserRow key={user.id} user={user} className="user" />
               ))}
             </tbody>
           </table>
@@ -31,5 +33,4 @@ class MyUsers extends Component {
     );
   }
 }
-
 export default MyUsers;
