@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f0f0f0;
+  height: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -9,7 +16,7 @@
 
 .App-header {
   background-color: #222;
-  height: 20vh;
+  height: 25vh;
   padding: 2vh;
   color: white;
 }

@@ -29,6 +29,9 @@ const styles = {
 const theme = createMuiTheme({
   palette: {
     primary: grey
+  },
+  typography: {
+    useNextVariants: true
   }
 });
 
