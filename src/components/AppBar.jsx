@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { grey } from '@material-ui/core/colors';
+import { MenuItem } from '@material-ui/core';
 
 const styles = {
   root: {
@@ -52,6 +53,7 @@ function ButtonAppBar(props) {
             <Typography variant="h6" color="inherit" className={classes.grow}>
               News
             </Typography>
+            <MenuItem />
             <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar>

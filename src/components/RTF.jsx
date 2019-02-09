@@ -7,7 +7,6 @@ import {
   convertFromRaw
 } from 'draft-js';
 import debounce from 'lodash/debounce';
-import { isEmptyChildren } from 'formik';
 
 class RTF extends Component {
   constructor(props) {
