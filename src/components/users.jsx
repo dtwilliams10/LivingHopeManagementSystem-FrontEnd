@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserRow from './userRow.js';
+import UserRow from './userRow.jsx';
 class MyUsers extends Component {
   state = {
     users: [
