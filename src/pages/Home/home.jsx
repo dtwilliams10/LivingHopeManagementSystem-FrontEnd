@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ButtonAppBar from '../../components/AppBar';
 import HeaderBar from '../../components/headerBar';
+import '../../App.css';
 
 class Home extends Component {
   render() {

@@ -8,6 +8,7 @@ class SystemReport extends Component {
       <div>
         <HeaderBar />
         <AppBar />
+        <p>This is text for the System Report Page</p>
       </div>
     );
   }
