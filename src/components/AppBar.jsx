@@ -10,6 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { grey } from '@material-ui/core/colors';
 import { Link } from 'react-router-dom';
+import '../App.css';
 
 const styles = {
   root: {
@@ -38,7 +39,7 @@ function ButtonAppBar(props) {
   return (
     <MuiThemeProvider theme={theme}>
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" className="App">
           <Toolbar>
             <Button color="inherit" component={Link} to="/Home">
               Home
@@ -47,7 +48,7 @@ function ButtonAppBar(props) {
               System Report
             </Button>
             {/* TODO: Need to change this to point to the new page. */}
-            <Button color="inherit" component={Link} to="/Home">
+            <Button color="inherit" component={Link} to="/PersonalDevelopment">
               Personal Development
             </Button>
           </Toolbar>

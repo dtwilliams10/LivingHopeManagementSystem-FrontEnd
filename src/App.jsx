@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './pages/Home/Home';
 import SystemReport from './pages/SystemReport/SystemReport';
+import PersonalDevelopment from './pages/PersonalDevelopment/PersonalDevelopment';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 export const App = () => {
@@ -12,6 +13,11 @@ export const App = () => {
           <Redirect to="/Home" />
         </Route>
         <Route exact path="/SystemReport" component={SystemReport} />
+        <Route
+          exact
+          path="/PersonalDevelopment"
+          component={PersonalDevelopment}
+        />
       </Switch>
     </div>
   );

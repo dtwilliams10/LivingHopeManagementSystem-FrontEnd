@@ -2,11 +2,9 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "/Root Path",
-			"name": "Root Path"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"editor.cursorStyle": "block-outline"
+	}
 }
