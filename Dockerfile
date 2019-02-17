@@ -10,7 +10,7 @@ WORKDIR /usr/src/app
 # install and cache app dependencies
 COPY package*.json ./
 RUN npm install --silent
-RUN npm install react-scripts@2.1.3 -g --silent
+RUN npm install react-scripts@2.1.5 -g --silent
 
 COPY . .
 
