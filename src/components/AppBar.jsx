@@ -40,7 +40,7 @@ function ButtonAppBar(props) {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Button color="inherit" Home component={Link} to="/Home">
+            <Button color="inherit" component={Link} to="/Home">
               Home
             </Button>
             <Button color="inherit" component={Link} to="/SystemReport">
