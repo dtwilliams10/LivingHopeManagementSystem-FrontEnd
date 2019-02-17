@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from './pages/Home/home';
+import Home from './pages/Home/Home';
 import SystemReport from './pages/SystemReport/SystemReport';
 import { Route, Switch, Redirect } from 'react-router-dom';
 

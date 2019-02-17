@@ -46,6 +46,10 @@ function ButtonAppBar(props) {
             <Button color="inherit" component={Link} to="/SystemReport">
               System Report
             </Button>
+            {/* TODO: Need to change this to point to the new page. */}
+            <Button color="inherit" component={Link} to="/Home">
+              Personal Development
+            </Button>
           </Toolbar>
         </AppBar>
       </div>

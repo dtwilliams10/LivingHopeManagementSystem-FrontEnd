@@ -20,4 +20,5 @@ class HeaderBar extends Component {
     );
   }
 }
+
 export default HeaderBar;
