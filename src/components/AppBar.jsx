@@ -10,7 +10,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { grey } from '@material-ui/core/colors';
 import { Link } from 'react-router-dom';
-import '../App.css';
 
 const styles = {
   root: {

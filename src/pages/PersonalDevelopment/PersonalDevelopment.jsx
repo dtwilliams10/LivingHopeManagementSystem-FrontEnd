@@ -5,7 +5,7 @@ import AppBar from '../../components/AppBar';
 class PersonalDevelopment extends Component {
   render() {
     return (
-      <div>
+      <div className="App">
         <HeaderBar />
         <AppBar />
         <p>This is text for the Personal Development Page</p>
