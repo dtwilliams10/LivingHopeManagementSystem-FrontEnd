@@ -27,8 +27,8 @@ test deploy job:
     - branches@dtwilliams10/LHMS-Frontend
 
 prod build job:
-  stage: build
-    name: docker:latest
+    image: docker:latest
+    stage: build
     only:
       - branches@LHMS/LHMS-Frontend
     script:
