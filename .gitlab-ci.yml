@@ -6,7 +6,7 @@ test build job:
   image: docker:latest
   stage: build
   only:
-    - branches@dtwilliams10/LHMS-Frontend
+    - branches@dtwilliams10/LHMS-FrontEnd
   script:
     - docker build -f test.Dockerfile lhms-app .
 
@@ -24,13 +24,13 @@ test deploy job:
     name: staging
     url: https://lhms.homeserver.dtwilliams10.com
   only:
-    - branches@dtwilliams10/LHMS-Frontend
+    - branches@dtwilliams10/LHMS-FrontEnd
 
 prod build job:
     image: docker:latest
     stage: build
     only:
-      - branches@LHMS/LHMS-Frontend
+      - branches@LHMS/LHMS-FrontEnd
     script:
       - docker build -f prod.Dockerfile -t lhms-app .
 
@@ -48,4 +48,4 @@ prod deploy job:
   name: staging
   url: https://lhms.dtwilliams10.com
  only:
-  - branches@LHMS/LHMS-Frontend
+  - branches@LHMS/LHMS-FrontEnd
