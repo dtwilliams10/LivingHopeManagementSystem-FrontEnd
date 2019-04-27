@@ -8,7 +8,7 @@ test build job:
   only:
     - branches@dtwilliams10/LHMS-FrontEnd
   script:
-    - docker build -f test.Dockerfile lhms-app .
+    - docker build -f test.Dockerfile -t lhms-app .
 
 test deploy job:
   image:
