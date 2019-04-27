@@ -27,5 +27,3 @@ yarn-error.log*
 /client
 
 /api
-
-docker-compose.yml

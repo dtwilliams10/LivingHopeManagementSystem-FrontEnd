@@ -4,5 +4,8 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"editor.cursorStyle": "block-outline",
+		"gitlab.instanceUrl": "https://gitlab.dtwilliams10.com"
+	}
 }

@@ -6,9 +6,12 @@ class UserRow extends Component {
         <td className="avatar">Avatar</td>
         <td className="name">{this.props.user.name}</td>
         <td className="summary">{this.props.user.summary}</td>
-        <td className="actions">Buttons here</td>
+        <td className="actions">
+          <button>Button</button>
+        </td>
       </tr>
     );
   }
 }
+
 export default UserRow;
