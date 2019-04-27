@@ -4,10 +4,10 @@ services:
         image: lhms-app
         restart: always
         container_name: lhms-app
-        ports: 
+        ports:
             - "3000:3000"
         environment:
-            LETSENCRYPT_EMAIL: david.williams110913@gmail.com 
+            LETSENCRYPT_EMAIL: david.williams110913@gmail.com
             LETSENCRYPT_HOST: lhms.homeserver.dtwilliams10.com
             VIRTUAL_HOST: lhms.homeserver.dtwilliams10.com
         volumes:
@@ -22,7 +22,7 @@ services:
         restart: always
         container_name: lhmsapi
         environment:
-            LETSENCRYPT_EMAIL: david.williams110913@gmail.com 
+            LETSENCRYPT_EMAIL: david.williams110913@gmail.com
             LETSENCRYPT_HOST: lhmsapi.homeserver.dtwilliams10.com
             VIRTUAL_HOST: lhmsapi.homeserver.dtwilliams10.com
             ASPNETCORE_ENVIRONMENT: Development
@@ -35,7 +35,7 @@ services:
         depends_on:
             - mongodb
         networks:
-            - webappnetwork        
+            - webappnetwork
     mongodb:
         image: mongo
         restart: always

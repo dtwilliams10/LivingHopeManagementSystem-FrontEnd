@@ -61,4 +61,5 @@ class BlockStyleToolbar extends Component {
     );
   }
 }
+
 export default BlockStyleToolbar;

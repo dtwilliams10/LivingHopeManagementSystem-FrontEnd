@@ -15,7 +15,7 @@ class RTF extends Component {
   }
 
   saveContent = debounce(content => {
-    fetch('https://lhmsapi.homeserver.dtwilliams10.com/api/systemreport', {
+    fetch('http://localhost:5000/api/systemreport', {
       method: 'POST',
       body: JSON.stringify({
         content: convertToRaw(content)
@@ -27,17 +27,17 @@ class RTF extends Component {
   }, 1000);
 
   componentDidMount() {
-    fetch('https://lhmsapi.homeserver.dtwilliams10.com/api/systemreport')
+    fetch('http://localhost:5000/api/systemreport')
       .then(val => val.json())
       .then(rawContent => {
-        if (rawContent) {
+        if (!rawContent || val.json() == JSON) {
+          this.setState({ editorState: EditorState.createEmpty() });
+        } else {
           this.setState({
             editorState: EditorState.createWithContent(
               convertFromRaw(rawContent)
             )
           });
-        } else {
-          this.setState({ editorState: EditorState.createEmpty() });
         }
       });
   }
