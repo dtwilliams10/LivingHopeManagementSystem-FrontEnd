@@ -1,0 +1,6 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+	"dockerFile": "test.Dockerfile",
+	"extensions": [],
+	"appPort": 3000
+}
