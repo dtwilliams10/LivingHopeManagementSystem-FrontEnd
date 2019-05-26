@@ -2,5 +2,7 @@
 {
 	"dockerFile": "test.Dockerfile",
 	"extensions": [],
-	"appPort": 3000
+	"appPort": "6000:6000",
+	"workspaceFolder": "/workspace",
+	"workspaceMount": "src=remote-workspace,dst=/workspace,type=volume,volume-driver=local"
 }
