@@ -1,0 +1,17 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+	"name": "Node.js 8 & TypeScript",
+	"dockerFile": "dev.Dockerfile",
+	"extensions": [
+		"ms-vscode.vscode-typescript-tslint-plugin",
+		"fatihacet.gitlab-workflow",
+		"eamodio.gitlens"
+	],
+
+	// Uncomment the next line if you want to publish any ports.
+	"appPort": [3000],
+
+	// Uncomment the next line to run commands after the container is created.
+	// "postCreateCommand": "yarn install"
+
+}

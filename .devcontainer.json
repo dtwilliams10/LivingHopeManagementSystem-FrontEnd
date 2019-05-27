@@ -1,8 +1,0 @@
-// See https://aka.ms/vscode-remote/devcontainer.json for format details.
-{
-	"dockerFile": "test.Dockerfile",
-	"extensions": [],
-	"appPort": "6000:6000",
-	"workspaceFolder": "/workspace",
-	"workspaceMount": "src=remote-workspace,dst=/workspace,type=volume,volume-driver=local"
-}

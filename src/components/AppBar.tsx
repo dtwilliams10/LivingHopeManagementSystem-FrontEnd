@@ -9,7 +9,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { grey } from '@material-ui/core/colors';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const styles = {
   root: {
@@ -37,19 +37,15 @@ function ButtonAppBar(props: { classes: any }) {
       <div className={classes.root}>
         <AppBar position="static" className="App">
           <Toolbar>
-            <Button color="inherit">
-              <Link to="/Home" />
-              Home
-            </Button>
-            <Button color="inherit">
-              <Link to="/SystemReport" />
-              System Report
-            </Button>
-            {/* TODO: Need to change this to point to the new page. */}
-            <Button color="inherit">
-              <Link to="/PersonalDevelopment" />
-              Personal Development
-            </Button>
+            <NavLink to="/Home">
+              <Button>Home</Button>
+            </NavLink>
+            <NavLink to="/SystemReport">
+              <Button>System Report</Button>
+            </NavLink>
+            <NavLink to="/PersonalDevelopment">
+              <Button>Personal Development</Button>
+            </NavLink>
           </Toolbar>
         </AppBar>
       </div>
