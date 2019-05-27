@@ -1,6 +1,6 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
-	"name": "Node.js 8 & TypeScript",
+	"name": "LHMS-FrontEnd",
 	"dockerFile": "dev.Dockerfile",
 	"extensions": [
 		"ms-vscode.vscode-typescript-tslint-plugin",
