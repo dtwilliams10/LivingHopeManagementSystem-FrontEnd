@@ -46,6 +46,9 @@ function ButtonAppBar(props: { classes: any }) {
             <NavLink to="/PersonalDevelopment">
               <Button>Personal Development</Button>
             </NavLink>
+            <NavLink to="/About">
+              <Button>About</Button>
+            </NavLink>
           </Toolbar>
         </AppBar>
       </div>
