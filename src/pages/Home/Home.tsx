@@ -18,7 +18,6 @@ class Home extends Component {
           <br />
           We strive to provide better ministry through better management.
         </div>
-        <About />
       </div>
     );
   }
