@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import HeaderBar from '../../components/headerBar';
-import AppBar from '../../components/AppBar';
+import HeaderBar from 'components/headerBar';
+import AppBar from 'components/AppBar';
 
 class PersonalDevelopment extends Component {
   render() {

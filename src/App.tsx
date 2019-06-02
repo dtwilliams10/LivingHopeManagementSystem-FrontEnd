@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from './pages/Home/Home';
+import About from './pages/About/About';
 import SystemReport from './pages/SystemReport/SystemReport';
 import PersonalDevelopment from './pages/PersonalDevelopment/PersonalDevelopment';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -18,6 +19,7 @@ export const App = () => {
           path="/PersonalDevelopment"
           component={PersonalDevelopment}
         />
+        <Route exact path="/About" component={About} />
       </Switch>
     </div>
   );

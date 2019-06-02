@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ButtonAppBar from '../../components/AppBar';
-import HeaderBar from '../../components/headerBar';
-import '../../App.css';
+import ButtonAppBar from 'components/AppBar';
+import HeaderBar from 'components/headerBar';
+import 'App.css';
+import About from 'pages/About/About';
 
 class Home extends Component {
   render() {

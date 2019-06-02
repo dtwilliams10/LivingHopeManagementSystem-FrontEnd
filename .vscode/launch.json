@@ -6,9 +6,7 @@
    "configurations": [
     {
           "name": "Chrome",
-          "type": "chrome",
-          "request": "launch",
-          "url": "http://localhost:3000",
+          "url": "http://localhost:6000",
           "webRoot": "${workspaceRoot}/src",
           "sourceMapPathOverrides": {
             "webpack:///src/*": "${webRoot}/*"
@@ -20,7 +18,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/lhmsapi/bin/Debug/netcoreapp2.1/LHMSAPI.dll",
+            "program": "${workspaceFolder}/lhmsapi/bin/Debug/netcoreapp2.2/LHMSAPI.dll",
             "args": [],
             "cwd": "${workspaceFolder}/lhmsapi",
             "stopAtEntry": false,
