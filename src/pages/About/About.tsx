@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import HeaderBar from 'components/headerBar';
 import ButtonAppBar from 'components/AppBar';
 
-const url = 'http://localhost:5000/api/status';
-
+const endpoint = 'status';
+const url: string = process.env.REACT_APP_URL + endpoint;
+console.log(url);
 class About extends Component {
   componentDidMount() {
     fetch(url)

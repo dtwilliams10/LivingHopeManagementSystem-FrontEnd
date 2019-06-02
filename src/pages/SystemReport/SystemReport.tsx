@@ -3,8 +3,9 @@ import HeaderBar from 'components/headerBar';
 import AppBar from 'components/AppBar';
 import TextField from '@material-ui/core/TextField';
 
-const url = 'http://localhost:5000/api/systemreport';
-
+const endpoint = 'systemreport';
+const url: string = process.env.REACT_APP_URL + endpoint;
+console.log(url);
 class SystemReport extends Component {
   componentDidMount() {
     fetch(url)
