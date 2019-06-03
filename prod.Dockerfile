@@ -5,10 +5,10 @@ WORKDIR /usr/src/app
 ENV NODE_ENV=production
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json /usr/src/app/package.json
-RUN yarn
-RUN yarn install react-scripts -g --silent
+RUN npm install
+RUN npm install react-scripts -g
 COPY . /usr/src/app
-RUN yarn run build
+RUN npm run build
 
 ### STAGE 2: Production Environment ###
 FROM nginx:alpine
