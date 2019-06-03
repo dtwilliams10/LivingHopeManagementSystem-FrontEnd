@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 ENV NODE_ENV=production
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json /usr/src/app/package.json
-RUN yarn install --silent --pure-lockfile
+RUN yarn --pure-lockfile
 RUN yarn install react-scripts -g --silent
 COPY . /usr/src/app
 RUN yarn run build
