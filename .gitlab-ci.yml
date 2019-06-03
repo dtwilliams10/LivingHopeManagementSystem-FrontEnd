@@ -22,7 +22,7 @@ test deploy job:
     - docker network connect lhms-frontend_webappnetwork proxy
   environment:
     name: staging
-    url: https://lhms.homeserver.dtwilliams10.com
+    url: https://test.lhms.dtwilliams10.com
   only:
     - branches@dtwilliams10/LHMS-FrontEnd
 
