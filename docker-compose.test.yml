@@ -25,7 +25,7 @@ services:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com
             LETSENCRYPT_HOST: test.lhmsapi.dtwilliams10.com
             VIRTUAL_HOST: test.lhmsapi.dtwilliams10.com
-            ASPNETCORE_ENVIRONMENT: Development
+            ASPNETCORE_ENVIRONMENT: Staging
             ASPNETCORE_URLS: https://test.lhmsapi.dtwilliams10.com
         ports:
             - "5000:5000"
@@ -43,7 +43,7 @@ services:
         volumes:
             - ./data-node:/data/db
         ports:
-            - "27017"
+            - "27017:32783"
         networks:
             - webappnetwork
 networks:
