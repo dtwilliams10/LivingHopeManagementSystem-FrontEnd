@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import UserRow from './userRow.jsx';
-class MyUsers extends Component {
+import UserRow from './userRow';
+import user from './userRow';
+
+class MyUsers extends Component<user> {
   state = {
     users: [
       { id: 1, name: 'Jessie', summary: '26' },
@@ -24,7 +26,7 @@ class MyUsers extends Component {
           <table className="user-list">
             <tbody>
               {this.state.users.map(user => (
-                <UserRow key={user.id} user={user} className="user" />
+                <UserRow id={user.id} name={user.name} summary={user.summary} />
               ))}
             </tbody>
           </table>

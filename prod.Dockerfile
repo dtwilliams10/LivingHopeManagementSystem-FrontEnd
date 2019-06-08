@@ -5,8 +5,8 @@ WORKDIR /usr/src/app
 ENV NODE_ENV=production
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json /usr/src/app/package.json
-RUN npm install --silent
-RUN npm install react-scripts -g --silent
+RUN npm install
+RUN npm install react-scripts -g
 COPY . /usr/src/app
 RUN npm run build
 

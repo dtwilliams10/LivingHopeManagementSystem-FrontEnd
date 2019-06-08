@@ -6,7 +6,9 @@ test build job:
   image: docker:latest
   stage: build
   only:
-    - branches@dtwilliams10/LHMS-FrontEnd
+    - develop@LHMS/LHMS-FrontEnd
+  tags: 
+    - develop
   script:
     - docker build -f test.Dockerfile -t lhms-app .
 
@@ -22,15 +24,19 @@ test deploy job:
     - docker network connect lhms-frontend_webappnetwork proxy
   environment:
     name: staging
-    url: https://lhms.homeserver.dtwilliams10.com
+    url: https://test.lhms.dtwilliams10.com
   only:
-    - branches@dtwilliams10/LHMS-FrontEnd
+    - develop@LHMS/LHMS-FrontEnd
+  tags:
+    - develop
 
 prod build job:
     image: docker:latest
     stage: build
     only:
-      - branches@LHMS/LHMS-FrontEnd
+      - master@LHMS/LHMS-FrontEnd
+    tags: 
+      - production
     script:
       - docker build -f prod.Dockerfile -t lhms-app .
 
@@ -48,4 +54,6 @@ prod deploy job:
   name: staging
   url: https://lhms.dtwilliams10.com
  only:
-  - branches@LHMS/LHMS-FrontEnd
+  - master@LHMS/LHMS-FrontEnd
+ tags:
+  - production

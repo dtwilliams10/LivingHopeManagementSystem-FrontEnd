@@ -43,7 +43,7 @@ services:
         volumes:
             - ./data-node:/data/db
         ports:
-            - "27017"
+            - "27017:32769"
         networks:
             - webappnetwork
 networks:

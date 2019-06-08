@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../LIVINGHOPEwhite.png';
+import LIVINGHOPEwhite from '../LIVINGHOPEwhite.png';
 
 class HeaderBar extends Component {
   render() {
@@ -10,7 +10,7 @@ class HeaderBar extends Component {
             name="viewport"
             content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
           />
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={LIVINGHOPEwhite} className="App-logo" alt="logo" />
           <h1 className="App-title">
             Welcome to the Living Hope Management System
           </h1>
