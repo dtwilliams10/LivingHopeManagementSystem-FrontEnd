@@ -6,7 +6,7 @@ test build job:
   image: docker:latest
   stage: build
   only:
-    - develop@LHSM/LHMS-FrontEnd
+    - develop@LHMS/LHMS-FrontEnd
   script:
     - docker build -f test.Dockerfile -t lhms-app .
 
