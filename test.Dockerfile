@@ -9,11 +9,10 @@ WORKDIR /usr/src/app
 
 # install and cache app dependencies
 COPY package*.json ./
-RUN yarn 
+RUN npm install --silent
+RUN npm install react-scripts -g --silent
 
 COPY . .
 
-EXPOSE 3000
-
 # start app
-CMD ["yarn", "start"]
+CMD ["npm", "start"]
