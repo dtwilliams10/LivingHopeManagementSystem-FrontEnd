@@ -51,7 +51,7 @@ prod deploy job:
   - docker-compose -f "docker-compose.prod.yml" up -d --build
   - docker network connect lhms-frontend_webappnetwork proxy
  environment:
-  name: staging
+  name: production
   url: https://lhms.dtwilliams10.com
  only:
   - master@LHMS/LHMS-FrontEnd
