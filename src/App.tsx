@@ -3,16 +3,14 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import SystemReport from './pages/SystemReport/SystemReport';
 import PersonalDevelopment from './pages/PersonalDevelopment/PersonalDevelopment';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 export const App = () => {
   return (
     <div>
       <Switch>
         <Route exact path="/Home" component={Home} />
-        <Route exact path="/">
-          <Redirect to="/Home" />
-        </Route>
+        <Route exact path="/" componenet={Home} />
         <Route exact path="/SystemReport" component={SystemReport} />
         <Route
           exact
