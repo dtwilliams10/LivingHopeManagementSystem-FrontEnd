@@ -3,7 +3,7 @@
   "name": "Living Hope Management System",
   "icons": [
     {
-      "src": "logo_4Hf_icon.ico",
+      "src": "src/logo_4Hf_icon.ico",
       "sizes": "144x144",
       "type": "image/x-icon"
     }
