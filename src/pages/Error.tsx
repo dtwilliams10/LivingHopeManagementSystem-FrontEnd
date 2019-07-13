@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import ButtonAppBar from '../components/AppBar';
-import HeaderBar from '../components/headerBar';
+import AppBar from 'components/AppBar';
+import HeaderBar from 'components/headerBar';
 
 class ErrorPage extends Component {
   render() {
     return (
       <div>
         <HeaderBar />
-        <ButtonAppBar />
+        <AppBar />
         <div>
           <p>The page you have requested is not found.</p>
           <p>
