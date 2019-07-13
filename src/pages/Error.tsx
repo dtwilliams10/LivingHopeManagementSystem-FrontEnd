@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ButtonAppBar from '../components/AppBar';
 import HeaderBar from '../components/headerBar';
 
-class Error extends Component {
+class ErrorPage extends Component {
   render() {
     return (
       <div>
@@ -20,4 +20,4 @@ class Error extends Component {
   }
 }
 
-export default Error;
+export default ErrorPage;
