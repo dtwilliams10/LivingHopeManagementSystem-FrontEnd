@@ -3,14 +3,13 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import SystemReport from './pages/SystemReport/SystemReport';
 import PersonalDevelopment from './pages/PersonalDevelopment/PersonalDevelopment';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 export const App = () => {
   return (
     <div>
       <Switch>
         <Route exact path="/Home" component={Home} />
-        <Route exact path="/" componenet={Home} />
         <Route exact path="/SystemReport" component={SystemReport} />
         <Route
           exact
@@ -18,6 +17,9 @@ export const App = () => {
           component={PersonalDevelopment}
         />
         <Route exact path="/About" component={About} />
+
+        {/* The Redirect needs to be the last route, else it will redirect all requests to the Home page. */}
+        <Redirect path="/" to="Home" />
       </Switch>
     </div>
   );
