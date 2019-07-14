@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ButtonAppBar from 'components/AppBar';
+import AppBar from 'components/AppBar';
 import HeaderBar from 'components/headerBar';
 import 'App.css';
 
@@ -8,7 +8,7 @@ class Home extends Component {
     return (
       <div>
         <HeaderBar />
-        <ButtonAppBar />
+        <AppBar />
         <div className="App">
           Welcome to the Living Hope Management System.
           <br />
