@@ -10,8 +10,9 @@ export const App = () => {
   return (
     <div>
       <Switch>
-        <Route exact path="/Home" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/SystemReport" component={SystemReport} />
+        <Route exact path="/Home" component={Home} />
         <Route
           exact
           path="/PersonalDevelopment"
