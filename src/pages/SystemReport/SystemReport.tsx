@@ -7,7 +7,7 @@ const endpoint = 'systemreport';
 const url: string = process.env.REACT_APP_URL + endpoint;
 console.log(url);
 class SystemReport extends Component {
-  componentDidMount() {
+  componentWillMount() {
     fetch(url)
       .then(response => response.json())
       .then(response => {
