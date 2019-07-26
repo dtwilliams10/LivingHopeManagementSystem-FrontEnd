@@ -6,6 +6,7 @@
 	],
 	"settings": {
 		"editor.cursorStyle": "block-outline",
-		"gitlab.instanceUrl": "https://gitlab.dtwilliams10.com"
+		"gitlab.instanceUrl": "https://gitlab.dtwilliams10.com",
+		"typescript.tsdk": "node_modules/typescript/lib"
 	}
 }
