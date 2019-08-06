@@ -46,8 +46,8 @@ prod deploy job:
   entrypoint: ["/bin/sh", "-c"]
  stage: deploy
  script:
-  - docker network disconnect lhms-frontend_webappnetwork proxy
-  - docker-compose -f "docker-compose.prod.yml" down
+  #- docker network disconnect lhms-frontend_webappnetwork proxy
+  #- docker-compose -f "docker-compose.prod.yml" down
   - docker-compose -f "docker-compose.prod.yml" up -d --build
   - docker network connect lhms-frontend_webappnetwork proxy
  environment:
