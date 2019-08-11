@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import HeaderBar from 'components/headerBar';
 import ButtonAppBar from 'components/AppBar';
 
-const endpoint = 'status';
+const endpoint: string = 'status';
 const url: string = process.env.REACT_APP_URL + endpoint;
 console.log(url);
 class About extends Component {
-  componentDidMount() {
+  componentWillMount() {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
-        console.log(response.length);
         this.setState({ databaseStatus: response });
       });
   }

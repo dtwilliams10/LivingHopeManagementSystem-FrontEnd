@@ -3,7 +3,7 @@ import HeaderBar from 'components/headerBar';
 import AppBar from 'components/AppBar';
 import TextField from '@material-ui/core/TextField';
 
-const endpoint = 'systemreport';
+const endpoint: string = 'values';
 const url: string = process.env.REACT_APP_URL + endpoint;
 console.log(url);
 class SystemReport extends Component {
