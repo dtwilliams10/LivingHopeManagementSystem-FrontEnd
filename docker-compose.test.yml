@@ -41,7 +41,7 @@ services:
         restart: always
         container_name: postgres
         ports:
-            - "54320:5432"
+            - "5432:54320"
         volumes:
             - my_dbdata:/var/lib/postgresql/data
         networks:
