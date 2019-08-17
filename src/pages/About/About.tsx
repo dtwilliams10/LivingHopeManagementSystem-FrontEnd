@@ -6,12 +6,18 @@ const endpoint: string = 'status';
 const url: string = process.env.REACT_APP_URL + endpoint;
 console.log(url);
 class About extends Component {
-  componentWillMount() {
-    fetch(url)
-      .then(response => response.json())
-      .then(response => {
-        this.setState({ databaseStatus: response });
+  async componentWillMount() {
+    const data = await fetch(url);
+
+    const jsonData = await data.json();
+
+    if (jsonData === null) {
+      this.setState({
+        databaseStatus:
+          'An error ocurred connecting with the database. Please contact an administrator.'
       });
+    }
+    this.setState({ databaseStatus: jsonData });
   }
 
   render() {
