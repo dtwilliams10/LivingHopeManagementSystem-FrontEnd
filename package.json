@@ -11,17 +11,17 @@
     "@types/node": "^12.7.2",
     "@types/react-router-dom": "^4.3.4",
     "ajv": "^6.10.2",
-    "eslint": "^5.16.0",
+    "axios": "^0.19.0",
     "husky": "^2.7.0",
     "immutable": "^3.8.1",
     "jsonwebtoken": "^8.5.1",
     "lint-staged": "^8.2.1",
-    "prettier": "^1.18.2",
+    "oidc-client": "^1.9.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-rte": "^0.16.1",
-    "react-scripts": "^3.1.1",
+    "react-scripts": "3.1.1",
     "typescript": "^3.5.3"
   },
   "lint-staged": {
@@ -43,7 +43,7 @@
     "@types/react-dom": "^16.9.0",
     "babel-preset-react-app": "^9.0.1",
     "cz-conventional-changelog": "2.1.0",
-    "eslint-config-google": "^0.13.0"
+    "prettier": "^1.18.2"
   },
   "browserslist": [
     ">0.2%",
