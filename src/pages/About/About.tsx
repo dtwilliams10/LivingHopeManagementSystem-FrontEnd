@@ -7,7 +7,6 @@ import { string } from 'prop-types';
 
 const endpoint: string = 'status';
 const url: string = process.env.REACT_APP_URL + endpoint;
-console.log(url);
 
 class About extends Component {
   state = {
@@ -19,7 +18,6 @@ class About extends Component {
     axios
       .get(url)
       .then(function(response) {
-        console.log(response.data);
         _self.setState({
           databaseStatus: response.data
         });
@@ -29,7 +27,7 @@ class About extends Component {
           console.log('Error', error.message);
           _self.setState({
             databaseStatus:
-              'An error ocurred connecting witht he API. Please contact an administrator.'
+              'An error ocurred connecting with the API. Please contact an administrator.'
           });
         }
       });
