@@ -2,31 +2,45 @@ import React, { Component } from 'react';
 import HeaderBar from 'components/headerBar';
 import ButtonAppBar from 'components/AppBar';
 
+import axios from 'axios';
+import { string } from 'prop-types';
+
 const endpoint: string = 'status';
 const url: string = process.env.REACT_APP_URL + endpoint;
 console.log(url);
+
 class About extends Component {
-  async componentWillMount() {
-    const data = await fetch(url);
+  state = {
+    databaseStatus: string
+  };
 
-    const jsonData = await data.json();
-
-    if (jsonData === null) {
-      this.setState({
-        databaseStatus:
-          'An error ocurred connecting with the database. Please contact an administrator.'
+  componentDidMount() {
+    var _self = this;
+    axios
+      .get(url)
+      .then(function(response) {
+        console.log(response.data);
+        _self.setState({
+          databaseStatus: response.data
+        });
+      })
+      .catch(function(error) {
+        if (error.request) {
+          console.log('Error', error.message);
+          _self.setState({
+            databaseStatus:
+              'An error ocurred connecting witht he API. Please contact an administrator.'
+          });
+        }
       });
-    }
-    this.setState({ databaseStatus: jsonData });
   }
 
   render() {
-    const dbStatus = JSON.stringify(this.state);
     return (
       <div>
         <HeaderBar />
         <ButtonAppBar />
-        <div>{dbStatus}</div>
+        <p>{JSON.stringify(this.state.databaseStatus)}</p>
       </div>
     );
   }
