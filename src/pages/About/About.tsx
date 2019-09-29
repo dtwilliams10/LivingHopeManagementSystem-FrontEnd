@@ -22,6 +22,7 @@ class About extends Component {
           databaseStatus: response.data
         });
       })
+      // Add a redirect to the Error page and display this message.
       .catch(function(error) {
         if (error.request) {
           console.log('Error', error.message);
