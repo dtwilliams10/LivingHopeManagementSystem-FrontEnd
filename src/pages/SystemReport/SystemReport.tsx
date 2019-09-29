@@ -94,11 +94,13 @@ class SystemReport extends Component {
               {console.log(this.state.systemreport)}
               {this.state.systemreport.map(row => (
                 <TableRow key={row.id}>
-                  <TableCell align="right">{row.id}</TableCell>
-                  <TableCell align="right">{row.systemName}</TableCell>
-                  <TableCell align="right">{row.name}</TableCell>
-                  <TableCell align="right">{row.systemReportStatus}</TableCell>
-                  <TableCell align="right">{row.updatedDate}</TableCell>
+                  <TableCell align="center">
+                    <a href={url + '/' + row.id}>{row.id}</a>
+                  </TableCell>
+                  <TableCell align="center">{row.systemName}</TableCell>
+                  <TableCell align="center">{row.name}</TableCell>
+                  <TableCell align="center">{row.systemReportStatus}</TableCell>
+                  <TableCell align="center">{row.updatedDate}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
