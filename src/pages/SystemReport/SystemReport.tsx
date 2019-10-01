@@ -80,6 +80,7 @@ class SystemReport extends Component {
         <AppBar />
         <Button href="/CreateSystemReport">Create New System Report</Button>
         <Paper>
+          {/*TODO: Need to update this to not display a table if no records are found*/}
           <Table stickyHeader>
             <TableHead>
               <TableRow>
