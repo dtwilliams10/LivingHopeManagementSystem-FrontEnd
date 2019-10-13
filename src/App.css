@@ -29,3 +29,13 @@ body {
 .App-intro {
   font-size: large;
 }
+
+.SystemReportform {
+  border: black;
+  border-block: initial;
+  align-items: center;
+}
+
+.TextField {
+  border: thick double black;
+}

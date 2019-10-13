@@ -98,9 +98,11 @@ class SystemReport extends Component {
                   <TableCell align="center">
                     <a href={url + '/' + row.id}>{row.id}</a>
                   </TableCell>
-                  <TableCell align="center">{row.systemName}</TableCell>
+                  <TableCell align="center">{row.systemNameId}</TableCell>
                   <TableCell align="center">{row.name}</TableCell>
-                  <TableCell align="center">{row.systemReportStatus}</TableCell>
+                  <TableCell align="center">
+                    {row.systemReportStatusId}
+                  </TableCell>
                   <TableCell align="center">{row.updatedDate}</TableCell>
                 </TableRow>
               ))}
