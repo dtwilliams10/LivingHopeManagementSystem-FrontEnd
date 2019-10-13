@@ -65,7 +65,7 @@ class SystemReport extends Component {
         if (error.request) {
           console.log('Error', error.message);
           _self.setState({
-            //Need to fix this, it doesn't respond properly.
+            //TODO: Need to fix this, it doesn't respond properly.
             systemreport:
               'An error ocurred connecting with the API. Please contact an administrator'
           });
