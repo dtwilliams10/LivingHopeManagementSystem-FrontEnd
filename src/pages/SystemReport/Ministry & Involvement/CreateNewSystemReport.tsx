@@ -6,7 +6,7 @@ import AppBar from 'components/AppBar';
 import { Button, TextField } from '@material-ui/core';
 import '../../../App.css';
 
-const endpoint: string = 'systemreport';
+const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_URL + endpoint;
 console.log(url);
 
@@ -16,11 +16,9 @@ class CreateSystemReport extends Component {
   };
 
   handleSubmitClick() {
-    axios
-      .post(process.env.REACT_APP_URL + 'SystemReport')
-      .then(function(response) {
-        console.log(response);
-      });
+    axios.post(url).then(function(response) {
+      console.log(response);
+    });
   }
 
   render() {

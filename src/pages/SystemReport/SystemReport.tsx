@@ -13,7 +13,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-const endpoint: string = 'systemreport';
+const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_URL + endpoint;
 
 interface ISystemReport {
