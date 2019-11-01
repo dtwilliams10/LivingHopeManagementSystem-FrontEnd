@@ -2,27 +2,44 @@ import React, { Component } from 'react';
 import HeaderBar from 'components/headerBar';
 import ButtonAppBar from 'components/AppBar';
 
-const endpoint = 'status';
+import axios from 'axios';
+import { string } from 'prop-types';
+
+const endpoint: string = 'status';
 const url: string = process.env.REACT_APP_URL + endpoint;
-console.log(url);
+
 class About extends Component {
+  state = {
+    databaseStatus: string
+  };
+
   componentDidMount() {
-    fetch(url)
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-        console.log(response.length);
-        this.setState({ databaseStatus: response });
+    var _self = this;
+    axios
+      .get(url)
+      .then(function(response) {
+        _self.setState({
+          databaseStatus: response.data
+        });
+      })
+      // Add a redirect to the Error page and display this message.
+      .catch(function(error) {
+        if (error.request) {
+          console.log('Error', error.message);
+          _self.setState({
+            databaseStatus:
+              'An error ocurred connecting with the API. Please contact an administrator.'
+          });
+        }
       });
   }
 
   render() {
-    const dbStatus = JSON.stringify(this.state);
     return (
       <div>
         <HeaderBar />
         <ButtonAppBar />
-        <div>{dbStatus}</div>
+        <p>{JSON.stringify(this.state.databaseStatus)}</p>
       </div>
     );
   }

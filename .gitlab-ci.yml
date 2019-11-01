@@ -18,10 +18,7 @@ test deploy job:
     entrypoint: ["/bin/sh", "-c"]
   stage: deploy
   script:
-    - docker network disconnect lhms-frontend_webappnetwork proxy
-    - docker-compose -f "docker-compose.test.yml" down
-    - docker-compose -f "docker-compose.test.yml" up -d --build
-    - docker network connect lhms-frontend_webappnetwork proxy
+     - docker-compose -f "docker-compose.test.yml" up -d --build
   environment:
     name: staging
     url: https://test.lhms.dtwilliams10.com
@@ -46,10 +43,7 @@ prod deploy job:
   entrypoint: ["/bin/sh", "-c"]
  stage: deploy
  script:
-  - docker network disconnect lhms-frontend_webappnetwork proxy
-  - docker-compose -f "docker-compose.prod.yml" down
   - docker-compose -f "docker-compose.prod.yml" up -d --build
-  - docker network connect lhms-frontend_webappnetwork proxy
  environment:
   name: production
   url: https://lhms.dtwilliams10.com

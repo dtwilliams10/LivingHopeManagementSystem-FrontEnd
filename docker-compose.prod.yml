@@ -33,19 +33,21 @@ services:
             - ./api:/api
             - /api/node_modules
         depends_on:
-            - mongodb
+            - postgres
         networks:
             - webappnetwork
-    mongodb:
-        image: mongo
+    postgres:
+        image: postgres
         restart: always
-        container_name: mongodb
-        volumes:
-            - ./data-node:/data/db
+        container_name: postgres
         ports:
-            - "27017:32769"
+            - "54320:5432"
+        volumes:
+            - my_dbdata:/var/lib/postgresql/data
         networks:
             - webappnetwork
+volumes:
+  my_dbdata:
 networks:
     webappnetwork:
         driver: bridge
