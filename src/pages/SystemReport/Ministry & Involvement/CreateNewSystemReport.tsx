@@ -35,7 +35,7 @@ class CreateSystemReport extends Component {
               datatype="string"
               multiline={true}
             />
-            {/*This will be autofilled with the logged in user once users are integrated*/}
+            {/*TODO: This will be autofilled with the logged in user once users are integrated*/}
             <TextField
               className="TextField"
               id="ReporterName"
@@ -43,10 +43,60 @@ class CreateSystemReport extends Component {
               datatype="string"
               multiline={false}
             />
-            <Button onClick={this.handleSubmitClick}>
-              Submit System Report
-            </Button>
+            {/* TODO: Update this to autopopulate with today's date */}
+            <TextField
+              className="ReportedDate"
+              id="ReportedDate"
+              type="date"
+              label="Reported Date"
+              InputLabelProps={{
+                shrink: true
+              }}
+            />
+            <TextField
+              className="TextField"
+              id="ReporterName"
+              label="Reporter Name"
+              datatype="string"
+              multiline={false}
+            />
+            <TextField
+              className="TextField"
+              id="ReporterName"
+              label="Reporter Name"
+              datatype="string"
+              multiline={false}
+            />
+            <TextField
+              className="TextField"
+              id="ReporterName"
+              label="Reporter Name"
+              datatype="string"
+              multiline={false}
+            />
+            <TextField
+              className="TextField"
+              id="ReporterName"
+              label="Reporter Name"
+              datatype="string"
+              multiline={false}
+            />
+            <TextField
+              className="TextField"
+              id="ReporterName"
+              label="Reporter Name"
+              datatype="string"
+              multiline={false}
+            />
+            <TextField
+              className="TextField"
+              id="ReporterName"
+              label="Reporter Name"
+              datatype="string"
+              multiline={false}
+            />
           </form>
+          <Button onClick={this.handleSubmitClick}>Submit System Report</Button>
         </div>
       </div>
     );
