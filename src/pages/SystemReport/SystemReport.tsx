@@ -68,10 +68,10 @@ class SystemReport extends Component {
                     <TableCell align="center">
                       <a href={url + '/' + row.id}>{row.id}</a>
                     </TableCell>
-                    <TableCell align="center">{row.systemNameId}</TableCell>
+                    <TableCell align="center">{row.systemName.name}</TableCell>
                     <TableCell align="center">{row.name}</TableCell>
                     <TableCell align="center">
-                      {row.systemReportStatusId}
+                      {row.systemReportStatus.status}
                     </TableCell>
                     <TableCell align="center">{row.updatedDate}</TableCell>
                   </TableRow>
