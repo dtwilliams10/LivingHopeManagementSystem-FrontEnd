@@ -7,7 +7,7 @@ test build job:
   stage: build
   only:
     - develop@LHMS/LHMS-FrontEnd
-  tags: 
+  tags:
     - develop
   script:
     - docker build -f test.Dockerfile -t lhms-app .
@@ -32,7 +32,7 @@ prod build job:
     stage: build
     only:
       - master@LHMS/LHMS-FrontEnd
-    tags: 
+    tags:
       - production
     script:
       - docker build -f prod.Dockerfile -t lhms-app .
