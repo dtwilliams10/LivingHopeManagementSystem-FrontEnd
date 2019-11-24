@@ -14,6 +14,10 @@ import Paper from '@material-ui/core/Paper';
 const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_URL + endpoint;
 const error: boolean = false;
+const style = {
+  color: 'black',
+  textDecoration: 'none'
+};
 class SystemReport extends Component {
   state = {
     systemreport: [],
@@ -66,14 +70,18 @@ class SystemReport extends Component {
                 {this.state.systemreport.map(row => (
                   <TableRow key={row.id}>
                     <TableCell align="center">
-                      <a href={url + '/' + row.id}>{row.id}</a>
+                      <a style={style} href={url + '/' + row.id}>
+                        {row.id}
+                      </a>
                     </TableCell>
                     <TableCell align="center">{row.systemName.name}</TableCell>
                     <TableCell align="center">{row.name}</TableCell>
                     <TableCell align="center">
                       {row.systemReportStatus.status}
                     </TableCell>
-                    <TableCell align="center">{row.updatedDate}</TableCell>
+                    <TableCell align="center">
+                      {row.updatedDate.toString()}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
