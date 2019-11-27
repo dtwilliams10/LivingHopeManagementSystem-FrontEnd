@@ -18,7 +18,7 @@ const style = {
   textDecoration: 'none'
 };
 var error: boolean = false;
-class SystemReport extends Component {
+class SystemReportList extends Component {
   state = {
     systemreport: [],
     error
@@ -55,7 +55,7 @@ class SystemReport extends Component {
         <div>
           <HeaderBar />
           <AppBar />
-          <Button href="/CreateSystemReport">Create New System Report</Button>
+          <Button href="/SystemReportForm">Create New System Report</Button>
           <Paper>
             <Table stickyHeader>
               <TableHead>
@@ -96,4 +96,4 @@ class SystemReport extends Component {
   }
 }
 
-export default SystemReport;
+export default SystemReportList;
