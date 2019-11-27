@@ -39,3 +39,8 @@ body {
 .TextField {
   border: thick double black;
 }
+
+.draft-editor-wrapper {
+  border: 1px solid black;
+  height: 250px;
+}
