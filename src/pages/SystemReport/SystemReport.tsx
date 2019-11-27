@@ -13,16 +13,17 @@ import Paper from '@material-ui/core/Paper';
 
 const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_URL + endpoint;
-const error: boolean = false;
 const style = {
   color: 'black',
   textDecoration: 'none'
 };
+var error: boolean = false;
 class SystemReport extends Component {
   state = {
     systemreport: [],
     error
   };
+
   componentDidMount() {
     var _self = this;
     axios
@@ -39,8 +40,9 @@ class SystemReport extends Component {
       });
   }
 
+  /* This only work if error is defaulted to true, which it is not. Need to work on error handling before render */
   render() {
-    if (error) {
+    if (this.state.error) {
       return (
         <div>
           <HeaderBar />
@@ -70,9 +72,10 @@ class SystemReport extends Component {
                 {this.state.systemreport.map(row => (
                   <TableRow key={row.id}>
                     <TableCell align="center">
-                      <a style={style} href={url + '/' + row.id}>
+                      {/* Change this to a button that calls a get using the row.id and opens the system report page.  */}
+                      <Button style={style} href={url + '/' + row.id}>
                         {row.id}
-                      </a>
+                      </Button>
                     </TableCell>
                     <TableCell align="center">{row.systemName.name}</TableCell>
                     <TableCell align="center">{row.name}</TableCell>
