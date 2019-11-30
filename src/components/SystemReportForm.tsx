@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { TextField } from '@material-ui/core';
 import { useFormik } from 'formik';
-import RichTextEditor from 'components/RichTextEditor';
 
 import '../App.css';
 
@@ -14,20 +13,30 @@ const SystemReportForm = () => {
   const formik = useFormik({
     initialValues: {
       reportName: '',
-      reporterName: ''
+      reporterName: '',
+      systemUpdate: '',
+      personnelUpdates: '',
+      creativeIdeasAndEvaluations: '',
+      barriersOrChallenges: '',
+      howCanIHelpYou: '',
+      personalGrowthAndDevelopment: ''
     },
 
     onSubmit: values => {
-      axios.post(url, { values }).then(function(response) {
+      axios.post(url, values).then(function(response) {
         console.log(response);
       });
     }
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form
+      onSubmit={formik.handleSubmit}
+      className="SystemReportform"
+      style={{ display: 'block' }}
+    >
       <label htmlFor="reportName">Report Name</label>
-      {/* Look into using Draft editors here instead of text fields. */}
+      {/* TODO: Look into using Draft editors here instead of text fields. Need to figure out how to pass Editor State into the API.  */}
       <TextField
         id="reportName"
         name="reportName"
@@ -45,21 +54,57 @@ const SystemReportForm = () => {
       />
       <br />
       <label htmlFor="systemUpdate">System Update</label>
-      <RichTextEditor />
+      <TextField
+        id="systemUpdate"
+        name="systemUpdate"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.systemUpdate}
+      />
       <label htmlFor="personnelUpdates">Personnel Updates</label>
-      <RichTextEditor />
+      <TextField
+        id="personnelUpdates"
+        name="personnelUpdates"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.personnelUpdates}
+      />
       <label htmlFor="creativeIdeasAndEvaluations">
         Creative Ideas and Evaluations
       </label>
-      <RichTextEditor />
+      <TextField
+        id="creativeIdeasAndEvaluations"
+        name="creativeIdeasAndEvaluations"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.creativeIdeasAndEvaluations}
+      />
       <label htmlFor="barriersOrChallenges">Barriers or Challenges</label>
-      <RichTextEditor />
+      <TextField
+        id="barriersOrChallenges"
+        name="barriersOrChallenges"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.barriersOrChallenges}
+      />
       <label htmlFor="howCanIHelpYou">How Can I Help You?</label>
-      <RichTextEditor />
+      <TextField
+        id="howCanIHelpYou"
+        name="howCanIHelpYou"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.howCanIHelpYou}
+      />
       <label htmlFor="personalGrowthAndDevelopment">
         Personal Growth and Development
       </label>
-      <RichTextEditor />
+      <TextField
+        id="personalGrowthAndDevelopment"
+        name="personalGrowthAndDevelopment"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.personalGrowthAndDevelopment}
+      />
       <button type="submit">Submit</button>
     </form>
   );
