@@ -61,6 +61,7 @@ class SystemReportList extends Component {
               <TableHead>
                 <TableRow>
                   <TableCell align="center">Report ID</TableCell>
+                  <TableCell align="center">Report Name</TableCell>
                   <TableCell align="center">System Name</TableCell>
                   <TableCell align="center">Reporter</TableCell>
                   <TableCell align="center">Report Status</TableCell>
@@ -77,14 +78,13 @@ class SystemReportList extends Component {
                         {row.id}
                       </Button>
                     </TableCell>
+                    <TableCell align="center">{row.reportName}</TableCell>
                     <TableCell align="center">{row.systemName.name}</TableCell>
-                    <TableCell align="center">{row.name}</TableCell>
+                    <TableCell align="center">{row.reporterName}</TableCell>
                     <TableCell align="center">
                       {row.systemReportStatus.status}
                     </TableCell>
-                    <TableCell align="center">
-                      {row.updatedDate.toString()}
-                    </TableCell>
+                    <TableCell align="center">{row.updatedDate}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
