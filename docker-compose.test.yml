@@ -46,6 +46,14 @@ services:
             - my_dbdata:/var/lib/postgresql/data
         networks:
             - webappnetwork
+    identityserver:
+        image: identityserver
+        restart: always
+        container_name: identityserver
+        ports:
+            - "5001:5001"
+        networks:
+            - webappnetwork
 volumes:
   my_dbdata:
 
