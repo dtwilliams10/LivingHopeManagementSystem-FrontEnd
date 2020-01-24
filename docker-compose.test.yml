@@ -50,8 +50,24 @@ services:
         image: identityserver
         restart: always
         container_name: identityserver
+        environment:
+            LETSENCRYPT_EMAIL: david.williams110913@gmail.com
+            LETSENCRYPT_HOST: test.auth.dtwilliams10.com
+            VIRTUAL_HOST: test.auth.dtwilliams10.com
+            ASPNETCORE_ENVIRONMENT: Staging
+            ASPNETCORE_URLS: https://test.auth.dtwilliams10.com
         ports:
-            - "5001:5001"
+            - "5004:5004"
+        networks:
+            - webappnetwork
+    postgres:
+        image: postgres
+        restart: always
+        container_name: postgres
+        ports:
+            - "54320:5432"
+        volumes:
+            - my_dbdata:/var/lib/postgresql/data
         networks:
             - webappnetwork
 volumes:
