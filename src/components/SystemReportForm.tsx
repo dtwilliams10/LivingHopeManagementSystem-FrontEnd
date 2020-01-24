@@ -1,13 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import { TextField } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 import { useFormik } from 'formik';
 
 import '../App.css';
 
 const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_URL + endpoint;
-console.log(url);
 
 const SystemReportForm = () => {
   const formik = useFormik({
