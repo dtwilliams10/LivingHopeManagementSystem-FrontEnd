@@ -1,9 +1,9 @@
 import { BehaviorSubject } from 'rxjs';
+//import { handleResponse } from '../helpers/handle-response';
+import axios from 'axios';
 
-//import config from 'config';
-import { handleResponse } from '../helpers/handle-response';
-
-const url = process.env.REACT_APP_URL;
+const endpoint: string = 'users';
+const url = process.env.REACT_APP_URL + endpoint;
 
 const currentUserSubject = new BehaviorSubject(
   JSON.parse(localStorage.getItem('currentUser'))
@@ -19,14 +19,11 @@ export const authenticationService = {
 };
 
 function login(username, password) {
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, password })
-  };
-
-  return fetch(url + `/users/authenticate`, requestOptions)
-    .then(handleResponse)
+  return axios
+    .post(url + '/authenticate', {
+      username: username,
+      password: password
+    })
     .then(user => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
       localStorage.setItem('currentUser', JSON.stringify(user));
