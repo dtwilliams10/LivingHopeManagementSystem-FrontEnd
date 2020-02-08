@@ -22,7 +22,7 @@ class RegistrationPage extends React.Component {
             firstName: '',
             lastName: '',
             username: '',
-            email: '',
+            emailAddress: '',
             password: ''
           }}
           onSubmit={(values, { setSubmitting }) => {
@@ -32,12 +32,11 @@ class RegistrationPage extends React.Component {
                 .post(url, {
                   firstName: values.firstName,
                   lastName: values.lastName,
-                  email: values.email,
+                  emailAddress: values.emailAddress,
                   username: values.username,
                   password: values.password
                 })
                 .then(function(response) {
-                  //Need to use this to pass to the login page for the user to use their new credentials
                   console.log(response);
                 })
                 .catch(function(error) {
@@ -88,22 +87,24 @@ class RegistrationPage extends React.Component {
                   className={errors.lastName && touched.lastName && 'error'}
                 />
 
-                {errors.email && touched.email && (
-                  <div className="input-feedback">{errors.email}</div>
+                {errors.emailAddress && touched.emailAddress && (
+                  <div className="input-feedback">{errors.emailAddress}</div>
                 )}
                 <label htmlFor="email">E-Mail Address</label>
                 <input
-                  name="email"
+                  name="emailAddress"
                   type="text"
                   autoComplete="email"
                   placeholder="Please enter your email"
-                  value={values.email}
+                  value={values.emailAddress}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={errors.email && touched.email && 'error'}
+                  className={
+                    errors.emailAddress && touched.emailAddress && 'error'
+                  }
                 />
-                {errors.email && touched.email && (
-                  <div className="input-feedback">{errors.email}</div>
+                {errors.emailAddress && touched.emailAddress && (
+                  <div className="input-feedback">{errors.emailAddress}</div>
                 )}
 
                 <label htmlFor="username">Username</label>
