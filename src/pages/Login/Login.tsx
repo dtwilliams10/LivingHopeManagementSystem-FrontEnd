@@ -13,6 +13,14 @@ class LoginPage extends React.Component {
     if (authenticationService.currentUserValue) {
       return <Redirect to="/Home" />;
     }
+
+    function refreshPage() {
+      window.location.reload();
+    }
+
+    function redirectPage(page: string) {
+      window.location.assign(page);
+    }
     return (
       <div>
         <HeaderBar />
@@ -28,13 +36,13 @@ class LoginPage extends React.Component {
                   password: values.password
                 })
                 .then(function(response) {
-                  authenticationService
-                    .login(values.username, values.password)
-                    .then();
+                  authenticationService.login(values.username, values.password);
+                  redirectPage('/Home');
                   console.log(response);
                 })
                 .catch(function(error) {
                   console.log(error);
+                  refreshPage();
                 });
               setSubmitting(true);
             }, 500);
