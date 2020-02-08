@@ -27,7 +27,7 @@ class RegistrationPage extends React.Component {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              console.log('Logging in', values);
+              console.log('Registering user: ', values);
               axios
                 .post(url, {
                   firstName: values.firstName,
@@ -37,7 +37,7 @@ class RegistrationPage extends React.Component {
                   password: values.password
                 })
                 .then(function(response) {
-                  //Need to use this to pass to an authenticated page
+                  //Need to use this to pass to the login page for the user to use their new credentials
                   console.log(response);
                 })
                 .catch(function(error) {
@@ -47,7 +47,7 @@ class RegistrationPage extends React.Component {
             }, 500);
           }}
 
-          /* Need to add validation to the email and password fields */
+          /* Need to add validation to all the fields */
         >
           {props => {
             const {
@@ -137,6 +137,7 @@ class RegistrationPage extends React.Component {
                 <button type="submit" disabled={isSubmitting}>
                   Submit
                 </button>
+                {/* Need to redirect to the login page after successful submission */}
               </form>
             );
           }}
