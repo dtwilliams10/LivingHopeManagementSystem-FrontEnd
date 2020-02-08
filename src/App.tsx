@@ -6,13 +6,14 @@ import PersonalDevelopment from './pages/PersonalDevelopment/PersonalDevelopment
 import ErrorPage from './pages/Error';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SystemReport from 'pages/SystemReport/Ministry & Involvement/SystemReport';
-import Login from 'pages/Login/Login';
+import LoginPage from 'pages/Login/Login';
+import RegistrationPage from 'pages/Login/Register';
 
 export const App = () => {
   return (
     <div>
       <Switch>
-        <Route exact path="/Login" component={Login} />
+        <Route exact path="/Login" component={LoginPage} />
         <Route exact path="/SystemReport" component={SystemReportList} />
         <Route exact path="/Home" component={Home} />
         <Route
@@ -23,6 +24,7 @@ export const App = () => {
         <Route exact path="/About" component={About} />
         <Route exact path="/SystemReportForm" component={SystemReport} />
         <Route exact path="/Error" component={ErrorPage} />
+        <Route exact path="/Register" component={RegistrationPage} />
         {/* The Redirect needs to be the last route, else it will redirect all requests to the Home page. */}
         if(/*Not a validated user*/)
         {<Redirect path="/" to="Login" />}

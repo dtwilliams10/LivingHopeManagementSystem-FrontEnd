@@ -5,10 +5,10 @@ import axios from 'axios';
 import { authenticationService } from '../../services/authentication.service';
 import { Redirect } from 'react-router-dom';
 
-const endpoint: string = 'users/authenticate';
+const endpoint: string = 'users/register';
 const url: string = process.env.REACT_APP_URL + endpoint;
 
-class LoginPage extends React.Component {
+class RegistrationPage extends React.Component {
   render() {
     if (authenticationService.currentUserValue) {
       return <Redirect to="/Home" />;
@@ -18,16 +18,26 @@ class LoginPage extends React.Component {
         <HeaderBar />
         <br />
         <Formik
-          initialValues={{ username: '', password: '' }}
+          initialValues={{
+            firstName: '',
+            lastName: '',
+            username: '',
+            email: '',
+            password: ''
+          }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               console.log('Logging in', values);
               axios
                 .post(url, {
+                  firstName: values.firstName,
+                  lastName: values.lastName,
+                  email: values.email,
                   username: values.username,
                   password: values.password
                 })
                 .then(function(response) {
+                  //Need to use this to pass to an authenticated page
                   console.log(response);
                 })
                 .catch(function(error) {
@@ -51,6 +61,51 @@ class LoginPage extends React.Component {
             } = props;
             return (
               <form onSubmit={handleSubmit}>
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  name="firstName"
+                  type="text"
+                  autoComplete="firstName"
+                  placeholder="Please enter your first name"
+                  value={values.firstName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.firstName && touched.firstName && 'error'}
+                />
+                {errors.firstName && touched.firstName && (
+                  <div className="input-feedback">{errors.firstName}</div>
+                )}
+
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  name="lastName"
+                  type="text"
+                  autoComplete="lastName"
+                  placeholder="Please enter your last name"
+                  value={values.lastName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.lastName && touched.lastName && 'error'}
+                />
+
+                {errors.email && touched.email && (
+                  <div className="input-feedback">{errors.email}</div>
+                )}
+                <label htmlFor="email">E-Mail Address</label>
+                <input
+                  name="email"
+                  type="text"
+                  autoComplete="email"
+                  placeholder="Please enter your email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.email && touched.email && 'error'}
+                />
+                {errors.email && touched.email && (
+                  <div className="input-feedback">{errors.email}</div>
+                )}
+
                 <label htmlFor="username">Username</label>
                 <input
                   name="username"
@@ -80,20 +135,15 @@ class LoginPage extends React.Component {
                   <div className="input-feedback">{errors.password}</div>
                 )}
                 <button type="submit" disabled={isSubmitting}>
-                  Login
+                  Submit
                 </button>
               </form>
             );
           }}
         </Formik>
-        {/* Need to add a Register page and use this link to route there. */}
-        <p className="registration-link">
-          If you don't have an account yet, please click{' '}
-          <a href="/Register">here</a> to register
-        </p>
       </div>
     );
   }
 }
 
-export default LoginPage;
+export default RegistrationPage;
