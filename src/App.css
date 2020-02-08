@@ -92,8 +92,8 @@ button {
   background-color: 250ms;
 }
 
-button:hover {
+/*button:hover {
   cursor: pointer;
   background-color: white;
   color: rgb(70, 153, 179);
-}
+}*/
