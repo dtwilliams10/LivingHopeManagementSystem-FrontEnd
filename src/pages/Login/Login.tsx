@@ -28,6 +28,9 @@ class LoginPage extends React.Component {
                   password: values.password
                 })
                 .then(function(response) {
+                  authenticationService
+                    .login(values.username, values.password)
+                    .then();
                   console.log(response);
                 })
                 .catch(function(error) {
