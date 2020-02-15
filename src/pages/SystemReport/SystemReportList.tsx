@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import { Button } from '@material-ui/core';
+import { authHeader } from 'helpers/auth-header';
 import HeaderBar from 'components/headerBar';
 import AppBar from 'components/AppBar';
 import Table from '@material-ui/core/Table';
@@ -26,8 +27,10 @@ class SystemReportList extends Component {
 
   componentDidMount() {
     var _self = this;
+    const headers = authHeader();
+    console.log(headers);
     axios
-      .get(url)
+      .get(url, { headers: headers })
       .then(res => _self.setState({ error: false, systemreport: res.data }))
       .catch(function(error) {
         if (error.request) {
