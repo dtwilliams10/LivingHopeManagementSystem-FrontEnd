@@ -13,6 +13,11 @@ class RegistrationPage extends React.Component {
     if (authenticationService.currentUserValue) {
       return <Redirect to="/Home" />;
     }
+
+    function redirectPage(page: string) {
+      window.location.assign(page);
+    }
+
     return (
       <div>
         <HeaderBar />
@@ -36,11 +41,12 @@ class RegistrationPage extends React.Component {
                   username: values.username,
                   password: values.password
                 })
-                .then(function(response) {
-                  console.log(response);
+                .then(function() {
+                  redirectPage('/Login');
                 })
                 .catch(function(error) {
                   console.log(error);
+                  //Need to add an onscreen notification for errors
                 });
               setSubmitting(true);
             }, 500);
@@ -139,6 +145,10 @@ class RegistrationPage extends React.Component {
                   Submit
                 </button>
                 {/* Need to redirect to the login page after successful submission */}
+                <p className="registration-link">
+                  If you already have an account yet, please click{' '}
+                  <a href="/Login">here</a> to register
+                </p>
               </form>
             );
           }}

@@ -1,12 +1,12 @@
 import React from 'react';
 import HeaderBar from 'components/headerBar';
 import { Formik } from 'formik';
-import axios from 'axios';
+//import axios from 'axios';
 import { authenticationService } from '../../services/authentication.service';
 import { Redirect } from 'react-router-dom';
 
-const endpoint: string = 'users/authenticate';
-const url: string = process.env.REACT_APP_URL + endpoint;
+//const endpoint: string = 'users/authenticate';
+//const url: string = process.env.REACT_APP_URL + endpoint;
 
 class LoginPage extends React.Component {
   render() {
@@ -14,13 +14,14 @@ class LoginPage extends React.Component {
       return <Redirect to="/Home" />;
     }
 
-    function refreshPage() {
+    /*function refreshPage() {
       window.location.reload();
-    }
+    }*/
 
     function redirectPage(page: string) {
       window.location.assign(page);
     }
+
     return (
       <div>
         <HeaderBar />
@@ -30,20 +31,8 @@ class LoginPage extends React.Component {
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               console.log('Logging in', values);
-              axios
-                .post(url, {
-                  username: values.username,
-                  password: values.password
-                })
-                .then(function(response) {
-                  authenticationService.login(values.username, values.password);
-                  redirectPage('/Home');
-                  console.log(response);
-                })
-                .catch(function(error) {
-                  console.log(error);
-                  refreshPage();
-                });
+              authenticationService.login(values.username, values.password);
+              redirectPage('/Home');
               setSubmitting(true);
             }, 500);
           }}
@@ -97,7 +86,6 @@ class LoginPage extends React.Component {
             );
           }}
         </Formik>
-        {/* Need to add a Register page and use this link to route there. */}
         <p className="registration-link">
           If you don't have an account yet, please click{' '}
           <a href="/Register">here</a> to register
