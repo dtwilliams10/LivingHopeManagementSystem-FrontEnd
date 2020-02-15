@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { useFormik } from 'formik';
 
 import '../App.css';
+import { authHeader } from 'helpers/auth-header';
 
 const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_URL + endpoint;
@@ -22,7 +23,8 @@ const SystemReportForm = () => {
     },
 
     onSubmit: values => {
-      axios.post(url, values).then(function(response) {
+      const headers = authHeader();
+      axios.post(url, values, { headers: headers }).then(function(response) {
         console.log(response);
       });
     }

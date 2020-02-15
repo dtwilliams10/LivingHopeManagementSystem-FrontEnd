@@ -18,8 +18,9 @@ class LoginPage extends React.Component {
       window.location.reload();
     }*/
 
-    function redirectPage(page: string) {
-      window.location.assign(page);
+    function redirectPage() {
+      console.log('Redirecting to Home Page');
+      return <Redirect to="/Home" />;
     }
 
     return (
@@ -30,10 +31,9 @@ class LoginPage extends React.Component {
           initialValues={{ username: '', password: '' }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              console.log('Logging in', values);
               authenticationService.login(values.username, values.password);
-              redirectPage('/Home');
               setSubmitting(true);
+              redirectPage();
             }, 500);
           }}
 

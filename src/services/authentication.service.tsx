@@ -18,22 +18,20 @@ export const authenticationService = {
   }
 };
 
-export function login(username, password) {
-  let params = {
+async function login(username: string, password: string) {
+  console.log('Calling axios post for user authentication');
+  const user = await axios.post(url, {
     username: username,
     password: password
-  };
-  axios.post(url, params).then(user => {
-    console.log(user);
-    // store user details and jwt token in local storage to keep user logged in between page refreshes
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    currentUserSubject.next(user);
-
-    return user;
   });
+  console.log(user);
+  // store user details and jwt token in local storage to keep user logged in between page refreshes
+  localStorage.setItem('currentUser', JSON.stringify(user));
+  currentUserSubject.next(user);
+  return user;
 }
 
-export function logout() {
+function logout() {
   // remove user from local storage to log user out
   localStorage.removeItem('currentUser');
   currentUserSubject.next(null);
