@@ -5,16 +5,14 @@ body {
   height: 100%;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
+img.App-logo {
   height: 80px;
-  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.App-header {
+header.App-header {
   background-color: #222;
   height: 25vh;
   padding: 2vh;
@@ -26,33 +24,32 @@ body {
   align-items: center;
 }
 
+.App-subtitle {
+  text-align: center;
+}
+
 .App-intro {
   font-size: large;
 }
 
-.SystemReportform {
-  border: black;
-  border-block: initial;
-  align-items: center;
+.logout {
+  object-position: right;
 }
 
-.TextField {
-  border: thick double black;
-}
-
-.draft-editor-wrapper {
-  border: 1px solid black;
-  height: 250px;
-}
 h1,
 .registration-link {
   text-align: center;
 }
 
-form {
+form.Login {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
+}
+
+form.SystemReport {
+  width: 75%;
+  height: auto;
 }
 
 label,
@@ -92,8 +89,3 @@ button {
   background-color: 250ms;
 }
 
-/*button:hover {
-  cursor: pointer;
-  background-color: white;
-  color: rgb(70, 153, 179);
-}*/
