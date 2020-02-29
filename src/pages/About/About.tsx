@@ -6,7 +6,7 @@ import axios from 'axios';
 import { string } from 'prop-types';
 
 const endpoint: string = 'status';
-const url: string = process.env.REACT_APP_URL + endpoint;
+const url: string = process.env.REACT_APP_API + endpoint;
 
 class About extends Component {
   state = {
