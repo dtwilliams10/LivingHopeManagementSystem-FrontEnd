@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import axios from 'axios';
 
 const endpoint: string = 'users/authenticate';
-const url = process.env.REACT_APP_URL + endpoint;
+const url = process.env.REACT_APP_API + endpoint;
 
 const currentUserSubject = new BehaviorSubject(
   JSON.parse(localStorage.getItem('currentUser'))

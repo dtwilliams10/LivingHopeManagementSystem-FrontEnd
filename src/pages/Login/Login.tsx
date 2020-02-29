@@ -1,25 +1,14 @@
 import React from 'react';
 import HeaderBar from 'components/headerBar';
 import { Formik } from 'formik';
-//import axios from 'axios';
 import { authenticationService } from '../../services/authentication.service';
 import { Redirect } from 'react-router-dom';
 
-//const endpoint: string = 'users/authenticate';
-//const url: string = process.env.REACT_APP_URL + endpoint;
-
+const endpoint: string = 'Home';
+const url: string = process.env.REACT_APP_URL + endpoint;
 class LoginPage extends React.Component {
   render() {
     if (authenticationService.currentUserValue) {
-      return <Redirect to="/Home" />;
-    }
-
-    /*function refreshPage() {
-      window.location.reload();
-    }*/
-
-    function redirectPage() {
-      console.log('Redirecting to Home Page');
       return <Redirect to="/Home" />;
     }
 
@@ -31,9 +20,9 @@ class LoginPage extends React.Component {
           initialValues={{ username: '', password: '' }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
+              console.log(url);
               authenticationService.login(values.username, values.password);
               setSubmitting(true);
-              redirectPage();
             }, 500);
           }}
 
@@ -50,7 +39,7 @@ class LoginPage extends React.Component {
               handleSubmit
             } = props;
             return (
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className="Login">
                 <label htmlFor="username">Username</label>
                 <input
                   name="username"

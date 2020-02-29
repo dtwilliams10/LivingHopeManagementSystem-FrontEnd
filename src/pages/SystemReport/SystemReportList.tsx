@@ -13,7 +13,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 const endpoint: string = 'SystemReport';
-const url: string = process.env.REACT_APP_URL + endpoint;
+const url: string = process.env.REACT_APP_API + endpoint;
 const style = {
   color: 'black',
   textDecoration: 'none'
@@ -28,7 +28,6 @@ class SystemReportList extends Component {
   componentDidMount() {
     var _self = this;
     const headers = authHeader();
-    console.log(headers);
     axios
       .get(url, { headers: headers })
       .then(res => _self.setState({ error: false, systemreport: res.data }))
@@ -72,7 +71,6 @@ class SystemReportList extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {console.log(this.state.systemreport)}
                 {this.state.systemreport.map(row => (
                   <TableRow key={row.id}>
                     <TableCell align="center">

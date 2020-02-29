@@ -6,7 +6,7 @@ import { authenticationService } from '../../services/authentication.service';
 import { Redirect } from 'react-router-dom';
 
 const endpoint: string = 'users/register';
-const url: string = process.env.REACT_APP_URL + endpoint;
+const url: string = process.env.REACT_APP_API + endpoint;
 
 class RegistrationPage extends React.Component {
   render() {
@@ -14,8 +14,8 @@ class RegistrationPage extends React.Component {
       return <Redirect to="/Home" />;
     }
 
-    function redirectPage(page: string) {
-      window.location.assign(page);
+    function redirectPage(page) {
+      window.location.href = page;
     }
 
     return (
