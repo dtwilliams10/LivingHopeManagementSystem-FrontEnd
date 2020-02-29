@@ -4,35 +4,64 @@ import About from './pages/About/About';
 import SystemReportList from './pages/SystemReport/SystemReportList';
 import PersonalDevelopment from './pages/PersonalDevelopment/PersonalDevelopment';
 import ErrorPage from './pages/Error';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import SystemReport from 'pages/SystemReport/Ministry & Involvement/SystemReport';
-import LoginPage from 'pages/Login/Login';
-import RegistrationPage from 'pages/Login/Register';
+import LoginPage from './pages/Login/Login';
+import RegistrationPage from './pages/Login/Register';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { authenticationService } from 'services/authentication.service';
+import SystemReport from 'pages/SystemReport/SystemReport';
 
-export const App = () => {
+export default function App() {
   return (
+    <BrowserRouter>
     <div>
       <Switch>
-        <Route exact path="/Login" component={LoginPage} />
-        <Route exact path="/SystemReport" component={SystemReportList} />
-        <Route exact path="/Home" component={Home} />
-        <Route
-          exact
-          path="/PersonalDevelopment"
-          component={PersonalDevelopment}
-        />
-        <Route exact path="/About" component={About} />
-        <Route exact path="/SystemReportForm" component={SystemReport} />
-        <Route exact path="/Error" component={ErrorPage} />
-        <Route exact path="/Register" component={RegistrationPage} />
-        {/* The Redirect needs to be the last route, else it will redirect all requests to the Home page. */}
-        if(/*Not a validated user*/)
-        {<Redirect path="/" to="Login" />}
-        else
-        {<Redirect path="/" to="Home" />}
+        <Route exact path="/Login">
+          <LoginPage/>
+        </Route>
+        <PrivateRoute exact path="/SystemReport">
+          <SystemReportList/>
+        </PrivateRoute>
+        <PrivateRoute exact path="/Home">
+          <Home/>
+        </PrivateRoute>
+        <PrivateRoute exact path="/PersonalDevelopment">
+          <PersonalDevelopment/>
+        </PrivateRoute>
+        <PrivateRoute exact path="/About">
+          <About/>
+        </PrivateRoute>
+        <PrivateRoute exact path="/SystemReportForm">
+          <SystemReport/>
+        </PrivateRoute>
+        <Route exact path="/Error">
+          <ErrorPage/>
+        </Route>
+        <PrivateRoute exact path="/Register">
+          <RegistrationPage/>
+        </PrivateRoute>
+        <Redirect from="/" to="/Login"/>
       </Switch>
     </div>
+  </BrowserRouter>
   );
 };
 
-export default App;
+function PrivateRoute({ children, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        authenticationService.currentUser ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location }
+            }}
+          />
+        )
+      }
+    />
+  );
+}
