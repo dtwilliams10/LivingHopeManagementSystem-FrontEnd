@@ -9,7 +9,7 @@ class ErrorPage extends Component {
         <HeaderBar />
         <AppBar />
         <div>
-          <p>The page you have requested is not found.</p>
+          <p>The page you have requested was not found.</p>
           <p>
             Please click one of the links above, or click{' '}
             <a href="/Home">here</a> to go back to the home page.

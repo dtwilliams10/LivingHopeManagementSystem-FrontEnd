@@ -55,7 +55,7 @@ function ButtonAppBar(props: { classes: any }) {
             <NavLink to="/About">
               <Button>About</Button>
             </NavLink>
-            <NavLink to="/Login">
+            <NavLink to="/Login" className="logout">
               <Button onClick={logoff}>Log Off</Button>
             </NavLink>
           </Toolbar>
