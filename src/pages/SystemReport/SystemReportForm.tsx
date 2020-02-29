@@ -1,13 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import TextField from '@material-ui/core/TextField';
 import { useFormik } from 'formik';
 
-import '../App.css';
+import '../../App.css';
 import { authHeader } from 'helpers/auth-header';
 
 const endpoint: string = 'SystemReport';
-const url: string = process.env.REACT_APP_URL + endpoint;
+const url: string = process.env.REACT_APP_API + endpoint;
 
 const SystemReportForm = () => {
   const formik = useFormik({
@@ -24,7 +23,8 @@ const SystemReportForm = () => {
 
     onSubmit: values => {
       const headers = authHeader();
-      axios.post(url, values, { headers: headers }).then(function(response) {
+      axios.post(url, values, { headers: headers })
+      .then(function(response) {
         console.log(response);
       });
     }
@@ -33,79 +33,66 @@ const SystemReportForm = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="SystemReportform"
-      style={{ display: 'block' }}
+      className="SystemReport"
     >
+      <br/>
       <label htmlFor="reportName">Report Name</label>
-      {/* TODO: Look into using Draft editors here instead of text fields. Need to figure out how to pass Editor State into the API.  */}
-      <TextField
-        id="reportName"
-        name="reportName"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.reportName}
+      <input
+        placeholder={"Please enter your report name"}
       />
       <label htmlFor="reporterName">Reporter Name</label>
-      <TextField
-        id="reporterName"
-        name="reporterName"
-        type="text"
+      <input
         onChange={formik.handleChange}
         value={formik.values.reporterName}
       />
-      <br />
       <label htmlFor="systemUpdate">System Update</label>
-      <TextField
+      <input
         id="systemUpdate"
         name="systemUpdate"
-        type="text"
         onChange={formik.handleChange}
         value={formik.values.systemUpdate}
       />
       <label htmlFor="personnelUpdates">Personnel Updates</label>
-      <TextField
+      <input
+        className="systemReport"
         id="personnelUpdates"
         name="personnelUpdates"
-        type="text"
         onChange={formik.handleChange}
         value={formik.values.personnelUpdates}
       />
       <label htmlFor="creativeIdeasAndEvaluations">
         Creative Ideas and Evaluations
       </label>
-      <TextField
+      <input
         id="creativeIdeasAndEvaluations"
         name="creativeIdeasAndEvaluations"
-        type="text"
         onChange={formik.handleChange}
         value={formik.values.creativeIdeasAndEvaluations}
       />
       <label htmlFor="barriersOrChallenges">Barriers or Challenges</label>
-      <TextField
+      <input
         id="barriersOrChallenges"
         name="barriersOrChallenges"
-        type="text"
         onChange={formik.handleChange}
         value={formik.values.barriersOrChallenges}
       />
       <label htmlFor="howCanIHelpYou">How Can I Help You?</label>
-      <TextField
+      <input
         id="howCanIHelpYou"
         name="howCanIHelpYou"
-        type="text"
         onChange={formik.handleChange}
         value={formik.values.howCanIHelpYou}
       />
       <label htmlFor="personalGrowthAndDevelopment">
         Personal Growth and Development
       </label>
-      <TextField
+      <input
         id="personalGrowthAndDevelopment"
         name="personalGrowthAndDevelopment"
-        type="text"
         onChange={formik.handleChange}
         value={formik.values.personalGrowthAndDevelopment}
       />
+      <br/>
       <button type="submit">Submit</button>
     </form>
   );
