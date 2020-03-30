@@ -10,6 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { grey } from '@material-ui/core/colors';
 import { NavLink } from 'react-router-dom';
+import { authenticationService } from '../services/authentication.service';
 
 const styles = {
   root: {
@@ -30,6 +31,11 @@ const theme = createMuiTheme({
   }
 });
 
+function logoff() {
+  authenticationService.logout();
+  window.location.assign('/Login');
+}
+
 function ButtonAppBar(props: { classes: any }) {
   const { classes } = props;
   return (
@@ -48,6 +54,9 @@ function ButtonAppBar(props: { classes: any }) {
             </NavLink>
             <NavLink to="/About">
               <Button>About</Button>
+            </NavLink>
+            <NavLink to="/Login" className="logout">
+              <Button onClick={logoff}>Log Off</Button>
             </NavLink>
           </Toolbar>
         </AppBar>

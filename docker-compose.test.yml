@@ -46,6 +46,16 @@ services:
             - my_dbdata:/var/lib/postgresql/data
         networks:
             - webappnetwork
+    postgres:
+        image: postgres
+        restart: always
+        container_name: postgres
+        ports:
+            - "54320:5432"
+        volumes:
+            - my_dbdata:/var/lib/postgresql/data
+        networks:
+            - webappnetwork
 volumes:
   my_dbdata:
 
