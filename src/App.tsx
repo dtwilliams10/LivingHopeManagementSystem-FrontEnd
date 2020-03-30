@@ -6,13 +6,12 @@ import PersonalDevelopment from './pages/PersonalDevelopment/PersonalDevelopment
 import ErrorPage from './pages/Error';
 import LoginPage from './pages/Login/Login';
 import RegistrationPage from './pages/Login/Register';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { authenticationService } from 'services/authentication.service';
 import SystemReport from 'pages/SystemReport/SystemReport';
 
 export default function App() {
   return (
-    <BrowserRouter>
     <div>
       <Switch>
         <Route exact path="/Login">
@@ -42,7 +41,6 @@ export default function App() {
         <Redirect from="/" to="/Login"/>
       </Switch>
     </div>
-  </BrowserRouter>
   );
 };
 
@@ -51,12 +49,12 @@ function PrivateRoute({ children, ...rest }) {
     <Route
       {...rest}
       render={({ location }) =>
-        authenticationService.currentUser ? (
-          children
+        authenticationService.currentUserValue ? (
+        children
         ) : (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: "/Login",
               state: { from: location }
             }}
           />

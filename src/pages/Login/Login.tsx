@@ -12,6 +12,18 @@ class LoginPage extends React.Component {
       return <Redirect to="/Home" />;
     }
 
+    function checkAuth()
+    {
+      if(authenticationService.currentUserValue)
+      {
+        window.location.assign(url);
+      }
+      else
+      {
+        return <Redirect push to="/Login"/>
+      }
+    }
+
     return (
       <div>
         <HeaderBar />
@@ -23,8 +35,11 @@ class LoginPage extends React.Component {
               console.log(url);
               authenticationService.login(values.username, values.password);
               setSubmitting(true);
+              checkAuth();
+              window.location.reload();
             }, 500);
-          }}
+          }
+        }
 
           /* Need to add validation to the email and password fields */
         >

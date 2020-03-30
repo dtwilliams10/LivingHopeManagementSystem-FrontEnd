@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
-//import { handleResponse } from '../helpers/handle-response';
+//import { useHistory } from 'react-router-dom'
 import axios from 'axios';
 
 const endpoint: string = 'users/authenticate';
@@ -19,12 +19,10 @@ export const authenticationService = {
 };
 
 async function login(username: string, password: string) {
-  console.log('Calling axios post for user authentication');
   const user = await axios.post(url, {
     username: username,
     password: password
   });
-  console.log(user);
   // store user details and jwt token in local storage to keep user logged in between page refreshes
   localStorage.setItem('currentUser', JSON.stringify(user));
   currentUserSubject.next(user);
@@ -32,7 +30,9 @@ async function login(username: string, password: string) {
 }
 
 function logout() {
+  //let history = useHistory();
   // remove user from local storage to log user out
   localStorage.removeItem('currentUser');
   currentUserSubject.next(null);
+  //history.push("/")
 }
