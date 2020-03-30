@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SystemReportForm from 'components/SystemReportForm';
+import SystemReportForm from 'pages/SystemReport/SystemReportForm';
 import HeaderBar from 'components/headerBar';
 import ButtonAppBar from 'components/AppBar';
 

@@ -14,7 +14,9 @@ class HeaderBar extends Component {
           <h1 className="App-title">
             Welcome to the Living Hope Management System
           </h1>
-          <h3>Better ministry through better management</h3>
+          <h3 className="App-subtitle">
+            Better ministry through better management
+          </h3>
         </header>
       </div>
     );
