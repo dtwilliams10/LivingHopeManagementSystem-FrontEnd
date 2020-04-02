@@ -35,9 +35,9 @@ export default function App() {
         <Route exact path="/Error">
           <ErrorPage/>
         </Route>
-        <PrivateRoute exact path="/Register">
+        <Route exact path="/Register">
           <RegistrationPage/>
-        </PrivateRoute>
+        </Route>
         <Redirect from="/" to="/Login"/>
       </Switch>
     </div>

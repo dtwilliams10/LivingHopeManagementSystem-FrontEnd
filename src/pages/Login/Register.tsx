@@ -22,6 +22,7 @@ class RegistrationPage extends React.Component {
       <div>
         <HeaderBar />
         <br />
+        <div id="registrationForm">
         <Formik
           initialValues={{
             firstName: '',
@@ -153,6 +154,7 @@ class RegistrationPage extends React.Component {
             );
           }}
         </Formik>
+        </div>
       </div>
     );
   }
