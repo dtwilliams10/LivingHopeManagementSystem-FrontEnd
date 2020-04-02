@@ -147,8 +147,8 @@ class RegistrationPage extends React.Component {
                 </button>
                 {/* Need to redirect to the login page after successful submission */}
                 <p className="registration-link">
-                  If you already have an account yet, please click{' '}
-                  <a href="/Login">here</a> to register
+                  If you already have an account please click{' '}
+                  <a href="/Login">here</a> to login.
                 </p>
               </form>
             );
