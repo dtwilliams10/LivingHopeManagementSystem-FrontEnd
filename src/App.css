@@ -47,6 +47,12 @@ form.Login {
   margin: 0 auto;
 }
 
+form.Registration {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 form.SystemReport {
   width: 75%;
   height: auto;
@@ -90,6 +96,7 @@ button {
 }
 
 #registrationForm {
-  margin-left: 350px;
-  margin-right: 350px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
 }
