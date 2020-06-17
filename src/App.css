@@ -58,6 +58,12 @@ form.SystemReport {
   height: auto;
 }
 
+div.registrationForm {
+  max-width: 350px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 label,
 input {
   display: block;
@@ -95,8 +101,3 @@ button {
   background-color: 250ms;
 }
 
-#registrationForm {
-  max-width: 500px;
-  width: 100%;
-  margin: 0 auto;
-}

@@ -8,12 +8,12 @@ export const userService = {
   getById
 };
 
-function getAll() {
+async function getAll() {
   const requestOptions = { method: 'GET', headers: authHeader() };
   return fetch(url + `users`, requestOptions).then(handleResponse);
 }
 
-function getById(id: number) {
+async function getById(id: number) {
   const requestOptions = { method: 'GET', headers: authHeader() };
   return fetch(url + `users/${id}`, requestOptions).then(handleResponse);
 }
