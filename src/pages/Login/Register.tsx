@@ -22,7 +22,7 @@ class RegistrationPage extends React.Component {
       <div>
         <HeaderBar />
         <br />
-        <div id="registrationForm">
+        <div className="registrationForm">
         <Formik
           initialValues={{
             firstName: '',
@@ -47,13 +47,13 @@ class RegistrationPage extends React.Component {
                 })
                 .catch(function(error) {
                   console.log(error);
-                  //Need to add an onscreen notification for errors
+                  //TODO: Need to add an onscreen notification for errors
                 });
               setSubmitting(true);
             }, 500);
           }}
 
-          /* Need to add validation to all the fields */
+          /* TODO: Need to add validation to all the fields */
         >
           {props => {
             const {
@@ -145,10 +145,10 @@ class RegistrationPage extends React.Component {
                 <button type="submit" disabled={isSubmitting}>
                   Submit
                 </button>
-                {/* Need to redirect to the login page after successful submission */}
+                {/* TODO: Need to redirect to the login page after successful submission */}
                 <p className="registration-link">
-                  If you already have an account yet, please click{' '}
-                  <a href="/Login">here</a> to register
+                  If you already have an account please click{' '}
+                  <a href="/Login">here</a> to login.
                 </p>
               </form>
             );
