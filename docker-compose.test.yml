@@ -31,7 +31,7 @@ services:
             - "5000:5000"
         volumes:
             - ./api:/api
-            - /api/node_modules
+            #- /api/node_modules
         depends_on:
             - postgres
         networks:
@@ -46,6 +46,25 @@ services:
             - "54320:5432"
         volumes:
             - my_dbdata:/var/lib/postgresql/data
+        networks:
+            - webappnetwork
+    lhmsaas:
+        image: lhmsaas
+        restart: always
+        container_name: lhmsaas
+        environment:
+            LETSENCRYPT_EMAIL: david.williams110913@gmail.com
+            LETSENCRYPT_HOST: test.lhmsaas.dtwilliams10.com
+            VIRTUAL_HOST: test.lhmsaas.dtwilliams10.com
+            ASPNETCORE_ENVIRONMENT: Staging
+            ASPNETCORE_URLS: https://test.lhmsaas.dtwilliams10.com
+        ports:
+            - "5001:5001"
+        volumes:
+            - ./api:/api
+            #- /api/node_modules
+        depends_on:
+            - postgres
         networks:
             - webappnetwork
 volumes:
