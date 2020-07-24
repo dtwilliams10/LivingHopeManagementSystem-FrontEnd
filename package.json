@@ -41,7 +41,6 @@
     "@types/yup": "^0.26.26",
     "babel-preset-react-app": "^9.0.2",
     "cz-conventional-changelog": "^3.1.0",
-    "eslint": "^7.5.0",
     "eslint-plugin-flowtype": "3.x",
     "eslint-plugin-react-hooks": "^4.0.4",
     "prettier": "^1.18.2",
