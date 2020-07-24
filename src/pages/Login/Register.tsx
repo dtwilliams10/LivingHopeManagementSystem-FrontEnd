@@ -5,8 +5,8 @@ import axios from 'axios';
 import { authenticationService } from '../../services/authentication.service';
 import { Redirect } from 'react-router-dom';
 
-const endpoint: string = 'users/register';
-const url: string = process.env.REACT_APP_API + endpoint;
+const endpoint: string = 'accounts/register';
+const url: string = process.env.REACT_APP_AAS + endpoint;
 
 class RegistrationPage extends React.Component {
   render() {
@@ -25,11 +25,13 @@ class RegistrationPage extends React.Component {
         <div className="registrationForm">
         <Formik
           initialValues={{
+            title: '',
             firstName: '',
             lastName: '',
-            username: '',
-            emailAddress: '',
-            password: ''
+            email: '',
+            password: '',
+            confirmPassword: '',
+            acceptTerms: ''
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
@@ -38,9 +40,10 @@ class RegistrationPage extends React.Component {
                 .post(url, {
                   firstName: values.firstName,
                   lastName: values.lastName,
-                  emailAddress: values.emailAddress,
-                  username: values.username,
-                  password: values.password
+                  email: values.email,
+                  password: values.password,
+                  confirmPassword: values.confirmPassword,
+                  acceptTerms: values.acceptTerms
                 })
                 .then(function() {
                   redirectPage('/Login');
@@ -94,41 +97,26 @@ class RegistrationPage extends React.Component {
                   className={errors.lastName && touched.lastName && 'error'}
                 />
 
-                {errors.emailAddress && touched.emailAddress && (
-                  <div className="input-feedback">{errors.emailAddress}</div>
+                {errors.email && touched.email && (
+                  <div className="input-feedback">{errors.email}</div>
                 )}
                 <label htmlFor="email">E-Mail Address</label>
                 <input
-                  name="emailAddress"
+                  name="email"
                   type="text"
                   autoComplete="email"
                   placeholder="Please enter your email"
-                  value={values.emailAddress}
+                  value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
-                    errors.emailAddress && touched.emailAddress && 'error'
+                    errors.email && touched.email && 'error'
                   }
                 />
-                {errors.emailAddress && touched.emailAddress && (
-                  <div className="input-feedback">{errors.emailAddress}</div>
+                {errors.email && touched.email && (
+                  <div className="input-feedback">{errors.email}</div>
                 )}
-
-                <label htmlFor="username">Username</label>
-                <input
-                  name="username"
-                  type="text"
-                  autoComplete="current-username"
-                  placeholder="Please enter your username"
-                  value={values.username}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={errors.username && touched.username && 'error'}
-                />
-                {errors.username && touched.username && (
-                  <div className="input-feedback">{errors.username}</div>
-                )}
-                <label htmlFor="username">Password</label>
+                <label htmlFor="password">Password</label>
                 <input
                   name="password"
                   type="password"
@@ -141,6 +129,32 @@ class RegistrationPage extends React.Component {
                 />
                 {errors.password && touched.password && (
                   <div className="input-feedback">{errors.password}</div>
+                )}
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input
+                  name="confirmPassword"
+                  type="password"
+                  autoComplete="current-password"
+                  placeholder="Please confirm your password"
+                  value={values.confirmPassword}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.confirmPassword && touched.confirmPassword && 'error'}
+                />
+                {errors.confirmPassword && touched.confirmPassword && (
+                  <div className="input-feedback">{errors.confirmPassword}</div>
+                )}
+                <label htmlFor="acceptTerms">I agree to the terms and conditions</label>
+                <input
+                  name="acceptTerms"
+                  type="checkbox"
+                  value={values.acceptTerms}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.acceptTerms && touched.acceptTerms && 'error'}
+                  />
+                  {errors.acceptTerms && touched.acceptTerms && (
+                  <div className="input-feedback">{errors.acceptTerms}</div>
                 )}
                 <button type="submit" disabled={isSubmitting}>
                   Submit
