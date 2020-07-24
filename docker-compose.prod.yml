@@ -10,11 +10,24 @@ services:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com
             LETSENCRYPT_HOST: lhms.dtwilliams10.com
             VIRTUAL_HOST: lhms.dtwilliams10.com
-        volumes:
-            - ./client:/client
-            - /client/node_modules
         links:
             - api
+        networks:
+            - webappnetwork
+    lhmsaas:
+        image: lhmsaas
+        restart: always
+        container_name: lhmsaas
+        environment:
+            LETSENCRYPT_EMAIL: david.williams110913@gmail.com
+            LETSENCRYPT_HOST: test.lhmsaas.dtwilliams10.com
+            VIRTUAL_HOST: test.lhmsaas.dtwilliams10.com
+            ASPNETCORE_ENVIRONMENT: Staging
+            ASPNETCORE_URLS: https://test.lhmsaas.dtwilliams10.com
+        ports:
+            - "5001:5001"
+        depends_on:
+            - postgres
         networks:
             - webappnetwork
     api:
@@ -29,9 +42,6 @@ services:
             ASPNETCORE_URLS: https://lhmsapi.dtwilliams10.com
         ports:
             - "5000:5000"
-        volumes:
-            - ./api:/api
-            - /api/node_modules
         depends_on:
             - postgres
         networks:

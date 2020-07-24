@@ -10,42 +10,8 @@ services:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com
             LETSENCRYPT_HOST: test.lhms.dtwilliams10.com
             VIRTUAL_HOST: test.lhms.dtwilliams10.com
-        volumes:
-            - ./client:/client
-            - /client/node_modules
         links:
             - api
-        networks:
-            - webappnetwork
-    api:
-        image: lhmsapi
-        restart: always
-        container_name: lhmsapi
-        environment:
-            LETSENCRYPT_EMAIL: david.williams110913@gmail.com
-            LETSENCRYPT_HOST: test.lhmsapi.dtwilliams10.com
-            VIRTUAL_HOST: test.lhmsapi.dtwilliams10.com
-            ASPNETCORE_ENVIRONMENT: Staging
-            ASPNETCORE_URLS: https://test.lhmsapi.dtwilliams10.com
-        ports:
-            - "5000:5000"
-        volumes:
-            - ./api:/api
-            #- /api/node_modules
-        depends_on:
-            - postgres
-        networks:
-            - webappnetwork
-    postgres:
-        image: postgres
-        restart: always
-        container_name: postgres
-        environment:
-            POSTGRES_PASSWORD: password
-        ports:
-            - "54320:5432"
-        volumes:
-            - my_dbdata:/var/lib/postgresql/data
         networks:
             - webappnetwork
     lhmsaas:
@@ -60,11 +26,36 @@ services:
             ASPNETCORE_URLS: https://test.lhmsaas.dtwilliams10.com
         ports:
             - "5001:5001"
-        volumes:
-            - ./api:/api
-            #- /api/node_modules
         depends_on:
             - postgres
+        networks:
+            - webappnetwork
+    api:
+        image: lhmsapi
+        restart: always
+        container_name: lhmsapi
+        environment:
+            LETSENCRYPT_EMAIL: david.williams110913@gmail.com
+            LETSENCRYPT_HOST: test.lhmsapi.dtwilliams10.com
+            VIRTUAL_HOST: test.lhmsapi.dtwilliams10.com
+            ASPNETCORE_ENVIRONMENT: Staging
+            ASPNETCORE_URLS: https://test.lhmsapi.dtwilliams10.com
+        ports:
+            - "5000:5000"
+        depends_on:
+            - postgres
+        networks:
+            - webappnetwork
+    postgres:
+        image: postgres
+        restart: always
+        container_name: postgres
+        environment:
+            POSTGRES_PASSWORD: password
+        ports:
+            - "54320:5432"
+        volumes:
+            - my_dbdata:/var/lib/postgresql/data
         networks:
             - webappnetwork
 volumes:
