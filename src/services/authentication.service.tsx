@@ -1,9 +1,8 @@
 import { BehaviorSubject } from 'rxjs';
-//import { useHistory } from 'react-router-dom'
 import axios from 'axios';
 
-const endpoint: string = 'users/authenticate';
-const url = process.env.REACT_APP_API + endpoint;
+const endpoint: string = 'accounts/authenticate';
+const url = process.env.REACT_APP_AAS + endpoint;
 
 const currentUserSubject = new BehaviorSubject(
   JSON.parse(localStorage.getItem('currentUser'))
@@ -18,9 +17,9 @@ export const authenticationService = {
   }
 };
 
-async function login(username: string, password: string) {
+async function login(email: string, password: string) {
   const user = await axios.post(url, {
-    username: username,
+    email: email,
     password: password
   });
   // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -30,9 +29,6 @@ async function login(username: string, password: string) {
 }
 
 function logout() {
-  //let history = useHistory();
-  // remove user from local storage to log user out
   localStorage.removeItem('currentUser');
   currentUserSubject.next(null);
-  //history.push("/")
 }
