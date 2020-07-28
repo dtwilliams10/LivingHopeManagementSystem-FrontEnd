@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import HeaderBar from "components/headerBar";
 import Home from "pages/Home/Home";
 import { authenticationService } from "../../services/authentication.service";
-import AlertDialog from "components/warningDialog";
+//import AlertDialog from "components/warningDialog";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ const LoginForm = () => {
       //return <AlertDialog/>;
       console.log((await response).status);
       console.log((await response).data);
-      return <AlertDialog/>
+      //return <AlertDialog/>
     }
   };
 
