@@ -7,7 +7,7 @@ import ErrorPage from './pages/Error';
 import LoginPage from './pages/Login/Login';
 import RegistrationPage from './pages/Login/Register';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { authenticationService } from 'services/authentication.service';
+import { accountService } from 'services/account.service';
 import SystemReport from 'pages/SystemReport/SystemReport';
 
 export default function App() {
@@ -49,7 +49,7 @@ function PrivateRoute({ children, ...rest }) {
     <Route
       {...rest}
       render={({ location }) =>
-        authenticationService.currentUserValue ? (
+        accountService.userValue ? (
         children
         ) : (
           <Redirect
