@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HeaderBar from "components/headerBar";
 import Home from "pages/Home/Home";
-import { authenticationService } from "../../services/authentication.service";
+import { accountService } from "../../services/account.service";
 //import AlertDialog from "components/warningDialog";
 
 const LoginForm = () => {
@@ -9,20 +9,18 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    var response: Promise<import("axios").AxiosResponse<any>>;
+    var user;
     try {
-      response = authenticationService.login(email, password);
-      //console.log((await response).status);
-      //console.log((await response).data);
-      setUser((await response).data);
-      localStorage.setItem("user", (await response).data);
+      user = accountService.login(email, password);
+      setUser((await user).data);
+      localStorage.setItem("user", (await user).data);
     } catch (error) {
       console.log("I made it inside the catch block");
       //return <AlertDialog/>;
-      console.log((await response).status);
-      console.log((await response).data);
+      console.log((await user).status);
+      console.log((await user).data);
       //return <AlertDialog/>
     }
   };

@@ -10,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { grey } from '@material-ui/core/colors';
 import { NavLink } from 'react-router-dom';
-import { authenticationService } from '../services/authentication.service';
+import { accountService } from '../services/account.service';
 
 const styles = {
   root: {
@@ -32,7 +32,7 @@ const theme = createMuiTheme({
 });
 
 function logoff() {
-  authenticationService.logout();
+  accountService.logout();
   window.location.assign('/Login');
 }
 

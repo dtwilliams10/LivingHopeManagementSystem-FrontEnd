@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderBar from 'components/headerBar';
 import { Formik } from 'formik';
 import axios from 'axios';
-import { authenticationService } from '../../services/authentication.service';
+import { accountService } from '../../services/account.service';
 import { Redirect } from 'react-router-dom';
 
 const endpoint: string = 'accounts/register';
@@ -10,7 +10,7 @@ const url: string = process.env.REACT_APP_AAS + endpoint;
 
 class RegistrationPage extends React.Component {
   render() {
-    if (authenticationService.currentUserValue) {
+    if (accountService.userValue) {
       return <Redirect to="/Home" />;
     }
 
