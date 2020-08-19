@@ -1,5 +1,4 @@
 import { BehaviorSubject } from 'rxjs';
-
 import axios from 'axios';
 
 const userSubject = new BehaviorSubject(null);
@@ -23,20 +22,26 @@ export const accountService = {
     get userValue() { return userSubject.value }
 };
 
-function login(email: any, password: any) {
-    const user = axios.post(`${baseUrl}/authenticate`, { email: email, password: password });
-    userSubject.next(user);
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    startRefreshTokenTimer();
+async function login(email: any, password: any) {
+    let user;
+    await axios.post(`${baseUrl}/authenticate`, { email: email, password: password })
+        .then(response => {
+            console.log(response.data);
+            localStorage.setItem('currentUser', response.data.jwtToken);
+            userSubject.next(response.data);
+            startRefreshTokenTimer();
+            user = response.data;
+    });
     return user;
 }
 
 function logout() {
-    axios.post(`${baseUrl}/revoke-token`, {});
+    let jwtToken = localStorage.getItem('currentUser')
+    axios({url: `${baseUrl}/revoke-token`, method: 'post', responseType: 'json', headers: {Authorization: `Bearer ${jwtToken}`}});
+    //axios.post(`${baseUrl}/revoke-token`, {withCredentials: true, Authorization: `Bearer ${jwtToken}`});
     localStorage.removeItem('currentUser');
     stopRefreshTokenTimer();
     userSubject.next(null);
-    //history.push('/account/login');
 }
 
 function refreshToken() {
@@ -48,7 +53,7 @@ function register(params: object) {
 }
 
 function verifyEmail(token: string | string[]) {
-    return axios.post(`${baseUrl}/verif-email`, { token });
+    return axios.post(`${baseUrl}/verify-email`, { token });
 }
 
 function forgotPassword(email: string) {
