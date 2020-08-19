@@ -1,65 +1,73 @@
-import React, { useState } from "react";
+import React from "react";
 import HeaderBar from "components/headerBar";
-import Home from "pages/Home/Home";
+import { useHistory } from 'react-router-dom'
 import { accountService } from "../../services/account.service";
-//import AlertDialog from "components/warningDialog";
+import { alertService } from "../../services/alert.service";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
-const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState();
+function Login() {
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    var user;
-    try {
-      user = accountService.login(email, password);
-      setUser((await user).data);
-      localStorage.setItem("user", (await user).data);
-    } catch (error) {
-      console.log("I made it inside the catch block");
-      //return <AlertDialog/>;
-      console.log((await user).status);
-      console.log((await user).data);
-      //return <AlertDialog/>
-    }
+  const history = useHistory();
+
+  const initialValues = {
+    email: '',
+    password: ''
   };
 
-  if (user) {
-    return <Home />;
-  }
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email("Email is invalid").required("Email is required"),
+    password: Yup.string().required('Password is required')
+  });
+
+  function onSubmit({ email, password }, { setSubmitting }) {
+    alertService.clear();
+    accountService.login(email, password)
+      .then(() => {
+        history.push('/Home');
+      })
+      .catch(error => {
+        setSubmitting(false);
+        history.push('/Login');
+        alertService.error(error, { keepAfterRouteChange: false });
+      });
+  };
 
   return (
     <div>
       <HeaderBar />
-      <br />
-      <form onSubmit={handleSubmit} className="Login">
-        <label htmlFor="username">Email</label>
-        <input
-          type="text"
-          value={email}
-          autoComplete="email"
-          placeholder="Please enter your email address"
-          onChange={({ target }) => setEmail(target.value)}
-        />
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            value={password}
-            autoComplete="current-password"
-            placeholder="Please enter your password"
-            onChange={({ target }) => setPassword(target.value)}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      <p className="registration-link">
-        If you don't have an account yet, please click{" "}
-        <a href="/Register">here</a> to register
-      </p>
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+        {({ errors, touched, isSubmitting }) => (
+          <Form>
+            <h3 className="card-header">Login</h3>
+            <div className="card-body">
+              <div className="form-group">
+                <label>Email</label>
+                <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')}/>
+                <ErrorMessage name="email" component="div" className="invalid-feedback" />
+              </div>
+              <div className="form-group">
+                <label>Password</label>
+                <Field name="password" type="password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')}/>
+                <ErrorMessage name="password" component="div" className="invalid-feedback" />
+              </div>
+              <div className="form-row">
+                <div className="form-group col">
+                  <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+                    {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
+                    Login
+                  </button>
+                  <p className="registration-link">
+                    If you don't have an account yet, please click{" "}<a href="/Register">here</a> to register
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
 
-export default LoginForm;
+export default Login;
