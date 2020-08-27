@@ -41,7 +41,7 @@ h1,
   text-align: center;
 }
 
-form.Login {
+form.login-form {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;

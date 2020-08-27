@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { accountService } from "../../services/account.service";
 import { alertService } from "../../services/alert.service";
 
-function Login() {
+export default function Login() {
 
     const history = useHistory();
 
@@ -30,11 +30,13 @@ function Login() {
             password: event.target.value,
         }));
     }
- 
-    function onSubmit({ email, password }, { setSubmitting }) {
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
         alertService.clear();
-        accountService.login(email, password)
+        accountService.login(values.emailAddress, values.password)
         .then(() => {
+            setSubmitting(true);
             history.push('/Home');
         })
         .catch(error => {
@@ -47,7 +49,8 @@ function Login() {
     return (
         <div>
         <HeaderBar />
-        <form>
+        {/*submitted && <div className='success-message'>Successfully logged in!</div>*/}
+        <form className='login-form' onSubmit={handleSubmit}>
             <br/>
             <label>Email Address</label>
             <input
@@ -56,16 +59,19 @@ function Login() {
                 type="text"
                 placeholder="Please enter your email address"
                 name="emailAddress"
+                autoComplete="username"
                 value={values.emailAddress}
                 onChange={handleEmailAddressInputChange}
             />
+
             <label>Password</label>
-            <input 
+            <input
                 id="password"
                 className="form-field"
                 type="password"
                 placeholder="Please enter your password"
                 name="password"
+                autoComplete="current-password"
                 value={values.password}
                 onChange={handlePasswordInputChange}
             />
@@ -76,9 +82,6 @@ function Login() {
                 className="submit-button"
             >Login</button>
         </form>
-        {/*showSuccess && <div className='success-message'>Successfully logged in!</div>*/}
-        </div>
+      </div>
     );
 };
-
-export default Login;
