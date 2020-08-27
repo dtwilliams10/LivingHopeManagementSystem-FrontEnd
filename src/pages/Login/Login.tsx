@@ -32,55 +32,55 @@ export default function Login() {
     }
 
     const handleSubmit = (event) => {
-      event.preventDefault();
-      setSubmitted(true);
-      alertService.clear();
-      accountService.login(values.emailAddress, values.password)
-      .then(() => {
-          history.push('/Home');
-      })
-      .catch(error => {
-          history.push('/Login');
-          alertService.error(error, { keepAfterRouteChange: false });
-      });
+        event.preventDefault();
+        setSubmitted(true);
+        alertService.clear();
+        accountService.login(values.emailAddress, values.password)
+        .then(() => {
+            history.push('/Home');
+        })
+        .catch(error => {
+            history.push('/Login');
+            alertService.error(error, { keepAfterRouteChange: false });
+        });
     };
 
     return (
         <div>
-        <HeaderBar />
-        <form className='login-form' onSubmit={handleSubmit}>
-            <br/>
-            {submitted && !values.emailAddress ? <span id="email-address-error">Please enter your email address</span> : null }
-            <label>Email Address</label>
-            <input
-                id="email-address"
-                className="form-field"
-                type="text"
-                placeholder="Please enter your email address"
-                name="emailAddress"
-                autoComplete="username"
-                value={values.emailAddress}
-                onChange={handleEmailAddressInputChange}
-            />
-            {submitted && !values.password ? <span id="password-error">Please enter a password</span> : null}
-            <label>Password</label>
-            <input
-                id="password"
-                className="form-field"
-                type="password"
-                placeholder="Please enter your password"
-                name="password"
-                autoComplete="current-password"
-                value={values.password}
-                onChange={handlePasswordInputChange}
-            />
+            <HeaderBar />
+            <form className='login-form' onSubmit={handleSubmit}>
+                <br/>
+                {submitted && !values.emailAddress ? <span id="email-address-error">Please enter your email address</span> : null }
+                <label>Email Address</label>
+                <input
+                    id="email-address"
+                    className="form-field"
+                    type="text"
+                    placeholder="Please enter your email address"
+                    name="emailAddress"
+                    autoComplete="username"
+                    value={values.emailAddress}
+                    onChange={handleEmailAddressInputChange}
+                />
+                {submitted && !values.password ? <span id="password-error">Please enter a password</span> : null}
+                <label>Password</label>
+                <input
+                    id="password"
+                    className="form-field"
+                    type="password"
+                    placeholder="Please enter your password"
+                    name="password"
+                    autoComplete="current-password"
+                    value={values.password}
+                    onChange={handlePasswordInputChange}
+                />
 
-            <button
-                id="login"
-                type="submit"
-                className="submit-button"
-            >Login</button>
-        </form>
-      </div>
+                <button
+                    id="login"
+                    type="submit"
+                    className="submit-button"
+                >Login</button>
+            </form>
+        </div>
     );
 };
