@@ -8,12 +8,12 @@ export default function Login() {
 
     const history = useHistory();
 
+    const [submitted, setSubmitted] = useState(false);
+
     const [values, setValues] = useState({
         emailAddress: '',
         password: '',
     })
-
-    const [submitted, setSubmitting] = useState(false);
 
     const handleEmailAddressInputChange = (event) => {
         event.persist();
@@ -33,25 +33,24 @@ export default function Login() {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-        alertService.clear();
-        accountService.login(values.emailAddress, values.password)
-        .then(() => {
-            setSubmitting(true);
-            history.push('/Home');
-        })
-        .catch(error => {
-            setSubmitting(false);
-            history.push('/Login');
-            alertService.error(error, { keepAfterRouteChange: false });
-        });
+      setSubmitted(true);
+      alertService.clear();
+      accountService.login(values.emailAddress, values.password)
+      .then(() => {
+          history.push('/Home');
+      })
+      .catch(error => {
+          history.push('/Login');
+          alertService.error(error, { keepAfterRouteChange: false });
+      });
     };
 
     return (
         <div>
         <HeaderBar />
-        {/*submitted && <div className='success-message'>Successfully logged in!</div>*/}
         <form className='login-form' onSubmit={handleSubmit}>
             <br/>
+            {submitted && !values.emailAddress ? <span id="email-address-error">Please enter your email address</span> : null }
             <label>Email Address</label>
             <input
                 id="email-address"
@@ -63,7 +62,7 @@ export default function Login() {
                 value={values.emailAddress}
                 onChange={handleEmailAddressInputChange}
             />
-
+            {submitted && !values.password ? <span id="password-error">Please enter a password</span> : null}
             <label>Password</label>
             <input
                 id="password"
