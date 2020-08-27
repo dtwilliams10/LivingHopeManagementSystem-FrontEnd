@@ -81,6 +81,8 @@ export default function Login() {
                 className="submit-button"
             >Login</button>
         </form>
+        <br/>
+        <div className="registration-link">If you don't have an account please register for one <a href="/Register">here</a>.</div>
       </div>
     );
 };
