@@ -10,6 +10,8 @@ export default function Login() {
 
     const [submitted, setSubmitted] = useState(false);
 
+    const [error, setError] = useState(false);
+
     const [values, setValues] = useState({
         emailAddress: '',
         password: '',
@@ -40,14 +42,16 @@ export default function Login() {
             history.push('/Home');
         })
         .catch(error => {
-            history.push('/Login');
+            setError(true);
             alertService.error(error, { keepAfterRouteChange: false });
+            history.push('/Login');
         });
     };
 
     return (
         <div>
             <HeaderBar />
+            {error ? <span>An error has occured, please check your login information and try again. </span> : null}
             <form className='login-form' onSubmit={handleSubmit}>
                 <br/>
                 {submitted && !values.emailAddress ? <span id="email-address-error">Please enter your email address</span> : null }
@@ -74,13 +78,14 @@ export default function Login() {
                     value={values.password}
                     onChange={handlePasswordInputChange}
                 />
-
                 <button
                     id="login"
                     type="submit"
                     className="submit-button"
                 >Login</button>
             </form>
+            <br/>
+            <div className='login-form'>If you don't have an account, please register for one <a href="/Register">here</a>.</div>
         </div>
     );
 };
