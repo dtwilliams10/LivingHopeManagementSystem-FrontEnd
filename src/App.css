@@ -47,7 +47,7 @@ h1,
   margin: 0 auto;
 }
 
-form.Registration {
+.registrationForm {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
@@ -110,6 +110,11 @@ span.error {
   border: 2px solid #ffa4a4;
 }
 
+.register-button {
+  margin: 0 auto;
+  
+}
+
 button {
   padding: 10px 15px;
   background-color: rgb(70, 153, 179);
@@ -117,4 +122,25 @@ button {
   border: 1px solid rgb(70, 153, 179);
   background-color: 250ms;
 }
+/*
+div.TandC {
+  vertical-align: middle;
+}
 
+label.TandC {
+  margin: auto 0;
+  size: 10;
+}
+
+input.TandC {
+  margin: auto 0;
+} */
+
+input.TandC,
+label.TandC {
+  display: inline-block;
+  margin: auto 0;
+  margin-left: 0;
+  margin-bottom: 0; /* I added this after I posted my reply */
+  vertical-align: middle; /* Fixes any weird issues in Firefox and IE */
+}

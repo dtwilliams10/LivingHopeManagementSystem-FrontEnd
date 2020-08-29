@@ -85,7 +85,7 @@ export default function Login() {
                 >Login</button>
             </form>
             <br/>
-            <div className='login-form'>If you don't have an account, please register for one <a href="/Register">here</a>.</div>
+            <div className='registration-link'>If you don't have an account, please register for one <a href="/Register">here</a>.</div>
         </div>
     );
 };
