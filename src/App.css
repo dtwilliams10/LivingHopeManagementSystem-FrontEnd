@@ -59,9 +59,7 @@ form.systemReport {
 }
 
 div.registrationForm {
-  max-width: 350px;
-  width: 100%;
-  margin: 0 auto;
+  max-width: fit-content;
 }
 
 div.homePage {
@@ -110,37 +108,22 @@ span.error {
   border: 2px solid #ffa4a4;
 }
 
-.register-button {
-  margin: 0 auto;
-  
-}
-
-button {
+button, .register-button {
   padding: 10px 15px;
   background-color: rgb(70, 153, 179);
   color: white;
   border: 1px solid rgb(70, 153, 179);
   background-color: 250ms;
 }
-/*
-div.TandC {
-  vertical-align: middle;
+
+.register-button {
+  margin: 35px 125px;
 }
 
-label.TandC {
-  margin: auto 0;
-  size: 10;
+.tandcCheckbox {
+float: inline-start
 }
 
-input.TandC {
-  margin: auto 0;
-} */
-
-input.TandC,
-label.TandC {
-  display: inline-block;
-  margin: auto 0;
-  margin-left: 0;
-  margin-bottom: 0; /* I added this after I posted my reply */
-  vertical-align: middle; /* Fixes any weird issues in Firefox and IE */
+.tandcCheckbox label {
+  float: right;
 }

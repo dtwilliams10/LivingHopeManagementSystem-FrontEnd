@@ -22,8 +22,8 @@ export const accountService = {
     get userValue() { return userSubject.value }
 };
 
-async function login(email: any, password: any) {
-    let user;
+async function login(email: string, password: string) {
+    let user: any;
     await axios.post(`${baseUrl}/authenticate`, { email: email, password: password })
         .then(response => {
             console.log(response.data);

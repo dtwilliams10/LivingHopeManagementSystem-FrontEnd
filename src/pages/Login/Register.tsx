@@ -3,7 +3,7 @@ import HeaderBar from 'components/headerBar';
 import { accountService } from '../../services/account.service';
 import { useHistory } from 'react-router-dom';
 import { alertService } from 'services/alert.service';
-import { Form, Button, Col } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 export default function Registration() {
 
@@ -15,8 +15,10 @@ export default function Registration() {
     email: '',
     password: '',
     confirmPassword: '',
-    acceptTerms: false,
+    acceptTerms: true,
   })
+
+  const [validated, setValidated] = useState(false);
 
   const handleFirstNameChange = (event) => {
     event.persist();
@@ -58,72 +60,73 @@ export default function Registration() {
     }));
   }
 
-  const handleTandCChange = (event) => {
-    event.persist();
-    console.log(event.target.value);
-    if(event.target.value === "on") {
-      setValues((values) => ({
-        ...values,
-        acceptTerms: true
-      }));
-    } else {
-      setValues((values) => ({
-        ...values,
-        acceptTerms: false
-      }));
-    }
-  }
-
   const handleSubmit = (event) => {
-    event.preventDefault();
-    accountService.register(values)
-    .then(() => {
-      history.push('/Login');
-    })
-    .catch(error => {
-      console.log(error);
-      alertService.error(error, {keepAfterRouteChange: false});
-
-    })
-  }
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+      setValidated(true);
+    } else {
+      event.preventDefault();
+      setValidated(true);
+      accountService
+        .register(values)
+        .then(() => {
+          history.push("/Login");
+        })
+        .catch((error) => {
+          console.log(error);
+          alertService.error(error, { keepAfterRouteChange: false });
+        });
+    }
+  };
 
   return (
     <div>
       <HeaderBar/>
       <br/>
       <div className="registrationForm">
-        <Form>
+        <Form onSubmit={handleSubmit} validated={validated} noValidate>
           <Form.Group controlId="firstName">
             <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" placeholder="Please enter your first name." onChange={handleFirstNameChange}/>
+            <Form.Control required type="text" placeholder="Please enter your first name." onChange={handleFirstNameChange}/>
+            <Form.Control.Feedback type="invalid">
+              Please enter your first name.
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="lastName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" placeholder="Please enter your last name." onChange={handleLastNameChange}/>
+            <Form.Control required type="text" placeholder="Please enter your last name." onChange={handleLastNameChange}/>
+            <Form.Control.Feedback type="invalid">
+              Please enter your last name.
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="emailAddress">
             <Form.Label>Email Address</Form.Label>
-            <Form.Control type="email" placeholder="Please enter your email address." onChange={handleEmailAddressChange}/>
+            <Form.Control required type="email" placeholder="Please enter your email address." onChange={handleEmailAddressChange}/>
+            <Form.Control.Feedback type="invalid">
+              Please enter your Email Address.
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="password">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Please enter a password" onChange={handlePasswordChange}/>
+            <Form.Control required type="password" placeholder="Please enter a password" onChange={handlePasswordChange}/>
+            <Form.Control.Feedback type="invalid">
+              Please enter a password.
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="confirmPassword">
             <Form.Label>Confirm Password</Form.Label>
-            <Form.Control type="password" placeholder="Please confirm your password" onChange={handleConfirmPasswordChange}/>
+            <Form.Control required type="password" placeholder="Please confirm your password" onChange={handleConfirmPasswordChange}/>
+            <Form.Control.Feedback type="invalid">
+              Please confirm your password.
+            </Form.Control.Feedback>
           </Form.Group>
-          <Form.Row>
-            <Col xs="auto">
-              <Form.Label>I accept the terms and conditions</Form.Label>
-            </Col>
-            <Col>
-              <Form.Check type="checkbox" onChange={handleTandCChange}/>
-            </Col>
-          </Form.Row>
-          <Button onClick={handleSubmit}>
-            Register
-          </Button>
+          <Form.Group>
+            <Button className="register-button" type="submit">
+              Register
+            </Button>
+          </Form.Group>
         </Form>
         <p>If you already have an account please click <a href="/Login">here</a>.</p>
         <br/>
