@@ -1,9 +1,9 @@
 version: "3"
 services:
     client:
-        image: lhms-app
+        image: lhmsapp
         restart: always
-        container_name: lhms-app
+        container_name: lhmsapp
         ports:
             - "3000:3000"
         environment:
