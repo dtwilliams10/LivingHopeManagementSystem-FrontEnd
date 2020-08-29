@@ -41,7 +41,7 @@ h1,
   text-align: center;
 }
 
-.login-form {
+.loginForm {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
@@ -108,14 +108,10 @@ span.error {
   border: 2px solid #ffa4a4;
 }
 
-button, .register-button {
+button, .register-button, .login-button {
   padding: 10px 15px;
   background-color: rgb(70, 153, 179);
   color: white;
   border: 1px solid rgb(70, 153, 179);
   background-color: 250ms;
-}
-
-.register-button {
-  margin: 35px 125px;
 }
