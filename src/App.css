@@ -119,11 +119,3 @@ button, .register-button {
 .register-button {
   margin: 35px 125px;
 }
-
-.tandcCheckbox {
-float: inline-start
-}
-
-.tandcCheckbox label {
-  float: right;
-}
