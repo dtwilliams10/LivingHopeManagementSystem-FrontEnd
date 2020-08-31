@@ -13,7 +13,7 @@ services:
         links:
             - api
         networks:
-            - webappnetwork
+            - network
     lhmsaas:
         image: lhmsaas
         restart: always
@@ -29,7 +29,7 @@ services:
         depends_on:
             - postgres
         networks:
-            - webappnetwork
+            - network
     api:
         image: lhmsapi
         restart: always
@@ -45,7 +45,7 @@ services:
         depends_on:
             - postgres
         networks:
-            - webappnetwork
+            - network
     postgres:
         image: postgres
         restart: always
@@ -57,10 +57,10 @@ services:
         volumes:
             - my_dbdata:/var/lib/postgresql/data
         networks:
-            - webappnetwork
+            - network
 volumes:
   my_dbdata:
 
 networks:
-    webappnetwork:
+    network:
         driver: bridge
