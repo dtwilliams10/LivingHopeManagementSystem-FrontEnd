@@ -1,9 +1,9 @@
 version: "3"
 services:
     client:
-        image: lhms-app
+        image: app
         restart: always
-        container_name: lhms-app
+        container_name: app
         ports:
             - "3000:80"
         environment:
@@ -16,11 +16,11 @@ services:
         links:
             - api
         networks:
-            - webappnetwork
+            - network
     api:
-        image: lhmsapi
+        image: api
         restart: always
-        container_name: lhmsapi
+        container_name: api
         environment:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com
             LETSENCRYPT_HOST: lhmsapi.dtwilliams10.com
@@ -35,19 +35,21 @@ services:
         depends_on:
             - postgres
         networks:
-            - webappnetwork
+            - network
     postgres:
         image: postgres
         restart: always
         container_name: postgres
+        environment:
+            POSTGRES_PASSWORD: "password"
         ports:
             - "54320:5432"
         volumes:
             - my_dbdata:/var/lib/postgresql/data
         networks:
-            - webappnetwork
+            - network
 volumes:
   my_dbdata:
 networks:
-    webappnetwork:
+    network:
         driver: bridge
