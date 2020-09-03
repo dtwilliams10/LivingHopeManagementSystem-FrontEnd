@@ -32,7 +32,7 @@ async function login(email: string, password: string) {
             startRefreshTokenTimer();
             user = response.data;
     }).catch(error => {
-        console.log(error.message);
+        console.log(error.response.data.message);
     });
     return user;
 }
