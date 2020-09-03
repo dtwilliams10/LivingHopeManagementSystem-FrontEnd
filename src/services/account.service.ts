@@ -31,14 +31,16 @@ async function login(email: string, password: string) {
             userSubject.next(response.data);
             startRefreshTokenTimer();
             user = response.data;
+    }).catch(error => {
+        console.log(error.message);
     });
     return user;
 }
 
 function logout() {
     let jwtToken = localStorage.getItem('currentUser')
-    axios({url: `${baseUrl}/revoke-token`, method: 'post', responseType: 'json', headers: {Authorization: `Bearer ${jwtToken}`}});
-    //axios.post(`${baseUrl}/revoke-token`, {withCredentials: true, Authorization: `Bearer ${jwtToken}`});
+    //axios({url: `${baseUrl}/revoke-token`, 'content-type': 'text/json', method: 'post', headers: {Authorization: `${jwtToken}`}});
+    axios.post(`${baseUrl}/revoke-token`, {Authorization: `${jwtToken}`});
     localStorage.removeItem('currentUser');
     stopRefreshTokenTimer();
     userSubject.next(null);
