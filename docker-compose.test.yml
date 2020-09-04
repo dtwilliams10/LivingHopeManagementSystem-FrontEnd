@@ -30,6 +30,8 @@ services:
             - postgres
         networks:
             - network
+        volumes:
+            - /home/tyler/Docker_Data/lhmsaas:/app
     api:
         image: lhmsapi
         restart: always
@@ -46,6 +48,8 @@ services:
             - postgres
         networks:
             - network
+        volumes:
+            - /home/tyler/Docker_Data/lhmsapi:/app
     postgres:
         image: postgres
         restart: always
