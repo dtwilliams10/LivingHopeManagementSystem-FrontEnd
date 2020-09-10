@@ -63,7 +63,7 @@ export default function Login() {
               <Form.Control
                 required
                 type="text"
-                placeholder="Please enter your email address."
+                placeholder="Please enter your email address"
                 onChange={handleEmailAddressInputChange}
               />
               <Form.Control.Feedback type="invalid">
@@ -93,7 +93,7 @@ export default function Login() {
           <a href="/Register">here</a>.
         </div>
         <br/>
-        <div className="registration-link">If you have forgotten your password, please click <a href="/ForgotPassword">here</a>.</div>
+        <div className="registration-link">If you have forgotten your password, please click <a href="/accounts/forgot-password">here</a>.</div>
       </div>
     );
 };

@@ -1,52 +1,63 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { accountService } from 'services/account.service';
 import { alertService } from 'services/alert.service';
+import { Form, Button } from 'react-bootstrap';
 
-function ForgotPassword() {
-    const initialValues = {
+export default function ForgotPassword() {
+
+    const history = useHistory();
+
+    const [values, setValues] = useState({
         email: ''
-    };
+    })
 
-    const validationSchema = Yup.object().shape({
-        email: Yup.string().email('Email is invalid').required('Email is required')
-    });
+    const [validated, setValidated] = useState(false);
 
-    function onSubmit({ email }, { setSubmitting }) {
+    const handleEmailAddress = (event) => {
+        event.persist();
+        setValues((values) => ({
+          ...values,
+          email: event.target.value,
+        }));
+    }
+
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+        if(form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            setValidated(true);
+        } else {
+            event.preventDefault();
+            setValidated(true);
+        }
         alertService.clear();
-        accountService.forgotPassword(email)
-            .then(() => alertService.success('Please check your email for password reset instructions', { keepAfterRouteChange: false}))
-            .catch(error => alertService.error(error, { keepAfterRouteChange: false}))
-            .finally(() => setSubmitting(false));
+        accountService.forgotPassword(values.email)
+            .then(() => {
+                alertService.success('Please check your email for password reset instructions', { keepAfterRouteChange: false});
+                history.push("/");
+            })
+            .catch((error) => {
+                alertService.error(error, { keepAfterRouteChange: false})
+            })
     }
 
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-            {({ errors, touched, isSubmitting }) => (
-                <Form>
-                    <h3 className="card-header">Forgot Password</h3>
-                    <div className="card-body">
-                        <div className="form-group">
-                            <label>Email</label>
-                            <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')}/>
-                            <ErrorMessage name="email" component="div" className="invalid-feedback" />
-                        </div>
-                        <div className="form-row">
-                            <div className="form-group col">
-                                <button type="submit" disabled={isSubmitting} className="btn btn-primary">
-                                    {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                                    Submit
-                                </button>
-                                <Link to="Login" className="btn btn-link">Cancel</Link>
-                            </div>
-                        </div>
-                    </div>
-                </Form>
-            )}
-        </Formik>
+        <Form onSubmit={handleSubmit} validated={validated} noValidate>
+            <Form.Group controlId="emailAddress">
+                <Form.Label>Email Address</Form.Label>
+                <Form.Control required type="text" placeholder="Please enter your email address" onChange={handleEmailAddress}/>
+                <Form.Control.Feedback type="invalid">
+                    Please enter your email address.
+                </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
+                <Button className="forgotten-password-button" type="submit">
+                    Reset Password
+                </Button>
+            </Form.Group>
+        </Form>
     )
 }
 

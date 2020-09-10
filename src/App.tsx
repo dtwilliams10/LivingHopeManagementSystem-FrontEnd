@@ -10,7 +10,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { accountService } from 'services/account.service';
 import SystemReport from 'pages/SystemReport/SystemReport';
 import { VerifyEmail } from 'accounts/VerifyEmail';
-import { ForgotPassword } from 'accounts/ForgottenPassword';
+import ForgottenPassword from 'pages/Accounts/ForgottenPassword';
 
 export default function App() {
   return (
@@ -18,7 +18,7 @@ export default function App() {
       <Switch>
         <Route exact path="/Login" component={Login}/>
         <Route path="/accounts/verify-email" component={VerifyEmail}/>
-        <Route path="/accounts/forgot-password" component={ForgotPassword} />
+        <Route path="/accounts/forgot-password" component={ForgottenPassword} />
         <PrivateRoute exact path="/SystemReport">
           <SystemReportList/>
         </PrivateRoute>
