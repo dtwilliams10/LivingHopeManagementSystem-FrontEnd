@@ -89,21 +89,21 @@ export default function Registration() {
         <Form onSubmit={handleSubmit} validated={validated} noValidate>
           <Form.Group controlId="firstName">
             <Form.Label>First Name</Form.Label>
-            <Form.Control required type="text" placeholder="Please enter your first name." onChange={handleFirstNameChange}/>
+            <Form.Control required type="text" placeholder="Please enter your first name" onChange={handleFirstNameChange}/>
             <Form.Control.Feedback type="invalid">
               Please enter your first name
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="lastName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control required type="text" placeholder="Please enter your last name." onChange={handleLastNameChange}/>
+            <Form.Control required type="text" placeholder="Please enter your last name" onChange={handleLastNameChange}/>
             <Form.Control.Feedback type="invalid">
               Please enter your last name
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="emailAddress">
             <Form.Label>Email Address</Form.Label>
-            <Form.Control required type="email" placeholder="Please enter your email address." onChange={handleEmailAddressChange}/>
+            <Form.Control required type="email" placeholder="Please enter your email address" onChange={handleEmailAddressChange}/>
             <Form.Control.Feedback type="invalid">
               Please enter your Email Address
             </Form.Control.Feedback>
