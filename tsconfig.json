@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noFallthroughCasesInSwitch": true, //Only necessary until bug fix is reported for CRA 4.0.0
     "target": "es6",
     "lib": [
       "dom",
@@ -22,6 +23,6 @@
     "noImplicitAny": false
   },
   "include": [
-    "src"
+    "src/*"
   ]
 }
