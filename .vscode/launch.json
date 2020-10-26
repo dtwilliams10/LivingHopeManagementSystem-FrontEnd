@@ -1,16 +1,22 @@
 {
     "version": "0.2.0",
     "configurations": [
+      {
+        "command": "yarn start",
+        "name": "Run yarn start",
+        "request": "launch",
+        "type": "node-terminal"
+      },
 
-        {
-            "name": "Chrome",
-            "type": "chrome",
-            "url": "http://localhost:3000",
-            "request": "launch",
-            "webRoot": "${workspaceRoot}/src",
-            "sourceMapPathOverrides": {
-              "webpack:///src/*": "${webRoot}/*"
-            }
+      {
+          "name": "Chrome",
+          "type": "chrome",
+          "url": "http://localhost:3000",
+          "request": "launch",
+          "webRoot": "${workspaceRoot}/src",
+          "sourceMapPathOverrides": {
+            "webpack:///src/*": "${webRoot}/*"
           }
+      }
     ]
 }
