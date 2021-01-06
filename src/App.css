@@ -41,27 +41,29 @@ h1,
   text-align: center;
 }
 
-form.Login {
+.loginForm {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
 }
 
-form.Registration {
+.registrationForm {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
 }
 
-form.SystemReport {
-  width: 75%;
+form.systemReport {
+  /*width: 75%;*/
   height: auto;
 }
 
 div.registrationForm {
-  max-width: 350px;
-  width: 100%;
-  margin: 0 auto;
+  max-width: fit-content;
+}
+
+div.homePage {
+  text-align: center;
 }
 
 label,
@@ -93,11 +95,23 @@ input.error {
   margin-bottom: 20px;
 }
 
-button {
+span.error {
+  font-size: 16px;
+  color: red;
+  margin-bottom: 15px;
+}
+
+.error {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  border: 2px solid #ffa4a4;
+}
+
+button, .register-button, .login-button {
   padding: 10px 15px;
   background-color: rgb(70, 153, 179);
   color: white;
   border: 1px solid rgb(70, 153, 179);
   background-color: 250ms;
 }
-

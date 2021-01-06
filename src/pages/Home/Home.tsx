@@ -9,7 +9,8 @@ class Home extends Component {
       <div>
         <HeaderBar />
         <AppBar />
-        <div className="App">
+        <div className="homePage">
+          {/*TODO: Add a personalized welcome using the user name.*/}
           Welcome to the Living Hope Management System.
           <br />
           This system is intended to provide a system of record for all system

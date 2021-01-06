@@ -4,23 +4,25 @@ import About from './pages/About/About';
 import SystemReportList from './pages/SystemReport/SystemReportList';
 import PersonalDevelopment from './pages/PersonalDevelopment/PersonalDevelopment';
 import ErrorPage from './pages/Error';
-import LoginPage from './pages/Login/Login';
+import Login from './pages/Login/Login';
 import RegistrationPage from './pages/Login/Register';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { authenticationService } from 'services/authentication.service';
+import { accountService } from 'services/account.service';
 import SystemReport from 'pages/SystemReport/SystemReport';
+import { VerifyEmail } from 'accounts/VerifyEmail';
+import { ForgotPassword } from 'accounts/ForgottenPassword';
 
 export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/Login">
-          <LoginPage/>
-        </Route>
+        <Route exact path="/Login" component={Login}/>
+        <Route path="/accounts/verify-email" component={VerifyEmail}/>
+        <Route path="/accounts/forgot-password" component={ForgotPassword} />
         <PrivateRoute exact path="/SystemReport">
           <SystemReportList/>
         </PrivateRoute>
-        <PrivateRoute exact path="/Home">
+        <PrivateRoute exact path="/Home" componenet={Home}>
           <Home/>
         </PrivateRoute>
         <PrivateRoute exact path="/PersonalDevelopment">
@@ -32,9 +34,7 @@ export default function App() {
         <PrivateRoute exact path="/SystemReportForm">
           <SystemReport/>
         </PrivateRoute>
-        <Route exact path="/Error">
-          <ErrorPage/>
-        </Route>
+        <Route exact path="/Error" component={ErrorPage}/>
         <Route exact path="/Register">
           <RegistrationPage/>
         </Route>
@@ -49,7 +49,7 @@ function PrivateRoute({ children, ...rest }) {
     <Route
       {...rest}
       render={({ location }) =>
-        authenticationService.currentUserValue ? (
+        accountService.userValue ? (
         children
         ) : (
           <Redirect

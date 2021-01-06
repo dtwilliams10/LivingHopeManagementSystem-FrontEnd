@@ -1,7 +1,7 @@
 import { authHeader } from '../helpers/auth-header';
 import { handleResponse } from '../helpers/handle-response';
 
-const url = process.env.REACT_APP_URL;
+const url = process.env.REACT_APP_AAS;
 
 export const userService = {
   getAll,

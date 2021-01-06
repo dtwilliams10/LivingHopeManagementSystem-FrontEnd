@@ -9,8 +9,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { grey } from '@material-ui/core/colors';
-import { NavLink } from 'react-router-dom';
-import { authenticationService } from '../services/authentication.service';
+import { NavLink, useHistory } from 'react-router-dom';
+import { accountService } from '../services/account.service';
 
 const styles = {
   root: {
@@ -31,13 +31,15 @@ const theme = createMuiTheme({
   }
 });
 
-function logoff() {
-  authenticationService.logout();
-  window.location.assign('/Login');
-}
-
 function ButtonAppBar(props: { classes: any }) {
   const { classes } = props;
+  const history = useHistory();
+
+  function logoff() {
+    accountService.logout();
+    history.push('/Login');
+  }
+
   return (
     <MuiThemeProvider theme={theme}>
       <div className={classes.root}>

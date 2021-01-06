@@ -33,7 +33,7 @@ const SystemReportForm = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="SystemReport"
+      className="systemReport"
     >
       <br/>
       <label htmlFor="reportName">Report Name</label>
@@ -42,8 +42,11 @@ const SystemReportForm = () => {
       />
       <label htmlFor="reporterName">Reporter Name</label>
       <input
+        disabled
+        /*placeholder={TODO: need to pass in the user name}*/
         onChange={formik.handleChange}
         value={formik.values.reporterName}
+
       />
       <label htmlFor="systemUpdate">System Update</label>
       <input

@@ -1,22 +1,35 @@
 version: "3"
 services:
     client:
-        image: lhms-app
+        image: lhmsapp
         restart: always
-        container_name: lhms-app
+        container_name: lhmsapp
         ports:
             - "3000:3000"
         environment:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com
             LETSENCRYPT_HOST: test.lhms.dtwilliams10.com
             VIRTUAL_HOST: test.lhms.dtwilliams10.com
-        volumes:
-            - ./client:/client
-            - /client/node_modules
         links:
             - api
         networks:
-            - webappnetwork
+            - network
+    lhmsaas:
+        image: lhmsaas
+        restart: always
+        container_name: lhmsaas
+        environment:
+            LETSENCRYPT_EMAIL: david.williams110913@gmail.com
+            LETSENCRYPT_HOST: test.lhmsaas.dtwilliams10.com
+            VIRTUAL_HOST: test.lhmsaas.dtwilliams10.com
+            ASPNETCORE_ENVIRONMENT: Staging
+            ASPNETCORE_URLS: https://test.lhmsaas.dtwilliams10.com
+        ports:
+            - "5001:5001"
+        depends_on:
+            - postgres
+        networks:
+            - network
     api:
         image: lhmsapi
         restart: always
@@ -29,13 +42,11 @@ services:
             ASPNETCORE_URLS: https://test.lhmsapi.dtwilliams10.com
         ports:
             - "5000:5000"
-        volumes:
-            - ./api:/api
-            - /api/node_modules
         depends_on:
             - postgres
         networks:
-            - webappnetwork
+            - network
+
     postgres:
         image: postgres
         restart: always
@@ -47,10 +58,10 @@ services:
         volumes:
             - my_dbdata:/var/lib/postgresql/data
         networks:
-            - webappnetwork
+            - network
 volumes:
   my_dbdata:
 
 networks:
-    webappnetwork:
+    network:
         driver: bridge
