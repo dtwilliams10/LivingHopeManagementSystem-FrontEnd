@@ -6,11 +6,11 @@ test build job:
   image: docker:latest
   stage: build
   only:
-    - develop@LHMS/LHMS-FrontEnd
+    - develop@LHMS/app
   tags:
     - develop
   script:
-    - docker build -f test.Dockerfile -t lhms-app .
+    - docker build -f test.Dockerfile -t app .
 
 test deploy job:
   image:
@@ -23,7 +23,7 @@ test deploy job:
     name: staging
     url: https://test.lhms.dtwilliams10.com
   only:
-    - develop@LHMS/LHMS-FrontEnd
+    - develop@LHMS/app
   tags:
     - develop
 
@@ -31,11 +31,11 @@ prod build job:
     image: docker:latest
     stage: build
     only:
-      - master@LHMS/LHMS-FrontEnd
+      - master@LHMS/app
     tags:
       - production
     script:
-      - docker build -f prod.Dockerfile -t lhms-app .
+      - docker build -f prod.Dockerfile -t app .
 
 prod deploy job:
  image:
@@ -48,6 +48,6 @@ prod deploy job:
   name: production
   url: https://lhms.dtwilliams10.com
  only:
-  - master@LHMS/LHMS-FrontEnd
+  - master@LHMS/app
  tags:
   - production
