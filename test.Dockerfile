@@ -8,7 +8,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY yarn.lock ./
 RUN yarn install --network-timeout 100000
-#RUN yarn global add react-scripts
 
 COPY . .
 
