@@ -89,37 +89,37 @@ export default function Registration() {
         <Form onSubmit={handleSubmit} validated={validated} noValidate>
           <Form.Group controlId="firstName">
             <Form.Label>First Name</Form.Label>
-            <Form.Control required type="text" placeholder="Please enter your first name." onChange={handleFirstNameChange}/>
+            <Form.Control required type="text" placeholder="Please enter your first name" onChange={handleFirstNameChange}/>
             <Form.Control.Feedback type="invalid">
-              Please enter your first name.
+              Please enter your first name
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="lastName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control required type="text" placeholder="Please enter your last name." onChange={handleLastNameChange}/>
+            <Form.Control required type="text" placeholder="Please enter your last name" onChange={handleLastNameChange}/>
             <Form.Control.Feedback type="invalid">
-              Please enter your last name.
+              Please enter your last name
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="emailAddress">
             <Form.Label>Email Address</Form.Label>
-            <Form.Control required type="email" placeholder="Please enter your email address." onChange={handleEmailAddressChange}/>
+            <Form.Control required type="email" placeholder="Please enter your email address" onChange={handleEmailAddressChange}/>
             <Form.Control.Feedback type="invalid">
-              Please enter your Email Address.
+              Please enter your Email Address
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control required type="password" placeholder="Please enter a password" onChange={handlePasswordChange}/>
             <Form.Control.Feedback type="invalid">
-              Please enter a password.
+              Please enter a password
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="confirmPassword">
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control required type="password" placeholder="Please confirm your password" onChange={handleConfirmPasswordChange}/>
             <Form.Control.Feedback type="invalid">
-              Please confirm your password.
+              Please confirm your password
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
