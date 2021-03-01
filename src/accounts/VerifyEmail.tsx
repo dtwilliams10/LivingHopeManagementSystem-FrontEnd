@@ -5,6 +5,7 @@ import { accountService } from 'services/account.service';
 import { alertService } from 'services/alert.service';
 
 function VerifyEmail() {
+    //eslint-disable-next-line
     const EmailStatus = {
         Verifying: 'Verifying',
         Failed: 'Failed'
@@ -19,7 +20,6 @@ function VerifyEmail() {
         const {token} = queryString.parse(window.location.search);
 
         history.replace(window.location.pathname);
-
         accountService.verifyEmail(token)
             .then(() => {
                 alertService.success('Verification successful, you may now login', { keepAfterRouteChange: true});
@@ -28,7 +28,6 @@ function VerifyEmail() {
             .catch(() => {
                 setEmailStatus(EmailStatus.Failed);
             });
-//
     }, [EmailStatus, history]);
 
     function getBody() {

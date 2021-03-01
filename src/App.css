@@ -66,6 +66,12 @@ div.homePage {
   text-align: center;
 }
 
+.forgottenPassword {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 label,
 input {
   display: block;
@@ -108,7 +114,7 @@ span.error {
   border: 2px solid #ffa4a4;
 }
 
-button, .register-button, .login-button {
+button, .register-button, .login-button, .forgotten-password-button{
   padding: 10px 15px;
   background-color: rgb(70, 153, 179);
   color: white;
