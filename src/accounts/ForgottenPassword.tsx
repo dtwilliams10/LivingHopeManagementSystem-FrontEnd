@@ -45,6 +45,7 @@ export default function ForgotPassword() {
 
     return (
         <Form onSubmit={handleSubmit} validated={validated} noValidate>
+            <br/>
             <Form.Group controlId="emailAddress">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control required type="text" placeholder="Please enter your email address" onChange={handleEmailAddress}/>
