@@ -26,7 +26,6 @@ async function login(email: string, password: string) {
     let user: any;
     await axios.post(`${baseUrl}/authenticate`, { email: email, password: password })
         .then(response => {
-            console.log(response.data);
             localStorage.setItem('currentUser', response.data.jwtToken);
             userSubject.next(response.data);
             startRefreshTokenTimer();
@@ -45,7 +44,12 @@ function logout() {
 }
 
 function refreshToken() {
-    return axios.post(`${baseUrl}/refresh-token`);
+    return axios.post(`${baseUrl}/refresh-token`)
+    .then(user => {
+        userSubject.next(user);
+        startRefreshTokenTimer();
+        return user;
+    });
 };
 
 function register(params: object) {
