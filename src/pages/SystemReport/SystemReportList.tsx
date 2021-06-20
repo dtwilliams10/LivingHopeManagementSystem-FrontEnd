@@ -11,6 +11,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { NavLink } from 'react-router-dom';
 
 const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_API + endpoint;
@@ -57,7 +58,9 @@ class SystemReportList extends Component {
         <div>
           <HeaderBar />
           <AppBar />
-          <Button href="/SystemReportForm">Create New System Report</Button>
+          <NavLink to="/SystemReportForm">
+              <Button>Create New System Report</Button>
+          </NavLink>
           <Paper>
             <Table stickyHeader>
               <TableHead>
