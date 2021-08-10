@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
 import { authHeader } from 'helpers/auth-header';
-import HeaderBar from 'components/headerBar';
 import AppBar from 'components/AppBar';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -48,7 +47,6 @@ class SystemReportList extends Component {
     if (this.state.error) {
       return (
         <div>
-          <HeaderBar />
           <AppBar />
           <p>No Records.</p>
         </div>
@@ -56,7 +54,6 @@ class SystemReportList extends Component {
     } else {
       return (
         <div>
-          <HeaderBar />
           <AppBar />
           <NavLink to="/SystemReportForm">
               <Button>Create New System Report</Button>
