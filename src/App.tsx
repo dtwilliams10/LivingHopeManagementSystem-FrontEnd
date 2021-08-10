@@ -1,6 +1,7 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { accountService } from 'services/account.service';
+import { Router, Route, Switch } from 'react-router-dom';
+import { PrivateRoute } from './components/PrivateRoute';
+import { createBrowserHistory } from 'history';
 import { VerifyEmail } from 'accounts/VerifyEmail';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
@@ -11,55 +12,31 @@ import Login from './pages/Login/Login';
 import RegistrationPage from './pages/Login/Register';
 import ForgottenPassword from './pages/Accounts/ForgottenPassword';
 import SystemReport from './pages/SystemReport/SystemReport';
+import HeaderBar from 'components/headerBar';
+
+import { Role } from './helpers/role'
+
+export const history = createBrowserHistory();
 
 export default function App() {
   return (
     <div>
-      <Switch>
-        <Route exact path="/Login" component={Login}/>
-        <Route path="/accounts/verify-email" component={VerifyEmail}/>
-        <Route path="/accounts/forgot-password" component={ForgottenPassword} />
-        <PrivateRoute exact path="/SystemReport">
-          <SystemReportList/>
-        </PrivateRoute>
-        <PrivateRoute exact path="/Home" component={Home}>
-          <Home/>
-        </PrivateRoute>
-        <PrivateRoute exact path="/PersonalDevelopment">
-          <PersonalDevelopment/>
-        </PrivateRoute>
-        <PrivateRoute exact path="/About">
-          <About/>
-        </PrivateRoute>
-        <PrivateRoute exact path="/SystemReportForm">
-          <SystemReport/>
-        </PrivateRoute>
-        <Route exact path="/Error" component={ErrorPage}/>
-        <Route exact path="/Register">
-          <RegistrationPage/>
-        </Route>
-        <Redirect from="/" to="/Login"/>
-      </Switch>
+      <Router history={history}>
+        <HeaderBar/>
+        <Switch>
+          <Route exact path="/Login" component={Login}/>
+          <Route path="/accounts/verify-email" component={VerifyEmail}/>
+          <Route path="/accounts/forgot-password" component={ForgottenPassword} />
+          <PrivateRoute exact path="/SystemReport" roles={[Role.Admin || Role.User]} component={SystemReportList} />
+          <PrivateRoute exact path="/Home" roles={[Role.Admin || Role.User]} component={Home}/>
+          <PrivateRoute exact path="/PersonalDevelopment" roles={[Role.Admin || Role.User]} component={PersonalDevelopment}/>
+          <PrivateRoute exact path="/About" roles={[Role.Admin || Role.User]} component={About}/>
+          <PrivateRoute exact path="/SystemReportForm" roles={[Role.Admin || Role.User]} component={SystemReport}/>
+          <Route exact path="/Error" component={ErrorPage}/>
+          <Route exact path="/Register" component={RegistrationPage}/>
+          <Route path="*" component={ErrorPage}/>
+         </Switch>
+      </Router>
     </div>
   );
 };
-
-function PrivateRoute({ children, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        accountService.userValue ? (
-        children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/Login",
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
-  );
-}
