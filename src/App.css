@@ -17,6 +17,7 @@ header.App-header {
   height: 25vh;
   padding: 2vh;
   color: white;
+  overflow: hidden;
 }
 
 .App-title {
@@ -41,13 +42,7 @@ h1,
   text-align: center;
 }
 
-.loginForm {
-  max-width: 500px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.registrationForm {
+.loginForm, .registrationForm, .errorForm {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
