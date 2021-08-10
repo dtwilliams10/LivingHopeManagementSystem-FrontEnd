@@ -91,7 +91,7 @@ function getAll() {
     return axios.get(baseUrl);
 }
 
-function getById(id: any) {
+function getById(id: number) {
     return axios.get(`${baseUrl}/${id}`);
 }
 
