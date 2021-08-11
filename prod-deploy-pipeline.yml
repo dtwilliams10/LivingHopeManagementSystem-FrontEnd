@@ -1,0 +1,17 @@
+stages:
+ - deploy
+
+prod deploy job:
+ image:
+  name: docker/compose:1.22.0
+  entrypoint: ["/bin/sh", "-c"]
+ stage: deploy
+ script:
+  - docker-compose -f "docker-compose.prod.yml" up -d --build
+ environment:
+  name: production
+  url: https://lhms.dtwilliams10.com
+ only:
+  - master@LHMS/app
+ tags:
+  - production
