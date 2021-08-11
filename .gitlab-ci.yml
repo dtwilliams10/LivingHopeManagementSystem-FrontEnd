@@ -13,11 +13,19 @@ test build job:
     - docker build -f test.Dockerfile -t lhmsapp .
 
 test deploy job:
-    stage: deploy
-    only:
+  image:
+    name: docker/compose:1.22.0
+    entrypoint: ["/bin/sh", "-c"]
+  stage: deploy
+  script:
+     - docker-compose -f "docker-compose.test.yml" up -d --build
+  environment:
+    name: staging
+    url: https://test.lhms.dtwilliams10.com
+  only:
     - develop@LHMS/app
-    trigger:
-      LHMS/app/test-deploy-pipeline.yml
+  tags:
+    - develop
 
 prod build job:
     image: docker:latest
@@ -30,8 +38,16 @@ prod build job:
       - docker build -f prod.Dockerfile -t lhmsapp .
 
 prod deploy job:
-    stage: deploy
-    only:
-    - master@LHMS/app
-    trigger:
-      LHMS/app/prod-deploy-pipeline.yml
+ image:
+  name: docker/compose:1.22.0
+  entrypoint: ["/bin/sh", "-c"]
+ stage: deploy
+ script:
+  - docker-compose -f "docker-compose.prod.yml" up -d --build
+ environment:
+  name: production
+  url: https://lhms.dtwilliams10.com
+ only:
+  - master@LHMS/app
+ tags:
+  - production
