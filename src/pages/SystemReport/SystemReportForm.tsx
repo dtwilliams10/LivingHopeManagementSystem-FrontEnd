@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useFormik } from 'formik';
+import { useForm } from 'react-hook-form';
 
 import '../../App.css';
 import { authHeader } from 'helpers/auth-header';
@@ -8,97 +8,60 @@ import { authHeader } from 'helpers/auth-header';
 const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_API + endpoint;
 
-const SystemReportForm = () => {
-  const formik = useFormik({
-    initialValues: {
-      reportName: '',
-      reporterName: '',
-      systemUpdate: '',
-      personnelUpdates: '',
-      creativeIdeasAndEvaluations: '',
-      barriersOrChallenges: '',
-      howCanIHelpYou: '',
-      personalGrowthAndDevelopment: ''
-    },
+type SystemReport = {
+    reporterName: string,
+    reportName: string,
+    systemReportStatusId: number,
+    systemNameId: number,
+    systemUpdate: string,
+    personnelUpdates: string,
+    creativeIdeasAndEvaluations: string,
+    barriersOrChallenges: string,
+    howCanIHelpYou: string,
+    personalGrowthAndDevelopment: string
+}
 
-    onSubmit: values => {
-      const headers = authHeader();
-      axios.post(url, values, { headers: headers })
-      .then(function(response) {
-        console.log(response);
-      });
+export default function App() {
+  const { register, handleSubmit, formState: { errors } } = useForm<SystemReport>();
+  const onSubmit = data => axios.post(url, data);
+  console.log(errors);
+
+  function SystemNameDropDown() {
+    const [systemName, setSystemNames] = useState([]);
+
+    useEffect(() => {
+      function getSystemNames() {
+        axios.get(process.env.REACT_APP_API + 'SystemName').then(function(response) {
+          setSystemNames(response.data.map(({id, name}) => ({ id: id, name: name })));
+        });
     }
-  });
+    getSystemNames();
+    console.log(getSystemNames());
+  }, []);
 
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      className="systemReport"
-    >
-      <br/>
-      <label htmlFor="reportName">Report Name</label>
-      <input
-        placeholder={"Please enter your report name"}
-      />
-      <label htmlFor="reporterName">Reporter Name</label>
-      <input
-        disabled
-        /*placeholder={TODO: need to pass in the user name}*/
-        onChange={formik.handleChange}
-        value={formik.values.reporterName}
+    <select {...register("systemNameId", { required: true })}>
+      {systemName.map(systemNames => (
+        <option key={systemNames.id} value={systemNames.id}>{systemNames.name}</option>
+      ))}
+    </select>
+  );
 
-      />
-      <label htmlFor="systemUpdate">System Update</label>
-      <input
-        id="systemUpdate"
-        name="systemUpdate"
-        onChange={formik.handleChange}
-        value={formik.values.systemUpdate}
-      />
-      <label htmlFor="personnelUpdates">Personnel Updates</label>
-      <input
-        className="systemReport"
-        id="personnelUpdates"
-        name="personnelUpdates"
-        onChange={formik.handleChange}
-        value={formik.values.personnelUpdates}
-      />
-      <label htmlFor="creativeIdeasAndEvaluations">
-        Creative Ideas and Evaluations
-      </label>
-      <input
-        id="creativeIdeasAndEvaluations"
-        name="creativeIdeasAndEvaluations"
-        onChange={formik.handleChange}
-        value={formik.values.creativeIdeasAndEvaluations}
-      />
-      <label htmlFor="barriersOrChallenges">Barriers or Challenges</label>
-      <input
-        id="barriersOrChallenges"
-        name="barriersOrChallenges"
-        onChange={formik.handleChange}
-        value={formik.values.barriersOrChallenges}
-      />
-      <label htmlFor="howCanIHelpYou">How Can I Help You?</label>
-      <input
-        id="howCanIHelpYou"
-        name="howCanIHelpYou"
-        onChange={formik.handleChange}
-        value={formik.values.howCanIHelpYou}
-      />
-      <label htmlFor="personalGrowthAndDevelopment">
-        Personal Growth and Development
-      </label>
-      <input
-        id="personalGrowthAndDevelopment"
-        name="personalGrowthAndDevelopment"
-        onChange={formik.handleChange}
-        value={formik.values.personalGrowthAndDevelopment}
-      />
-      <br/>
-      <button type="submit">Submit</button>
+  }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input type="text" placeholder="Reporter Name" {...register("reporterName", {required: true})} />
+      <input type="text" placeholder="Report Name" {...register("reportName", {required: true})} />
+      <SystemNameDropDown/>
+      <input type="text" placeholder="System Updates"  {...register("systemUpdate", {required: true})} />
+      <input type="text" placeholder="Personnel Updates"  {...register("personnelUpdates", {required: true})} />
+      <input type="text" placeholder="Creative Ideas and Evaluations"  {...register("creativeIdeasAndEvaluations", {required: true})} />
+      <input type="text" placeholder="Do you have any Barriers or Challenges?"  {...register("barriersOrChallenges", {required: true})} />
+      <input type="text" placeholder="How Can I Help You?" {...register("howCanIHelpYou", {required: true})} />
+      <input type="text" placeholder="Personal Growth and Development" {...register("personalGrowthAndDevelopment", {required: true})} />
+
+      <input type="submit" />
     </form>
   );
-};
-
-export default SystemReportForm;
+}
