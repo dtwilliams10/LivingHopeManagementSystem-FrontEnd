@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import queryString from 'query-string'
 import { accountService } from 'services/account.service';
 import { alertService } from 'services/alert.service';
@@ -12,28 +12,25 @@ function VerifyEmail() {
         Failed: 'Failed'
     }
 
-    const history = useHistory();
-
     const [emailStatus, setEmailStatus] = useState(EmailStatus.Verifying);
 
     useEffect(() => {
 
         const {token} = queryString.parse(window.location.search);
-        //This is being called every time the component loads. Need to stop calling once the email status changes. 
+        //This is being called every time the component loads. Need to stop calling once the email status changes.
         //history.replace(window.location.pathname);
         accountService.verifyEmail(token)
             .then(() => {
-                alertService.success('Verification successful, you may now login', { keepAfterRouteChange: true}); 
-                setEmailStatus(EmailStatus.Verified); 
-                console.log(EmailStatus);
+                alertService.success('Verification successful, you may now login', { keepAfterRouteChange: true});
+                setEmailStatus(EmailStatus.Verified);
+                console.log(emailStatus);
             })
             .catch(() => {
-                console.log()
                 setEmailStatus(EmailStatus.Failed);
             });
 
-    }, [EmailStatus, history]);
-    
+    }, []);
+
     function getBody() {
         switch(emailStatus) {
             case EmailStatus.Verifying:
