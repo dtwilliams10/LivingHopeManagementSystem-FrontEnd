@@ -34,6 +34,7 @@ export default function App() {
           <PrivateRoute exact path="/SystemReportForm" roles={[Role.Admin || Role.User]} component={SystemReport}/>
           <Route exact path="/Error" component={ErrorPage}/>
           <Route exact path="/Register" component={RegistrationPage}/>
+          <Route path="/" component={Login}/>
           <Route path="*" component={ErrorPage}/>
          </Switch>
       </Router>
