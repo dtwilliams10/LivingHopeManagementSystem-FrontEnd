@@ -20,7 +20,6 @@ export const history = createBrowserHistory();
 
 export default function App() {
   return (
-    <div>
       <Router history={history}>
         <HeaderBar/>
         <Switch>
@@ -36,8 +35,7 @@ export default function App() {
           <Route exact path="/Register" component={RegistrationPage}/>
           <Route path="/" component={Login}/>
           <Route path="*" component={ErrorPage}/>
-         </Switch>
+        </Switch>
       </Router>
-    </div>
-  );
+    );
 };
