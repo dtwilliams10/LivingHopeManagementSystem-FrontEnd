@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
 import '../../App.css';
-import { authHeader } from 'helpers/auth-header';
 
 const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_API + endpoint;

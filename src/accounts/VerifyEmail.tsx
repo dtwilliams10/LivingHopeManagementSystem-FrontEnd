@@ -28,7 +28,7 @@ function VerifyEmail() {
             .catch(() => {
                 setEmailStatus(EmailStatus.Failed);
             });
-
+//eslint-disable-next-line
     }, []);
 
     function getBody() {
