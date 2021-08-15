@@ -54,6 +54,7 @@ function logout() {
     fetchWrapper.post(`${baseUrl}/revoke-token`, {jwtToken});
     stopRefreshTokenTimer();
     userSubject.next(null);
+    localStorage.removeItem('currentUser');
     history.push('/account/login');
 }
 
