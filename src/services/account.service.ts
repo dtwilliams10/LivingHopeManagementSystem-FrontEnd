@@ -25,7 +25,7 @@ export const accountService = {
 };
 
 async function login(email: string, password: string) {
-    let user: any;
+    let user: [string, string];
     await axios.post(`${baseUrl}/authenticate`, { email: email, password: password })
         .then(response => {
             localStorage.setItem('currentUser', response.data.jwtToken);
