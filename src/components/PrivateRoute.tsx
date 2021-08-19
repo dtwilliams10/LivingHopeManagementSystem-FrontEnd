@@ -9,6 +9,7 @@ function PrivateRoute({ component: Component, roles, ...rest})
             const user = localStorage.getItem('currentUser');
             if(!user) {
                 console.error("Redirecting to Login");
+                console.error(user);
                 return <Redirect to={{pathname: '/Login', state: { from: props.location } }} />
             }
 
