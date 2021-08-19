@@ -28,7 +28,11 @@ async function login(email: string, password: string) {
     let user: [string, string];
     await axios.post(`${baseUrl}/authenticate`, { email: email, password: password })
         .then(response => {
-            localStorage.setItem('currentUser', response.data.jwtToken);
+            localStorage.setItem('currentUserToken', response.data.jwtToken);
+            localStorage.setItem('userFirstName', response.data.firstName);
+            localStorage.setItem('userLastName', response.data.lastName);
+            localStorage.setItem('currentUser', response.data);
+            console.log(response.data);
             userSubject.next(response.data);
             startRefreshTokenTimer();
             user = response.data;
