@@ -42,7 +42,7 @@ h1,
   text-align: center;
 }
 
-.loginForm, .registrationForm, .errorForm {
+.loginForm, .registrationForm, .errorForm, .SystemReportForm {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
@@ -104,7 +104,7 @@ span.error {
   margin: 0 auto;
 }
 
-button, .register-button, .login-button, .forgotten-password-button{
+button, .register-button, .login-button, .forgotten-password-button, .submit-systemreport-button{
   padding: 10px 15px;
   background-color: rgb(70, 153, 179);
   color: white;
