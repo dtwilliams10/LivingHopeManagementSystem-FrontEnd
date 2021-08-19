@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Button } from "react-bootstrap"
-import { getSystemNames } from '../../helpers/getSystemNames'
+import { getSystemNames } from '../helpers/getSystemNames'
 
 const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_API + endpoint;

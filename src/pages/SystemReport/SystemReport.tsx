@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SystemReportForm from './SystemReportForm';
+import SystemReportForm from '../../components/SystemReportForm';
 import ButtonAppBar from '../../components/AppBar';
 
 class SystemReport extends Component {

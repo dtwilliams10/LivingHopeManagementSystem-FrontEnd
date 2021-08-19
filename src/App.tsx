@@ -5,7 +5,7 @@ import { createBrowserHistory } from 'history';
 import { VerifyEmail } from 'accounts/VerifyEmail';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
-import SystemReportList from './pages/SystemReport/SystemReportList';
+import SystemReportList from './components/SystemReportList';
 import PersonalDevelopment from './pages/PersonalDevelopment/PersonalDevelopment';
 import ErrorPage from './pages/Error';
 import Login from './pages/Login/Login';
