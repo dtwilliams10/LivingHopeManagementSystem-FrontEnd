@@ -11,7 +11,7 @@ services:
             LETSENCRYPT_HOST: test.lhms.dtwilliams10.com
             VIRTUAL_HOST: test.lhms.dtwilliams10.com
         links:
-            - api
+            - lhmsapi
         networks:
             - network
     lhmsaas:
