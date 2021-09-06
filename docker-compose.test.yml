@@ -10,8 +10,6 @@ services:
             LETSENCRYPT_EMAIL: david.williams110913@gmail.com
             LETSENCRYPT_HOST: test.lhms.dtwilliams10.com
             VIRTUAL_HOST: test.lhms.dtwilliams10.com
-        links:
-            - lhmsapi
         networks:
             - network
     lhmsaas:
