@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import HeaderBar from 'components/headerBar';
 import ButtonAppBar from 'components/AppBar';
 
 import axios from 'axios';
@@ -37,7 +36,6 @@ class About extends Component {
   render() {
     return (
       <div>
-        <HeaderBar />
         <ButtonAppBar />
         <p>{JSON.stringify(this.state.databaseStatus)}</p>
       </div>

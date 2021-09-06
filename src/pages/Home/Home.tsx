@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import AppBar from 'components/AppBar';
-import HeaderBar from 'components/headerBar';
 import 'App.css';
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <HeaderBar />
         <AppBar />
         <div className="homePage">
           {/*TODO: Add a personalized welcome using the user name.*/}

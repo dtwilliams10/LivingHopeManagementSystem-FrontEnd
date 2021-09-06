@@ -1,5 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
 import axios from 'axios';
+import {history} from '../helpers/history'
+import {fetchWrapper} from '../helpers/fetch-wrapper'
 
 const userSubject = new BehaviorSubject(null);
 const baseUrl = process.env.REACT_APP_AAS + `accounts`;
@@ -23,11 +25,14 @@ export const accountService = {
 };
 
 async function login(email: string, password: string) {
-    let user: any;
+    let user: [string, string];
     await axios.post(`${baseUrl}/authenticate`, { email: email, password: password })
         .then(response => {
+            localStorage.setItem('currentUserToken', response.data.jwtToken);
+            localStorage.setItem('userFirstName', response.data.firstName);
+            localStorage.setItem('userLastName', response.data.lastName);
+            localStorage.setItem('currentUser', response.data);
             console.log(response.data);
-            localStorage.setItem('currentUser', response.data.jwtToken);
             userSubject.next(response.data);
             startRefreshTokenTimer();
             user = response.data;
@@ -35,17 +40,36 @@ async function login(email: string, password: string) {
     return user;
 }
 
-function logout() {
+/*function logout() {
     let jwtToken = localStorage.getItem('currentUser')
-    axios({url: `${baseUrl}/revoke-token`, method: 'post', responseType: 'json', headers: {Authorization: `Bearer ${jwtToken}`}});
-    //axios.post(`${baseUrl}/revoke-token`, {withCredentials: true, Authorization: `Bearer ${jwtToken}`});
+    console.log(jwtToken);
+    //axios({url: `${baseUrl}/revoke-token`, method: 'post', responseType: 'json', headers: {Authorization: `Bearer ${jwtToken}`}});
+    axios.post(`${baseUrl}/revoke-token`, {});
     localStorage.removeItem('currentUser');
     stopRefreshTokenTimer();
     userSubject.next(null);
+    //history.push('/account/login');
+}*/
+
+function logout() {
+    // revoke token, stop refresh timer, publish null to user subscribers and redirect to login page
+    let jwtToken = localStorage.getItem('currentUser');
+    console.log(jwtToken);
+    fetchWrapper.post(`${baseUrl}/revoke-token`, {jwtToken});
+    stopRefreshTokenTimer();
+    userSubject.next(null);
+    localStorage.removeItem('currentUser');
+    history.push('/account/login');
 }
 
 function refreshToken() {
-    return axios.post(`${baseUrl}/refresh-token`);
+    return axios.post(`${baseUrl}/refresh-token`)
+    .then(user => {
+        userSubject.next(user);
+        localStorage.setItem('currentUser', user.data.jwtToken);
+        startRefreshTokenTimer();
+        return user;
+    });
 };
 
 function register(params: object) {
@@ -72,7 +96,7 @@ function getAll() {
     return axios.get(baseUrl);
 }
 
-function getById(id: any) {
+function getById(id: number) {
     return axios.get(`${baseUrl}/${id}`);
 }
 

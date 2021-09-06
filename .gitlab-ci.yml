@@ -14,7 +14,7 @@ test build job:
 
 test deploy job:
   image:
-    name: docker/compose:1.22.0
+    name: docker/compose:latest
     entrypoint: ["/bin/sh", "-c"]
   stage: deploy
   script:
@@ -39,7 +39,7 @@ prod build job:
 
 prod deploy job:
  image:
-  name: docker/compose:1.22.0
+  name: docker/compose:latest
   entrypoint: ["/bin/sh", "-c"]
  stage: deploy
  script:

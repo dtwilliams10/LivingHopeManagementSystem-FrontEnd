@@ -17,6 +17,7 @@ header.App-header {
   height: 25vh;
   padding: 2vh;
   color: white;
+  overflow: hidden;
 }
 
 .App-title {
@@ -41,13 +42,7 @@ h1,
   text-align: center;
 }
 
-.loginForm {
-  max-width: 500px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.registrationForm {
+.loginForm, .registrationForm, .errorForm, .SystemReportForm {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
@@ -90,10 +85,6 @@ input {
   border: 1px solid #777;
 }
 
-input.error {
-  border-color: red;
-}
-
 .input-feedback {
   color: rgb(235, 54, 54);
   margin-top: -15px;
@@ -111,10 +102,9 @@ span.error {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
-  border: 2px solid #ffa4a4;
 }
 
-button, .register-button, .login-button, .forgotten-password-button{
+button, .register-button, .login-button, .forgotten-password-button, .submit-systemreport-button{
   padding: 10px 15px;
   background-color: rgb(70, 153, 179);
   color: white;

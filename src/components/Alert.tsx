@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { alertService, AlertType } from 'services/alert.service';
-import { history } from 'helpers/history';
+import { alertService, AlertType } from '../services/alert.service';
+import { history } from '../helpers/history';
 
 const propTypes = {
     id: PropTypes.string,
@@ -31,7 +31,6 @@ function Alert({ id, fade }) {
                 });
             } else {
                 setAlerts(alerts => ([...alerts, alert]));
-
                 //@ts-expect-error
                 if (alert.autoClose) {
                     setTimeout(() => removeAlert(alert), 3000);
@@ -49,7 +48,7 @@ function Alert({ id, fade }) {
             subscription.unsubscribe();
             historyUnlisten();
         };
-    }, []);
+    });
 
     function removeAlert(alert) {
         if (fade) {
@@ -91,7 +90,10 @@ function Alert({ id, fade }) {
         <div className="container">
             <div className="m-3">
                 {alerts.map((alert, index) =>
+                
+                // eslint-disable-next-line react/jsx-no-comment-textnodes
                 <div key={index} className={cssClasses(alert)}>
+                    { /* eslint-disable-next-line jsx-a11y/anchor-is-valid*/ }
                     <a className="close" onClick={() => removeAlert(alert)}>&times;</a>
                     <span dangerouslySetInnerHTML={{__html: alert.message}}></span>
                 </div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import HeaderBar from 'components/headerBar';
 import { accountService } from '../../services/account.service';
 import { useHistory } from 'react-router-dom';
 import { alertService } from 'services/alert.service';
@@ -83,7 +82,6 @@ export default function Registration() {
 
   return (
     <div>
-      <HeaderBar/>
       <br/>
       <div className="registrationForm">
         <Form onSubmit={handleSubmit} validated={validated} noValidate>

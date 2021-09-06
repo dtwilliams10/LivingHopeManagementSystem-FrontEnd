@@ -1,23 +1,16 @@
-import React, { Component } from 'react';
-import AppBar from 'components/AppBar';
-import HeaderBar from 'components/headerBar';
+import React from 'react';
 
-class ErrorPage extends Component {
-  render() {
+function ErrorPage()  {
     return (
-      <div>
-        <HeaderBar />
-        <AppBar />
-        <div>
+        <div className="errorForm">
+          <br/>
+          <h3>We're sorry, you have encountered an error!</h3>
           <p>The page you have requested was not found.</p>
           <p>
-            Please click one of the links above, or click{' '}
-            <a href="/Home">here</a> to go back to the home page.
+            Please click{' '} <a href="/Home">here</a> to go back to the home page.
           </p>
         </div>
-      </div>
     );
-  }
 }
 
 export default ErrorPage;

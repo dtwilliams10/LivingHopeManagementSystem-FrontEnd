@@ -8,7 +8,7 @@ export function handleResponse(response) {
         // auto logout if 401 Unauthorized or 403 Forbidden response returned from api
         accountService.logout();
         /* eslint-disable */
-        location.reload(true);
+        location.reload();
         /* eslint-enable */
       }
 
