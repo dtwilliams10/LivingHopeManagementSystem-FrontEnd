@@ -1,11 +1,10 @@
 ### STAGE 1: Build ###
 FROM node:current-alpine as builder
-RUN npm install -g react-scripts --silent
 WORKDIR /app
-COPY . .
-RUN npm install --silent
-RUN npm run build
-
+COPY package*.json ./
+COPY yarn.lock ./
+RUN yarn install --network-timeout 100000
+RUN yarn build
 ### STAGE 2: Production Environment ###
 FROM nginx:alpine
 COPY --from=builder /app/build /usr/share/nginx/html
