@@ -91,7 +91,8 @@ export default function Login() {
           <a href="/Register">here</a>.
         </div>
         <br/>
-        <div className="registration-link">If you have forgotten your password, please click <a href="/accounts/forgot-password">here</a>.</div>
+        {/*This link is dead at the moment, waiting no LHMSAAS #10*/}
+        {/* <div className="registration-link">If you have forgotten your password, please click <a href="/accounts/forgot-password">here</a>.</div>  */}
       </div>
     );
 };
