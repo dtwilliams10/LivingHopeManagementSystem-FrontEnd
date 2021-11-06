@@ -6,7 +6,7 @@ function PrivateRoute({ component: Component, roles, ...rest})
     return (
         <Route {...rest} render={props => {
             //This is failing to set and sending users back to the home page.
-            const user = localStorage.getItem('currentUser');
+            const user = sessionStorage.getItem('currentUserToken');
             if(!user) {
                 console.error("Redirecting to Login");
                 console.error(user);

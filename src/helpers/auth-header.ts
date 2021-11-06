@@ -1,13 +1,11 @@
-import { accountService } from '../services/account.service';
-
 export function authHeader() {
   // return authorization header with jwt token
-  const currentUser = accountService.userValue;
-  if (currentUser && currentUser.jwtToken) {
-    console.log("Authorization: `Bearer ", currentUser.jwtToken);
-    return { Authorization: `Bearer ${currentUser.jwtToken}` };
+  const currentUser = sessionStorage.getItem("currentUserToken");
+  console.log(currentUser);
+  if (currentUser.length > 1) {
+    console.log("Authorization: `Bearer ", currentUser);
+    return { Authorization: `Bearer ${currentUser}` };
   } else {
     console.log('User not retrieved');
-    return {};
   }
 }

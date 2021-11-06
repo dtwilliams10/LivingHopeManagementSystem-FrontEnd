@@ -3,7 +3,7 @@ import axios from "axios";
 const url = process.env.REACT_APP_API + `SystemName`;
 
 export function getSystemNames() {
-    var systemNames = []
+    let systemNames = []
     axios.get(url).then(response => {
         systemNames.push(response.data);
     }).catch(error => {
