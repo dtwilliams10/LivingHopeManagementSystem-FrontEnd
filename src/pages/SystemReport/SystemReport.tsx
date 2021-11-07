@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import SystemReportForm from '../../components/SystemReportForm';
-import ButtonAppBar from '../../components/AppBar';
+import SystemReportList from '../../components/SystemReportList';
 
 class SystemReport extends Component {
   render() {
     return (
       <div>
-        <ButtonAppBar />
-        <SystemReportForm />
+        <SystemReportList />
       </div>
     );
   }
