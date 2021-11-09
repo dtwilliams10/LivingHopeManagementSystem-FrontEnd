@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Button } from "react-bootstrap"
+import { useHistory } from 'react-router-dom'
 
 import ISystemName from '../types/SystemName.type';
 
@@ -20,6 +21,8 @@ export default function SystemReportForm() {
     howCanIHelpYou: '',
     personalGrowthAndDevelopment: ''
   })
+
+  const history = useHistory();
 
   const [validated, setValidated] = useState(false);
   const [systemNames, setSystemNames] = useState<ISystemName[]>([]);
@@ -112,7 +115,12 @@ export default function SystemReportForm() {
       setValidated(true);
     } else {
       event.preventDefault();
-      axios.post(url, systemReport).catch(error => {
+      axios.post(url, systemReport).then(response => {console.log(response.status)
+        if(response.status === 200)
+        {
+          history.push('/SystemReport');
+        }
+      }).catch(error => {
         console.log(error);
       })
     }
