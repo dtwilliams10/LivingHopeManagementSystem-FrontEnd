@@ -48,13 +48,11 @@ async function login(email: string, password: string) {
                 role: response.data.role
             });
 
-            console.log("Got Here");
             sessionStorage.setItem('currentUserToken', user.jwtToken);
             sessionStorage.setItem('userFirstName', user.firstName);
             sessionStorage.setItem('userLastName', user.lastName);;
             userSubject.next(user);
             startRefreshTokenTimer();
-            console.log("Got to the end")
             return user;
     });
     return;
