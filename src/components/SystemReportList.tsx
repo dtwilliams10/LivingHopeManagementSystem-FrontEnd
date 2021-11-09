@@ -85,7 +85,7 @@ class SystemReportList extends Component {
                       {row.systemReportStatus.status}
                     </TableCell>
                     <TableCell align="center">{row.updatedDate}</TableCell>
-                    <TableCell align="center">{Date.parse(row.createdDate)}</TableCell>
+                    {/*<TableCell align="center">{Date.parse(row.createdDate)}</TableCell>*/}
                   </TableRow>
                 ))}
               </TableBody>
