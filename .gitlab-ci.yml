@@ -10,7 +10,7 @@ test build job:
   tags:
     - develop
   script:
-    - docker build -f test.Dockerfile -t lhmsapp .
+    - docker build -f test.Dockerfile -t frontend .
 
 test deploy job:
   stage: deploy
@@ -28,7 +28,7 @@ prod build job:
     tags:
       - production
     script:
-      - docker build -f prod.Dockerfile -t lhmsapp .
+      - docker build -f prod.Dockerfile -t frontend .
 
 prod deploy job:
   stage: deploy

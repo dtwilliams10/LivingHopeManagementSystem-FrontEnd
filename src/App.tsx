@@ -5,7 +5,7 @@ import { createBrowserHistory } from 'history';
 import { VerifyEmail } from 'accounts/VerifyEmail';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
-import SystemReportList from './components/SystemReportList';
+import SystemReportForm from './components/SystemReportForm';
 import PersonalDevelopment from './pages/PersonalDevelopment/PersonalDevelopment';
 import ErrorPage from './pages/Error';
 import Login from './pages/Login/Login';
@@ -26,11 +26,11 @@ export default function App() {
           <Route exact path="/Login" component={Login}/>
           <Route path="/accounts/verify-email" component={VerifyEmail}/>
           <Route path="/accounts/forgot-password" component={ForgottenPassword} />
-          <PrivateRoute exact path="/SystemReport" roles={[Role.Admin || Role.User]} component={SystemReportList} />
+          <PrivateRoute exact path="/SystemReport" roles={[Role.Admin || Role.User]} component={SystemReport} />
           <PrivateRoute exact path="/Home" roles={[Role.Admin || Role.User]} component={Home}/>
           <PrivateRoute exact path="/PersonalDevelopment" roles={[Role.Admin || Role.User]} component={PersonalDevelopment}/>
           <PrivateRoute exact path="/About" roles={[Role.Admin || Role.User]} component={About}/>
-          <PrivateRoute exact path="/SystemReportForm" roles={[Role.Admin || Role.User]} component={SystemReport}/>
+          <PrivateRoute exact path="/SystemReportForm" roles={[Role.Admin || Role.User]} component={SystemReportForm}/>
           <Route exact path="/Error" component={ErrorPage}/>
           <Route exact path="/Register" component={RegistrationPage}/>
           <Route path="/" component={Login}/>

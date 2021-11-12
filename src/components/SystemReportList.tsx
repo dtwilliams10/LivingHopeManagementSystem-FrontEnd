@@ -74,7 +74,6 @@ class SystemReportList extends Component {
                 {this.state.systemreport.map(row => (
                   <TableRow key={row.id}>
                     <TableCell align="center">
-                      {/* Change this to a button that calls a get using the row.id and opens the system report page.  */}
                       <Button style={style} href={url + '/' + row.id}>
                         {row.id}
                       </Button>
@@ -86,6 +85,7 @@ class SystemReportList extends Component {
                       {row.systemReportStatus.status}
                     </TableCell>
                     <TableCell align="center">{row.updatedDate}</TableCell>
+                    {/*<TableCell align="center">{Date.parse(row.createdDate)}</TableCell>*/}
                   </TableRow>
                 ))}
               </TableBody>

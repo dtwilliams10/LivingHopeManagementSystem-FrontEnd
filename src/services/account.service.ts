@@ -3,13 +3,24 @@ import axios from 'axios';
 import {history} from '../helpers/history'
 import {fetchWrapper} from '../helpers/fetch-wrapper'
 
-const userSubject = new BehaviorSubject(null);
+const userSubject: BehaviorSubject<User> = new BehaviorSubject(null);
 const baseUrl = process.env.REACT_APP_AAS + `accounts`;
+
+type User = {
+    created: string,
+    email: string,
+    firstName: string,
+    lastName: string,
+    id: number,
+    isVerified: boolean,
+    jwtToken: string,
+    role: string
+}
 
 export const accountService = {
     login,
     logout,
-    refreshToken,
+    //refreshToken,
     register,
     verifyEmail,
     forgotPassword,
@@ -18,26 +29,33 @@ export const accountService = {
     getAll,
     getById,
     create,
-    update,
+    //update,
     delete: _delete,
     user: userSubject.asObservable(),
     get userValue() { return userSubject.value }
 };
 
 async function login(email: string, password: string) {
-    let user: [string, string];
     await axios.post(`${baseUrl}/authenticate`, { email: email, password: password })
         .then(response => {
-            localStorage.setItem('currentUserToken', response.data.jwtToken);
-            localStorage.setItem('userFirstName', response.data.firstName);
-            localStorage.setItem('userLastName', response.data.lastName);
-            localStorage.setItem('currentUser', response.data);
-            console.log(response.data);
-            userSubject.next(response.data);
+
+            const user = <User>({
+                jwtToken: response.data.jwtToken,
+                firstName: response.data.firstName,
+                lastName: response.data.lastName,
+                email: response.data.email,
+                isVerified: response.data.isVerified,
+                role: response.data.role
+            });
+
+            sessionStorage.setItem('currentUserToken', user.jwtToken);
+            sessionStorage.setItem('userFirstName', user.firstName);
+            sessionStorage.setItem('userLastName', user.lastName);;
+            userSubject.next(user);
             startRefreshTokenTimer();
-            user = response.data;
+            return user;
     });
-    return user;
+    return;
 }
 
 /*function logout() {
@@ -58,15 +76,16 @@ function logout() {
     fetchWrapper.post(`${baseUrl}/revoke-token`, {jwtToken});
     stopRefreshTokenTimer();
     userSubject.next(null);
-    localStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUser');
     history.push('/account/login');
 }
 
 function refreshToken() {
     return axios.post(`${baseUrl}/refresh-token`)
     .then(user => {
-        userSubject.next(user);
-        localStorage.setItem('currentUser', user.data.jwtToken);
+        console.log(user.data);
+        //userSubject.next(user);
+        sessionStorage.setItem('currentUser', user.data.jwtToken);
         startRefreshTokenTimer();
         return user;
     });
@@ -104,7 +123,7 @@ function create(params: any) {
     return axios.post(baseUrl, params);
 }
 
-function update(id: any, params: any) {
+/*function update(id: number, params: any) {
     return axios.put(`${baseUrl}/${id}`, params)
         .then(user => {
             if (id === userSubject.value.id) {
@@ -113,7 +132,7 @@ function update(id: any, params: any) {
             }
             return user;
         });
-}
+}*/
 
 function _delete(id: any) {
     return axios.delete(`${baseUrl}/${id}`)
