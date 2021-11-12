@@ -1,6 +1,8 @@
 # base image
 FROM node:current
 
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 # set working directory
 WORKDIR /usr/src/app
 
