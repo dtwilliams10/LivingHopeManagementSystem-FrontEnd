@@ -30,7 +30,6 @@ export default function SystemReportForm() {
   useEffect(() => {
     axios.get(process.env.REACT_APP_API + 'SystemName')
     .then(response => {
-      console.log(response.data)
       setSystemNames(response.data);
     })
   }, []);
