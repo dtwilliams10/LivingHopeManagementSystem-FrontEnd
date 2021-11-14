@@ -39,14 +39,14 @@ async function login(email: string, password: string) {
     await axios.post(`${baseUrl}/authenticate`, { email: email, password: password })
         .then(response => {
 
-            const user = <User>({
+            const user = ({
                 jwtToken: response.data.jwtToken,
                 firstName: response.data.firstName,
                 lastName: response.data.lastName,
                 email: response.data.email,
                 isVerified: response.data.isVerified,
                 role: response.data.role
-            });
+            }) as User;
 
             sessionStorage.setItem('currentUserToken', user.jwtToken);
             sessionStorage.setItem('userFirstName', user.firstName);
