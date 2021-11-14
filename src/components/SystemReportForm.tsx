@@ -106,6 +106,18 @@ export default function SystemReportForm() {
     }))
   }
 
+  const handleSaveAsDraft = (event) => {
+    event.persist();
+    systemReport.systemReportStatusId = 2;
+    handleSubmit(event);
+  }
+
+  const handleSubmitToSystemDirector = (event) => {
+    event.persist();
+    systemReport.systemReportStatusId = 6;
+    handleSubmit(event);
+  }
+
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if(!form.checkValidity()) {
@@ -114,7 +126,7 @@ export default function SystemReportForm() {
       setValidated(true);
     } else {
       event.preventDefault();
-      axios.post(url, systemReport).then(response => {console.log(response.status)
+      axios.post(url, systemReport).then(response => {
         if(response.status === 200)
         {
           history.push('/SystemReport');
@@ -236,7 +248,11 @@ export default function SystemReportForm() {
               Please provide any personal growth and development opportunities that you have had.
             </Form.Control.Feedback>
           </Form.Group>
-          <Button className="submit-systemreport-button" type="submit">
+          <Button className="submit-systemreport-button" type="submit" onClick={handleSaveAsDraft}>
+            Save as Draft
+          </Button>
+          <br/>
+          <Button className="submit-systemreport-button" type="submit" onClick={handleSubmitToSystemDirector}>
             Submit to System Director
           </Button>
         </Form>
