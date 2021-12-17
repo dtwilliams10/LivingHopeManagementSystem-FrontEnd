@@ -45,8 +45,8 @@
     "eslint-plugin-flowtype": "3.x",
     "eslint-plugin-react-hooks": "^4.1.0-rc.0",
     "prettier": "^1.18.2",
-    "typescript": "^3.8.3",
-    "react-scripts": "4.0.3"
+    "react-scripts": "5.0.0",
+    "typescript": "^3.8.3"
   },
   "browserslist": [
     ">0.2%",
