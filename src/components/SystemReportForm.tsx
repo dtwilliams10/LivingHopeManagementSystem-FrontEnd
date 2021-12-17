@@ -167,7 +167,6 @@ export default function SystemReportForm() {
             <Form.Control as="select" defaultValue="Choose a system" onChange={handleSystemNameChange}>
               <option>Please Select a System</option>
               {systemNames.map(systemName => (<option key={systemName.id} value={systemName.id}>{systemName.name}</option>))}
-
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="systemUpdate">
