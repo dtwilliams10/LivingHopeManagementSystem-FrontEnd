@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   MuiThemeProvider,
-  createMuiTheme,
+  createTheme,
   withStyles
 } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -25,7 +25,7 @@ const styles = {
   }
 };
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: grey
   }
