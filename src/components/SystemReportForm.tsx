@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Button } from "react-bootstrap"
-import { getSystemNames } from '../helpers/getSystemNames'
+import { useHistory } from 'react-router-dom'
+
+import ISystemName from '../types/SystemName.type';
 
 const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_API + endpoint;
@@ -20,10 +22,17 @@ export default function SystemReportForm() {
     personalGrowthAndDevelopment: ''
   })
 
-  const systemNames = getSystemNames();
-  console.log(systemNames);
+  const history = useHistory();
 
   const [validated, setValidated] = useState(false);
+  const [systemNames, setSystemNames] = useState<ISystemName[]>([]);
+
+  useEffect(() => {
+    axios.get(process.env.REACT_APP_API + 'SystemName')
+    .then(response => {
+      setSystemNames(response.data);
+    })
+  }, []);
 
   const handleReporterNameChange = (event) => {
     event.persist();
@@ -97,6 +106,18 @@ export default function SystemReportForm() {
     }))
   }
 
+  const handleSaveAsDraft = (event) => {
+    event.persist();
+    systemReport.systemReportStatusId = 2;
+    handleSubmit(event);
+  }
+
+  const handleSubmitToSystemDirector = (event) => {
+    event.persist();
+    systemReport.systemReportStatusId = 6;
+    handleSubmit(event);
+  }
+
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if(!form.checkValidity()) {
@@ -105,7 +126,12 @@ export default function SystemReportForm() {
       setValidated(true);
     } else {
       event.preventDefault();
-      axios.post(url, systemReport).catch(error => {
+      axios.post(url, systemReport).then(response => {
+        if(response.status === 200)
+        {
+          history.push('/SystemReport');
+        }
+      }).catch(error => {
         console.log(error);
       })
     }
@@ -140,8 +166,8 @@ export default function SystemReportForm() {
           <Form.Group controlId="systemName">
             <Form.Control as="select" defaultValue="Choose a system" onChange={handleSystemNameChange}>
               <option>Please Select a System</option>
-              {//systemNames.map(systemName => (<option key={systemName.id} value={systemName.id}>{systemName.name}</option>))}
-}
+              {systemNames.map(systemName => (<option key={systemName.id} value={systemName.id}>{systemName.name}</option>))}
+
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="systemUpdate">
@@ -222,7 +248,11 @@ export default function SystemReportForm() {
               Please provide any personal growth and development opportunities that you have had.
             </Form.Control.Feedback>
           </Form.Group>
-          <Button className="submit-systemreport-button" type="submit">
+          <Button className="submit-systemreport-button" type="submit" onClick={handleSaveAsDraft}>
+            Save as Draft
+          </Button>
+          <br/>
+          <Button className="submit-systemreport-button" type="submit" onClick={handleSubmitToSystemDirector}>
             Submit to System Director
           </Button>
         </Form>

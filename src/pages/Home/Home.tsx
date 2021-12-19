@@ -9,7 +9,7 @@ class Home extends Component {
         <AppBar />
         <div className="homePage">
           {/*TODO: Add a personalized welcome using the user name.*/}
-          Welcome to the Living Hope Management System.
+          Hello, {sessionStorage.getItem("userFirstName")} {sessionStorage.getItem("userLastName")}. <br/>Welcome to the Living Hope Management System.
           <br />
           This system is intended to provide a system of record for all system
           reports and other ministry documentation.
