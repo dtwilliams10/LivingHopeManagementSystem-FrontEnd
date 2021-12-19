@@ -13,7 +13,7 @@
     "react": "^16.10.1",
     "react-bootstrap": "^1.2.2",
     "react-dom": "^16.10.1",
-    "react-hook-form": "^7.12.2",
+    "react-hook-form": "^7.22.1",
     "react-router-dom": "^5.1.2",
     "rxjs": "^6.5.4",
     "yup": "^0.29.3"
