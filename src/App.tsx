@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
 import { createBrowserHistory } from 'history';
 import { VerifyEmail } from 'accounts/VerifyEmail';
+import { ResetPassword } from 'accounts/ResetPassword';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import SystemReportForm from './components/SystemReportForm';
@@ -26,6 +27,7 @@ export default function App() {
           <Route exact path="/Login" component={Login}/>
           <Route path="/accounts/verify-email" component={VerifyEmail}/>
           <Route path="/accounts/forgot-password" component={ForgottenPassword} />
+          <Route path="/accounts/reset-password" component={ResetPassword}/>
           <PrivateRoute exact path="/SystemReport" roles={[Role.Admin || Role.User]} component={SystemReport} />
           <PrivateRoute exact path="/Home" roles={[Role.Admin || Role.User]} component={Home}/>
           <PrivateRoute exact path="/PersonalDevelopment" roles={[Role.Admin || Role.User]} component={PersonalDevelopment}/>
