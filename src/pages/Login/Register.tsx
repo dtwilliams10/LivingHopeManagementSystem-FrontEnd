@@ -64,7 +64,7 @@ export default function Registration() {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      setValidated(true);
+      setValidated(false);
     } else {
       event.preventDefault();
       setValidated(true);
