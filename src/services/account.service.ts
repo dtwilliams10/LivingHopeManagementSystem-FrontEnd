@@ -6,6 +6,8 @@ import {fetchWrapper} from '../helpers/fetch-wrapper'
 const userSubject: BehaviorSubject<User> = new BehaviorSubject(null);
 const baseUrl = process.env.REACT_APP_AAS + `accounts`;
 
+console.log(baseUrl);
+
 type User = {
     created: string,
     email: string,
