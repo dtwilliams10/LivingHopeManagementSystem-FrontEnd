@@ -17,8 +17,8 @@ export default function ForgotPassword() {
     const handleEmailAddress = (event) => {
         event.persist();
         setValues((values) => ({
-          ...values,
-          email: event.target.value,
+            ...values,
+            email: event.target.value,
         }));
     }
 
