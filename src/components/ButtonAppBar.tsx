@@ -28,7 +28,7 @@ export default function ButtonAppBar(props: { classes: any }) {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <div className={classes.root}>
+      <div>
         <AppBar position="static" className="App">
           <Toolbar>
             <NavLink to="/Home">
