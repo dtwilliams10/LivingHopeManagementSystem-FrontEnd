@@ -4,7 +4,7 @@ import { accountService } from 'services/account.service';
 import { alertService } from 'services/alert.service';
 import { Form, Button } from 'react-bootstrap';
 
-export default function ForgotPassword() {
+function ForgotPassword() {
 
     const history = useHistory();
 

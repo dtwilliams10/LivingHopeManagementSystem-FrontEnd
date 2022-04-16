@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
 import { authHeader } from 'helpers/auth-header';
-import AppBar from 'components/AppBar';
+import  ButtonAppBar from 'components/AppBar';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -47,14 +47,14 @@ class SystemReportList extends Component {
     if (this.state.error) {
       return (
         <div>
-          <AppBar />
+          <ButtonAppBar />
           <p>No Records.</p>
         </div>
       );
     } else {
       return (
         <div>
-          <AppBar />
+          <ButtonAppBar />
           <NavLink to="/SystemReportForm">
               <Button>Create New System Report</Button>
           </NavLink>

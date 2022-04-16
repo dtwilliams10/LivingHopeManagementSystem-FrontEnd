@@ -6,7 +6,7 @@ import { alertService } from 'services/alert.service';
 import { Form, Button } from 'react-bootstrap';
 import { getEnabledCategories } from 'trace_events';
 
-export default function ResetPassword() {
+function ResetPassword() {
 
     let password:string, confirmPassword:string = "";
 

@@ -31,7 +31,7 @@ const theme = createTheme({
   }
 });
 
-function ButtonAppBar(props: { classes: any }) {
+export default function ButtonAppBar(props: { classes: any }) {
   const { classes } = props;
   const history = useHistory();
 
@@ -70,5 +70,3 @@ function ButtonAppBar(props: { classes: any }) {
 ButtonAppBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
-
-export default withStyles(styles)(ButtonAppBar);
