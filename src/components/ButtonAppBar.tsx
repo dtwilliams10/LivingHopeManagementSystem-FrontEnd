@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   MuiThemeProvider,
-  createTheme,
-  withStyles
+  createTheme
 } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,19 +10,6 @@ import Button from '@material-ui/core/Button';
 import { grey } from '@material-ui/core/colors';
 import { NavLink, useHistory } from 'react-router-dom';
 import { accountService } from '../services/account.service';
-
-const styles = {
-  root: {
-    flexGrow: 1
-  },
-  grow: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
-  }
-};
 
 const theme = createTheme({
   palette: {

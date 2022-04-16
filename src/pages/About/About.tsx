@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ButtonAppBar from 'components/AppBar';
+import ButtonAppBar from 'components/ButtonAppBar';
 
 import axios from 'axios';
 import { string } from 'prop-types';

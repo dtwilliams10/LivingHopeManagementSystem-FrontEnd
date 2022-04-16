@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import AppBar from 'components/AppBar';
+import ButtonAppBar from 'components/ButtonAppBar';
 
 class PersonalDevelopment extends Component {
   render() {
     return (
       <div className="App">
-        <AppBar />
+        <ButtonAppBar />
         <p>This is text for the Personal Development Page</p>
       </div>
     );
