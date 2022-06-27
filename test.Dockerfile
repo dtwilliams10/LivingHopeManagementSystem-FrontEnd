@@ -1,5 +1,5 @@
 # base image
-FROM node:17.9.0-alpine
+FROM node:17.9.0-alpine3.15
 # set working directory
 WORKDIR /usr/src/app
 # install and cache app dependencies
