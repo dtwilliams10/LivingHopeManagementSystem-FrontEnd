@@ -1,5 +1,5 @@
 # base image
-FROM node:17.9.0-alpine3.15
+FROM node:18.5.0-alpine3.15
 # set working directory
 WORKDIR /usr/src/app
 # install and cache app dependencies
@@ -14,3 +14,4 @@ ENV REACT_APP_URL https://test.lhms.dtwilliams10.com/
 ENV REACT_APP_API https://test.systemreports.dtwilliams10.com/
 ENV REACT_APP_AAS https://test.aas.dtwilliams10.com/
 CMD ["yarn", "start"]
+EXPOSE 3000
