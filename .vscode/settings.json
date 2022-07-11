@@ -5,5 +5,17 @@
     "/Users/tyler/Development/LivingHope/app": {
       "preferredRemoteName": "origin"
     }
-  }
+  },
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "dtwilliams10.com",
+      "port": 54320,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "Prod",
+      "database": "SystemReports",
+      "username": "postgres"
+    }
+  ]
 }
