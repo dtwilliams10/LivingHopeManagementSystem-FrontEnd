@@ -1,5 +1,5 @@
 ### STAGE 1: Build ###
-FROM node:18.5.0-alpine3.15 as builder
+FROM node:18.5.0  as builder
 WORKDIR /usr/src/app
 COPY package*.json ./
 COPY yarn.lock ./
