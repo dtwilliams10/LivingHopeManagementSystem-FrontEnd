@@ -11,6 +11,7 @@ RUN yarn install --network-timeout 100000
 
 COPY . .
 
+
 # start app
 ENV REACT_APP_URL http://localhost:3000/
 ENV REACT_APP_API http://localhost:5002/
