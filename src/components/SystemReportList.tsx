@@ -11,6 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { NavLink } from 'react-router-dom';
+import formatDate from '../helpers/dates'
 
 const endpoint: string = 'SystemReport';
 const url: string = process.env.REACT_APP_API + endpoint;
@@ -30,7 +31,7 @@ class SystemReportList extends Component {
     const headers = authHeader();
     axios
       .get(url, { headers: headers })
-      .then(res => _self.setState({ error: false, systemreport: res.data }))
+      .then(res => _self.setState({ error: false, systemreport: res.data}))
       .catch(function(error) {
         if (error.request) {
           console.log('Error', error.message);
@@ -68,6 +69,7 @@ class SystemReportList extends Component {
                   <TableCell align="center">Reporter</TableCell>
                   <TableCell align="center">Report Status</TableCell>
                   <TableCell align="center">Updated Date</TableCell>
+                  <TableCell align="center">Created Date</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -84,8 +86,8 @@ class SystemReportList extends Component {
                     <TableCell align="center">
                       {row.systemReportStatus.status}
                     </TableCell>
-                    <TableCell align="center">{row.updatedDate}</TableCell>
-                    {/*<TableCell align="center">{Date.parse(row.createdDate)}</TableCell>*/}
+                    <TableCell align="center">{formatDate(row.updatedDate)}</TableCell>
+                    <TableCell align="center">{formatDate(row.createdDate)}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

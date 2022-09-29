@@ -5,10 +5,10 @@ import ButtonAppBar from '../../components/ButtonAppBar';
 class ReportForm extends Component {
     render() {
         return (
-            <div>
+            <>
                 <ButtonAppBar/>
                 <SystemReportForm/>
-            </div>
+            </>
         )
     }
 }
