@@ -13,9 +13,9 @@ COPY . .
 
 
 # start app
-ENV REACT_APP_URL http://localhost:3000/
-ENV REACT_APP_API http://localhost:5002/
-ENV REACT_APP_AAS http://localhost:5001/
+ENV REACT_APP_URL https://test.lhms.dtwilliams10.com/
+ENV REACT_APP_API https://test.systemreports.dtwilliams10.com/
+ENV REACT_APP_AAS https://test.aas.dtwilliams10.com/
 
 CMD ["yarn", "start"]
 EXPOSE 3000
