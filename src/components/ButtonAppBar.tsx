@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   MuiThemeProvider,
   createTheme
@@ -17,8 +16,7 @@ const theme = createTheme({
   }
 });
 
-export default function ButtonAppBar(props: { classes: any }) {
-  const { classes } = props;
+export default function ButtonAppBar() {
   const history = useHistory();
 
   function logoff() {
@@ -52,7 +50,3 @@ export default function ButtonAppBar(props: { classes: any }) {
     </MuiThemeProvider>
   );
 }
-
-ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired
-};
