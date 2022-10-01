@@ -4,9 +4,9 @@ export default function fixDates(date: Date): string
 
     return (
         [
-          newDate.getFullYear(),
           padTo2Digits(newDate.getMonth() + 1),
           padTo2Digits(newDate.getDate()),
+          newDate.getFullYear()
         ].join('-'));
 }
 
