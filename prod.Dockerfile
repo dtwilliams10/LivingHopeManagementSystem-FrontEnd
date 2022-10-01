@@ -1,8 +1,10 @@
 ### STAGE 1: Build ###
-FROM node:18.5.0  as builder
+FROM node:18.5.0-alpine3.16 as builder
 WORKDIR /usr/src/app
+RUN yarn set version berry
 COPY package*.json ./
 COPY yarn.lock ./
+COPY .yarnrc.yml ./
 RUN yarn install --network-timeout 100000
 COPY . .
 RUN yarn build
