@@ -86,8 +86,8 @@ class SystemReportList extends Component {
                     <TableCell align="center">
                       {row.systemReportStatus.status}
                     </TableCell>
-                    <TableCell align="center">{formatDate(row.UpdatedDate)}</TableCell>
-                    <TableCell align="center">{formatDate(row.CreatedDate)}</TableCell>
+                    <TableCell align="center">{formatDate(row.updatedDate)}</TableCell>
+                    <TableCell align="center">{formatDate(row.createdDate)}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
