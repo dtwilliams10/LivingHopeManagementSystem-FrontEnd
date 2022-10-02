@@ -16,7 +16,8 @@ type User = {
     id: number,
     isVerified: boolean,
     jwtToken: string,
-    role: string
+    role: string,
+    refreshToken: string
 }
 
 export const accountService = {
@@ -47,12 +48,14 @@ async function login(email: string, password: string) {
                 lastName: response.data.lastName,
                 email: response.data.email,
                 isVerified: response.data.isVerified,
-                role: response.data.role
+                role: response.data.role,
+                refreshToken: response.data.refreshToken,
             }) as User;
 
             sessionStorage.setItem('currentUserToken', user.jwtToken);
             sessionStorage.setItem('userFirstName', user.firstName);
-            sessionStorage.setItem('userLastName', user.lastName);;
+            sessionStorage.setItem('userLastName', user.lastName);
+            sessionStorage.setItem('refreshToken', user.refreshToken);
             userSubject.next(user);
             startRefreshTokenTimer();
             return user;
@@ -60,25 +63,28 @@ async function login(email: string, password: string) {
     return;
 }
 
-/*function logout() {
-    let jwtToken = localStorage.getItem('currentUser')
-    console.log(jwtToken);
-    //axios({url: `${baseUrl}/revoke-token`, method: 'post', responseType: 'json', headers: {Authorization: `Bearer ${jwtToken}`}});
-    axios.post(`${baseUrl}/revoke-token`, {});
-    localStorage.removeItem('currentUser');
-    stopRefreshTokenTimer();
-    userSubject.next(null);
-    //history.push('/account/login');
-}*/
+// function logout() {
+//     let jwtToken = localStorage.getItem('currentUserToken')
+//     console.log(jwtToken);
+//     //axios({url: `${baseUrl}/revoke-token`, method: 'post', responseType: 'json', headers: {Authorization: `Bearer ${jwtToken}`}});
+//     axios.post(`${baseUrl}/revoke-token`, {});
+//     localStorage.removeItem('currentUser');
+//     stopRefreshTokenTimer();
+//     userSubject.next(null);
+//     //history.push('/account/login');
+// }
 
 function logout() {
     // revoke token, stop refresh timer, publish null to user subscribers and redirect to login page
-    let jwtToken = localStorage.getItem('currentUser');
-    console.log(jwtToken);
-    fetchWrapper.post(`${baseUrl}/revoke-token`, {jwtToken});
+    let refreshToken = sessionStorage.getItem('refreshToken');
+    console.log(refreshToken);
+    fetchWrapper.post(`${baseUrl}/revoke-token`, {token: refreshToken});
     stopRefreshTokenTimer();
     userSubject.next(null);
-    sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUserToken');
+    sessionStorage.removeItem('userFirstName');
+    sessionStorage.removeItem('userLastName');
+    sessionStorage.removeItem('refreshToken');
     history.push('/account/login');
 }
 
@@ -87,7 +93,7 @@ function refreshToken() {
     .then(user => {
         console.log(user.data);
         //userSubject.next(user);
-        sessionStorage.setItem('currentUser', user.data.jwtToken);
+        sessionStorage.setItem('refreshToken', user.data.refreshToken);
         startRefreshTokenTimer();
         return user;
     });
