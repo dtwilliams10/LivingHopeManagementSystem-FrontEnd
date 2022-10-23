@@ -23,7 +23,7 @@ type User = {
 export const accountService = {
     login,
     logout,
-    //refreshToken,
+    refreshToken,
     register,
     verifyEmail,
     forgotPassword,
