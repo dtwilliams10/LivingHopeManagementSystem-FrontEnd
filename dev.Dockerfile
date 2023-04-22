@@ -1,5 +1,5 @@
 # base image
-FROM node:18.5.0-alpine3.16
+FROM node:20-alpine3.17
 # set working directory
 WORKDIR /usr/src/app
 RUN yarn set version berry

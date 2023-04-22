@@ -1,0 +1,49 @@
+* {
+    font-family: sans-serif;
+}
+
+.headerBar {
+  background-color: #222 !important;
+}
+
+.masthead {
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(
+          135deg,
+          rgb(83, 83, 83) 0%,
+          rgb(136, 134, 134) 69%,
+          rgb(119, 119, 119) 89%
+  ) !important;
+  height: 100vh;
+}
+
+.ui.form {
+    max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.masthead .ui.menu .ui.button,
+.ui.menu a.ui.inverted.button {
+  margin-left: 0.5em;
+}
+
+.masthead h1.ui.header {
+  font-size: 4em;
+  font-weight: normal;
+}
+
+.masthead h2 {
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+body {
+    background-color: #f0f0f0;
+}
