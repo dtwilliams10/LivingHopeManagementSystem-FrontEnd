@@ -6,7 +6,7 @@ export default function HeaderBar() {
     <Segment
       basic
       className="headerBar"
-      style={{ padding: "3em", marginBottom: 0 }}
+      style={{ padding: "3em", marginBottom: 0, marginTop: 0 }}
     >
       <NavLink to="/">
         <Image src="/assets/LIVINGHOPEwhite.png" centered size="medium" />

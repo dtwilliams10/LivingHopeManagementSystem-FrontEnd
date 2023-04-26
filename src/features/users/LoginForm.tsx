@@ -1,11 +1,19 @@
 import { Formik, Form, ErrorMessage } from "formik";
 import { observer } from "mobx-react-lite";
-import { Button, Header, Label } from "semantic-ui-react";
+import {
+  Button,
+  Grid,
+  GridColumn,
+  GridRow,
+  Header,
+  Label,
+} from "semantic-ui-react";
 import MyTextInput from "../../app/helpers/MyTextInput";
 import { useStore } from "../../app/stores/store";
+import Register from "./Register";
 
 export default observer(function LoginForm() {
-  const { userStore } = useStore();
+  const { userStore, modalStore } = useStore();
   return (
     <>
       <Formik
@@ -40,14 +48,22 @@ export default observer(function LoginForm() {
                 />
               )}
             />
-            <Button
-              positive
-              content="Login"
-              to={`/home`}
-              type="submit"
-              fluid
-              loading={isSubmitting}
-            />
+            <div>
+              <Button
+                positive
+                size="huge"
+                content="Login"
+                to={`/home`}
+                type="submit"
+                loading={isSubmitting}
+              />
+              <Button
+                onClick={() => modalStore.openModal(<Register />)}
+                size="huge"
+                inverted
+                content="Register"
+              />
+            </div>
           </Form>
         )}
       </Formik>

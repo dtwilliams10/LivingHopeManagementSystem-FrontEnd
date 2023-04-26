@@ -4,10 +4,9 @@ import { Container, Header, Segment, Image, Button } from "semantic-ui-react";
 import { useStore } from "../../app/stores/store";
 
 import LoginForm from "./LoginForm";
-import Register from "./Register";
 
 export default observer(function Login() {
-  const { userStore, modalStore } = useStore();
+  const { userStore } = useStore();
   return (
     <Segment textAlign="center" vertical className="masthead">
       <Container>
@@ -37,12 +36,6 @@ export default observer(function Login() {
         ) : (
           <>
             <LoginForm />
-            <Button
-              onClick={() => modalStore.openModal(<Register />)}
-              size="huge"
-              inverted
-              content="Register"
-            />
           </>
         )}
       </Container>
