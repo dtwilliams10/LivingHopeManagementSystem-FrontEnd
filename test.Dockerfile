@@ -1,13 +1,13 @@
 # base image
-FROM node:20-alpine3.17
+FROM node:21-alpine3.18
 # set working directory
 WORKDIR /usr/src/app
-RUN yarn set version berry
+RUN yarn set version stable
 # install and cache app dependencies
 COPY package*.json ./
 COPY yarn.lock ./
 COPY .yarnrc.yml ./
-RUN yarn install --network-timeout 100000
+RUN yarn install
 
 COPY . .
 
