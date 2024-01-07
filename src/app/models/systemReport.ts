@@ -1,6 +1,6 @@
 export interface ISystemReport {
   id: number;
-  reporterId: number;
+  reporterId: string;
   reportName: string;
   reportDate: Date | null;
   createdDate: Date | null;
@@ -8,7 +8,7 @@ export interface ISystemReport {
   systemReportStatus: SystemReportStatus;
   systemName: SystemName;
   systemUpdate: string;
-  personnelUpdate: string;
+  personnelUpdates: string;
   creativeIdeasAndEvaluations: string;
   barriersOrChallenges: string;
   howCanIHelpYou: string;
@@ -49,9 +49,23 @@ export class SystemName implements ISystemName {
   }
 }
 
+export class SystemNameDropdown {
+  key: number = 0;
+  value: number = 0;
+  text: string = "";
+
+  constructor(systemNameDropdown: SystemNameDropdown) {
+    if (systemNameDropdown) {
+      this.key = systemNameDropdown.key;
+      this.value = systemNameDropdown.value;
+      this.text = systemNameDropdown.text;
+    }
+  }
+}
+
 export class SystemReportFormValues implements ISystemReport {
   id: number = 0;
-  reporterId: number = 0;
+  reporterId: string = "";
   reportName: string = "";
   reportDate: Date | null = null;
   createdDate: Date | null = null;
@@ -59,7 +73,7 @@ export class SystemReportFormValues implements ISystemReport {
   systemReportStatus: SystemReportStatus = { id: 0, name: "" };
   systemName: SystemName = { id: 0, name: "" };
   systemUpdate: string = "";
-  personnelUpdate: string = "";
+  personnelUpdates: string = "";
   creativeIdeasAndEvaluations: string = "";
   barriersOrChallenges: string = "";
   howCanIHelpYou: string = "";
@@ -76,7 +90,7 @@ export class SystemReportFormValues implements ISystemReport {
       this.systemReportStatus = systemReport.systemReportStatus;
       this.systemName = systemReport.systemName;
       this.systemUpdate = systemReport.systemUpdate;
-      this.personnelUpdate = systemReport.personnelUpdate;
+      this.personnelUpdates = systemReport.personnelUpdates;
       this.creativeIdeasAndEvaluations =
         systemReport.creativeIdeasAndEvaluations;
       this.barriersOrChallenges = systemReport.barriersOrChallenges;

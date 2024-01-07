@@ -5,8 +5,9 @@ import {
   SystemReportFormValues,
   ISystemName,
   ISystemReportStatus,
+  SystemNameDropdown,
 } from "../models/systemReport";
-
+import { store } from "./store";
 export default class SystemReportStore {
   systemReportRegistry = new Map<number, ISystemReport>();
   selectedSystemReport: ISystemReport | undefined = undefined;
@@ -24,7 +25,19 @@ export default class SystemReportStore {
   }
 
   get systemNames() {
-    return Array.from(this.systemNameRegistry.values());
+    if (!this.systemNameRegistry.size) {
+      this.getAllSystemNames();
+    }
+
+    let systemNames: SystemNameDropdown[] = [];
+    Array.from(this.systemNameRegistry.values()).map((systemName) => {
+      return systemNames.push({
+        key: systemName.id,
+        value: systemName.id,
+        text: systemName.name,
+      });
+    });
+    return systemNames;
   }
 
   get systemReportStatuses() {
@@ -33,7 +46,7 @@ export default class SystemReportStore {
 
   getAllSystemNames = async () => {
     let systemNames = this.getSystemNames();
-    if (!systemNames) {
+    if (systemNames.length === 0) {
       try {
         systemNames = await agent.SystemNames.getAllSystemNames();
         systemNames.forEach((systemName: ISystemName) => {
@@ -43,14 +56,13 @@ export default class SystemReportStore {
         console.error(error);
       }
     }
-    return systemNames;
   };
 
   getAllReports = async () => {
     this.setLoadingInitial(true);
     try {
       const systemReports = await agent.SystemReports.getAllReports();
-      systemReports.forEach((systemReport) => {
+      systemReports.forEach((systemReport: SystemReportFormValues) => {
         this.setLoadingInitial(false);
         this.setSystemReport(systemReport);
       });
@@ -81,9 +93,33 @@ export default class SystemReportStore {
     }
   };
 
-  createSystemReport = async (systemReport: SystemReportFormValues) => {};
+  createSystemReport = async (systemReport: SystemReportFormValues) => {
+    this.setLoadingInitial(true);
+    try {
+      //systemReport.systemName = this.getSystemName(systemReport.systemName.id)!;
+      //systemReport.systemReportStatus = this.getSystemReportStatus();
+      //systemReport.reporterId = store.userStore.getCurrentUser()?.!;
 
-  updateSystemReport = async (systemReport: SystemReportFormValues) => {};
+      console.log(systemReport);
+      await agent.SystemReports.createReport(systemReport);
+    } catch (error) {
+      console.error(error);
+    }
+    this.setLoadingInitial(false);
+  };
+
+  updateSystemReport = async (systemReport: SystemReportFormValues) => {
+    this.setLoadingInitial(true);
+    try {
+      systemReport.systemName = this.getSystemName(systemReport.systemName.id)!;
+      systemReport.reporterId = store.userStore.getCurrentUser()?.id!;
+      await agent.SystemReports.updateReport(systemReport);
+      this.setSystemReport(systemReport);
+    } catch (error) {
+      console.error(error);
+    }
+    this.setLoadingInitial(false);
+  };
 
   setLoadingInitial = (state: boolean) => {
     this.loadingInitial = state;
@@ -101,8 +137,10 @@ export default class SystemReportStore {
     this.systemNameRegistry.set(systemName.id, systemName);
   };
 
-  private getSystemName = (id: number) => {
-    return this.systemNameRegistry.get(id);
+  getSystemName = (id: number) => {
+    let systemName = this.systemNameRegistry.get(id)!;
+    console.log(systemName);
+    return systemName;
   };
 
   private getSystemNames = () => {
