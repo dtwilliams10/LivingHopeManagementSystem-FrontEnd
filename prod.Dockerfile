@@ -1,7 +1,7 @@
 ### STAGE 1: Build ###
-FROM node:20-alpine3.17 as builder
+FROM node:21-alpine3.18 as builder
 WORKDIR /usr/src/app
-RUN yarn set version berry
+RUN yarn set version stable
 COPY package*.json ./
 COPY yarn.lock ./
 COPY .yarnrc.yml ./
@@ -9,7 +9,7 @@ RUN yarn install --network-timeout 100000
 COPY . .
 RUN yarn build
 ### STAGE 2: Production Environment ###
-FROM nginx:1.23.4-alpine
+FROM nginx:1.25-alpine3.18
 ENV REACT_APP_URL https://lhms.dtwilliams10.com/
 ENV REACT_APP_API https://systemreports.dtwilliams10.com/
 ENV REACT_APP_AAS https://aas.dtwilliams10.com/
