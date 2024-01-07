@@ -101,16 +101,28 @@ const Accounts = {
 
 const SystemReports = {
   getAllReports: () =>
-    requests.get<ISystemReport[]>(`${systemReportsURL}systemreports`),
+    requests.get<ISystemReport[]>(`${systemReportsURL + "systemreports/"}`),
   getReportById: (id: number) =>
-    requests.get<ISystemReport>(`${systemReportsURL}` + `${id}`),
+    requests.get<ISystemReport>(
+      `${systemReportsURL + "systemReports/"}` + `${id}`
+    ),
   createReport: (systemReport: SystemReportFormValues) =>
-    requests.post<SystemReportFormValues>(`${systemReportsURL}`, systemReport),
+    requests.post<SystemReportFormValues>(
+      `${systemReportsURL + "systemReports/"}`,
+      systemReport
+    ),
+  updateReport: (systemReport: SystemReportFormValues) =>
+    requests.put<SystemReportFormValues>(
+      `${systemReportsURL + "systemReports/"}`,
+      systemReport
+    ),
 };
 
 const SystemNames = {
   getAllSystemNames: () =>
-    requests.get<SystemName[]>(`${systemReportsURL}systemname`),
+    requests.get<SystemName[]>(
+      `${systemReportsURL}SystemNames/GetAllSystemNames`
+    ),
 };
 
 const SystemReportStatuses = {
@@ -120,11 +132,16 @@ const SystemReportStatuses = {
     ),
 };
 
+const SystemStatus = {
+  getSystemStatus: () => requests.get<string>(`${systemReportsURL}status`),
+};
+
 const agent = {
   Accounts,
   SystemReports,
   SystemNames,
   SystemReportStatuses,
+  SystemStatus,
 };
 
 export default agent;
