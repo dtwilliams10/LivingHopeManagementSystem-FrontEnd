@@ -16,6 +16,15 @@
       "name": "Prod",
       "database": "SystemReports",
       "username": "postgres"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 54320,
+      "driver": "PostgreSQL",
+      "name": "localDB",
+      "database": "LHMS",
+      "username": "postgres"
     }
   ]
 }
