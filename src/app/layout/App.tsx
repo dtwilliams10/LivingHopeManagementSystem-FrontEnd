@@ -5,19 +5,19 @@ import { ToastContainer } from "react-toastify";
 import { useEffect } from "react";
 import { useStore } from "../stores/store";
 import ButtonAppBar from "./ButtonAppBar";
-import ErrorPage from "../../features/errors/Error";
+import ErrorPage from "../../features/Errors/Error";
 import HeaderBar from "./HeaderBar";
 import LoadingComponent from "./LoadingComponent";
-import Login from "../../features/users/Login";
+import Login from "../../features/Users/Login";
 import ModalContainer from "../helpers/modals/ModalContainer";
-import VerifyEmail from "../../features/users/VerifyEmail";
+import VerifyEmail from "../../features/Users/VerifyEmail";
 
 export default observer(function App() {
   const location = useLocation();
   const { commonStore, userStore } = useStore();
 
   useEffect(() => {
-    if (commonStore.token) {
+    if (!commonStore.token) {
       userStore.getUser().finally(() => commonStore.setAppLoaded());
     } else {
       commonStore.setAppLoaded();
