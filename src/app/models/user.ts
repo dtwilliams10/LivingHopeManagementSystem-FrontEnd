@@ -1,10 +1,14 @@
-import { ParsedQuery } from "query-string";
-
 export interface User {
-  username: string;
-  displayName: string;
+  id?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  created: Date;
+  updated: Date;
+  isVerified: boolean;
   jwtToken: string;
-  image?: string;
+  refreshToken: string;
 }
 
 export interface UserFormValues {

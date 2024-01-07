@@ -12,14 +12,43 @@ export default class UserStore {
   }
 
   get isLoggedIn() {
-    return this.user;
+    return !!this.user;
   }
+
+  getCurrentUser = () => {
+    if (this.user) return this.user;
+    return null;
+  };
+
+  setCurrentUser = (user: User) => {
+    if (user) this.user = user;
+  };
 
   login = async (creds: UserFormValues) => {
     try {
-      const user = await agent.Accounts.login(creds);
+      const user: User = await agent.Accounts.login(creds);
       store.commonStore.setToken(user.jwtToken);
-      runInAction(() => (this.user = user));
+      runInAction(
+        () =>
+          (this.user = {
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            role: user.role,
+            created: user.created,
+            updated: user.updated,
+            isVerified: user.isVerified,
+            jwtToken: user.jwtToken,
+            refreshToken: user.refreshToken,
+          })
+      );
+
+      if (this.user) {
+        this.setCurrentUser(this.user!);
+      }
+
+      console.log(this.user);
       router.navigate("/home");
     } catch (error) {
       throw error;
@@ -47,7 +76,7 @@ export default class UserStore {
     console.log(token);
     if (token !== null) {
       try {
-        await agent.Accounts.verify(token);
+        agent.Accounts.verify(token);
         //if (response) router.navigate("/");
       } catch (error) {
         throw error;
@@ -55,5 +84,17 @@ export default class UserStore {
     }
   };
 
-  getUser = async () => {};
+  getUser = async () => {
+    try {
+      const user: User | null = this.getCurrentUser();
+      if (!user) {
+        // need API call to get the logged in user?
+        console.log("User object is null");
+      }
+      return user;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
 }
