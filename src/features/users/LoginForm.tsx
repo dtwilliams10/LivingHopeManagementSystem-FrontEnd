@@ -31,10 +31,10 @@ export default observer(function LoginForm() {
             autoComplete="off"
           >
             <Header />
-            <MyTextInput placeholder="Email" name="Email" />
+            <MyTextInput placeholder="Email" name="email" />
             <MyTextInput
               placeholder="Password"
-              name="Password"
+              name="password"
               type="password"
             />
             <ErrorMessage
@@ -61,6 +61,7 @@ export default observer(function LoginForm() {
                 onClick={() => modalStore.openModal(<Register />)}
                 size="huge"
                 inverted
+                type="button"
                 content="Register"
               />
             </div>

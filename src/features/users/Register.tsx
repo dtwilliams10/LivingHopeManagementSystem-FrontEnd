@@ -4,9 +4,9 @@ import * as Yup from "yup";
 import { observer } from "mobx-react-lite";
 import { Button, Header } from "semantic-ui-react";
 import MyTextInput from "../../app/helpers/MyTextInput";
-import ValidationError from "../errors/ValidationError";
+import ValidationError from "../Errors/ValidationError";
 
-export default observer(function Registration() {
+export default observer(function Register() {
   const { userStore } = useStore();
   return (
     <Formik
@@ -45,7 +45,7 @@ export default observer(function Registration() {
           <MyTextInput placeholder="Password" name="password" type="password" />
           <ErrorMessage
             name="error"
-            render={() => <ValidationError errors={errors} />}
+            render={() => <ValidationError errors={errors.error} />}
           />
           <Button
             positive
