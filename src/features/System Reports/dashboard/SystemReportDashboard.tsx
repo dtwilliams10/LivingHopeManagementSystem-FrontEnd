@@ -8,13 +8,24 @@ import SystemReportList from "./SystemReportList";
 
 export default observer(function SystemReport() {
   const { systemReportStore } = useStore();
-  const { getAllReports, systemReportRegistry } = systemReportStore;
+  const {
+    getAllReports,
+    getAllSystemNames,
+    systemReportRegistry,
+    systemNameRegistry,
+  } = systemReportStore;
 
   useEffect(() => {
     if (systemReportRegistry.size < 1) {
       getAllReports();
     }
   }, [systemReportRegistry.size, getAllReports]);
+
+  useEffect(() => {
+    if (systemNameRegistry.size < 1) {
+      getAllSystemNames();
+    }
+  }, [systemNameRegistry.size, getAllSystemNames]);
 
   if (systemReportStore.loadingInitial)
     return <LoadingComponent content="Loading System Reports..." />;
