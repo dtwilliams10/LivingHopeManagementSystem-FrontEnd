@@ -6,6 +6,9 @@ interface Props {
   name: string;
   options: any;
   label?: string;
+  disabled?: any;
+  value?: number;
+  text?: string;
 }
 
 export default function MySelectInput(props: Props) {
@@ -17,10 +20,11 @@ export default function MySelectInput(props: Props) {
       <Select
         clearable
         options={props.options}
-        value={field.value || null}
+        value={props.value || field.value || null}
         onChange={(e, d) => helpers.setValue(d.value)}
         onBlur={() => helpers.setTouched(true)}
         placeholder={props.placeholder}
+        disabled={props.disabled}
       />
       {meta.touched && meta.error ? (
         <Label basic color="red">
