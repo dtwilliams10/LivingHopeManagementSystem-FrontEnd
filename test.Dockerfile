@@ -5,12 +5,11 @@ WORKDIR /usr/src/app
 RUN yarn set version stable
 # install and cache app dependencies
 COPY package*.json ./
-COPY yarn.lock ./
+#COPY yarn.lock ./
 COPY .yarnrc.yml ./
 RUN yarn install
 
 COPY . .
-
 
 # start app
 ENV VITE_APP_URL https://test.lhms.dtwilliams10.com/
