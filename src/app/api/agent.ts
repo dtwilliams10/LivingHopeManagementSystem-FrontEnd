@@ -16,8 +16,8 @@ const sleep = (delay: number) => {
   });
 };
 
-const accountsURL = process.env.REACT_APP_AAS;
-const systemReportsURL = process.env.REACT_APP_SYSTEMREPORTS;
+const accountsURL = import.meta.env.VITE_APP_AAS;
+const systemReportsURL = import.meta.env.VITE_APP_SYSTEMREPORTS;
 
 axios.interceptors.request.use((config) => {
   //config.headers.Accept = "application/json";
@@ -64,7 +64,6 @@ axios.interceptors.response.use(
         break;
       case 500:
       case 415:
-        //store.commonStore.setServerError(data);
         router.navigate("/server-error");
         break;
     }
