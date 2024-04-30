@@ -10,9 +10,9 @@ COPY . .
 RUN yarn build
 ### STAGE 2: Production Environment ###
 FROM nginx:1.25-alpine3.18
-ENV REACT_APP_URL https://lhms.dtwilliams10.com/
-ENV REACT_APP_API https://systemreports.dtwilliams10.com/
-ENV REACT_APP_AAS https://aas.dtwilliams10.com/
+ENV VITE_APP_URL https://lhms.dtwilliams10.com/
+ENV VITE_APP_API https://systemreports.dtwilliams10.com/
+ENV VITE_APP_AAS https://aas.dtwilliams10.com/
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 COPY --from=builder /usr/src/app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
