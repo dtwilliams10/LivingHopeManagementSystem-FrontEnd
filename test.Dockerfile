@@ -18,4 +18,4 @@ ENV VITE_APP_AAS https://test.aas.dtwilliams10.com/
 
 EXPOSE 3000
 
-CMD ["yarn", "start --host"]
+CMD ["yarn", "start", "--host"]
