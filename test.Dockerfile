@@ -16,5 +16,6 @@ ENV VITE_APP_URL https://test.lhms.dtwilliams10.com/
 ENV VITE_APP_API https://test.systemreports.dtwilliams10.com/
 ENV VITE_APP_AAS https://test.aas.dtwilliams10.com/
 
-RUN yarn start --host
 EXPOSE 3000
+
+CMD ["yarn", "start --host"]
