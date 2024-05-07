@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import queryString, { ParsedQuery } from "query-string";
 import { useStore } from "../../app/stores/store";
-import { Container, Header, Segment } from "semantic-ui-react";
+import { Container, Header } from "semantic-ui-react";
 
 export default function VerifyEmail() {
   const { userStore } = useStore();
