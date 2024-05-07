@@ -49,18 +49,6 @@ export class SystemName implements ISystemName {
   }
 }
 
-export class SystemNameDropdownValue {
-  id: number = 0;
-  name: string = "";
-
-  constructor(systemName: ISystemName) {
-    if (systemName) {
-      this.id = systemName.id;
-      this.name = systemName.name;
-    }
-  }
-}
-
 export class SystemReportFormValues implements ISystemReport {
   id: number = 0;
   reporterId: string = "";
