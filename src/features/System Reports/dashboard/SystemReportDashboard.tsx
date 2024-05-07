@@ -1,34 +1,22 @@
-import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "semantic-ui-react";
-import LoadingComponent from "../../../app/layout/LoadingComponent";
-import { useStore } from "../../../app/stores/store";
 import SystemReportList from "./SystemReportList";
+import { useContext, useEffect, useState } from "react";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
+import LHMSContext from "../../../app/context/LHMSContext";
 
-export default observer(function SystemReport() {
-  const { systemReportStore } = useStore();
-  const {
-    getAllReports,
-    getAllSystemNames,
-    systemReportRegistry,
-    systemNameRegistry,
-  } = systemReportStore;
+const SystemReportDashboard = () => {
+  const [loading, setLoading] = useState(true);
+  const { systemReports, fetchSystemReports } = useContext(LHMSContext);
 
   useEffect(() => {
-    if (systemReportRegistry.size < 1) {
-      getAllReports();
+    if (systemReports === undefined || systemReports.length < 1) {
+      fetchSystemReports();
     }
-  }, [systemReportRegistry.size, getAllReports]);
+    if (systemReports !== undefined) setLoading(false);
+  }, [systemReports]);
 
-  useEffect(() => {
-    if (systemNameRegistry.size < 1) {
-      getAllSystemNames();
-    }
-  }, [systemNameRegistry.size, getAllSystemNames]);
-
-  if (systemReportStore.loadingInitial)
-    return <LoadingComponent content="Loading System Reports..." />;
+  if (loading) return <LoadingComponent content="Loading System Reports..." />;
 
   return (
     <>
@@ -42,4 +30,6 @@ export default observer(function SystemReport() {
       <SystemReportList />
     </>
   );
-});
+};
+
+export default SystemReportDashboard;

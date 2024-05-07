@@ -1,80 +1,104 @@
 import { Form, Formik } from "formik";
-import { observer } from "mobx-react-lite";
-import { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
-import { Button, Header, Label, Segment } from "semantic-ui-react";
+import { useContext, useEffect, useState } from "react";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
+import {
+  Button,
+  Header,
+  Item,
+  ItemContent,
+  Label,
+  Segment,
+} from "semantic-ui-react";
 import MyDateInput from "../../../app/helpers/MyDateInput";
 import MySelectInput from "../../../app/helpers/MySelectInput";
 import MyTextInput from "../../../app/helpers/MyTextInput";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
-import { SystemReportFormValues } from "../../../app/models/systemReport";
-import { User } from "../../../app/models/user";
-import { useStore } from "../../../app/stores/store";
+import {
+  ISystemName,
+  ISystemReport,
+  SystemName,
+  SystemReportFormValues,
+} from "../../../app/models/systemReport";
 import MyTextArea from "../../../app/helpers/MyTextArea";
+import LHMSContext from "../../../app/context/LHMSContext";
 
-export default observer(function SystemReportForm() {
-  const { systemReportStore, userStore } = useStore();
+const SystemReportForm = () => {
   const {
     loadSystemReport,
-    loadingInitial,
-    systemNames,
     createSystemReport,
     updateSystemReport,
-  } = systemReportStore;
+    user,
+    systemNames,
+    fetchSystemNamesById,
+    fetchSystemNames,
+  } = useContext(LHMSContext);
 
-  const { getUser } = userStore;
-
-  let user: User | null = null;
-
-  const { id } = useParams();
+  const [systemReport, setSystemReport] = useState({} as ISystemReport);
+  const [systemName, setSystemName] = useState<SystemName>({} as SystemName);
+  const [loading, setLoading] = useState(true);
+  const [options, setOptions] = useState([]);
   const navigate = useNavigate();
 
-  const [systemReport, setSystemReport] = useState<SystemReportFormValues>(
-    new SystemReportFormValues()
-  );
+  useEffect(() => {
+    setLoading(true);
+    if (systemNames.length < 1) {
+      fetchSystemNames();
+    }
+    const names = systemNames.map((name: ISystemName) => ({
+      id: name.id,
+      value: name.id,
+      text: name.name,
+    }));
+    console.log(names);
+    setOptions(names);
+    setLoading(false);
+  }, [systemNames]);
+
+  const { id } = useParams();
+
+  const loadReport = async (id: string | undefined) => {
+    setLoading(true);
+    let systemReport = await loadSystemReport(parseInt(id!));
+    if (systemReport) {
+      let systemName = await fetchSystemNamesById(systemReport.systemNameId);
+      setSystemName(systemName);
+      setSystemReport(systemReport);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    let reportId = parseInt(id!);
-    if (reportId) {
-      loadSystemReport(reportId).then((systemReport) =>
-        setSystemReport(new SystemReportFormValues(systemReport))
-      );
+    if (!Number.isNaN(parseInt(id!))) {
+      loadReport(id);
+    } else {
+      let systemReport = new SystemReportFormValues();
+      setSystemReport(systemReport);
+      setLoading(false);
     }
   }, []);
 
-  useEffect(() => {
-    if (!user) {
-      getUser().then((_user: User | null) => {
-        if (_user) {
-          user = _user;
-          console.log(user);
-        }
-      });
-    }
-  }, [user]);
-
-  function handleFormSubmit(systemReport: SystemReportFormValues) {
+  const handleFormSubmit = async (systemReport: SystemReportFormValues) => {
+    console.log(systemReport);
     if (!systemReport.id) {
       systemReport.createdDate = new Date();
       systemReport.reporterId = user?.id! ? user?.id : "1";
-      systemReport.systemReportStatus.id = 2;
-      console.log(systemReport);
-      createSystemReport(systemReport).then(() =>
-        navigate(`/systemreport/${systemReport.id}`)
-      );
+      systemReport.systemReportStatusId = 2;
+      console.log("Submitting new system report: ", systemReport);
+      await createSystemReport(systemReport);
+      setLoading(false);
+      navigate(`/systemreports`);
     } else {
       console.log("Updating System Report");
       systemReport.reporterId = user?.id! ? user?.id : "1";
-      systemReport.systemReportStatus.id = 2;
+      systemReport.systemReportStatusId = 2;
       console.log(systemReport);
-      updateSystemReport(systemReport).then(() =>
-        navigate(`/systemreport/${systemReport.id}`)
-      );
+      updateSystemReport(systemReport).then(() => {
+        navigate(`/systemreport/${systemReport.id}`);
+      });
     }
-  }
+  };
 
-  if (loadingInitial)
-    return <LoadingComponent content="Loading System Report..." />;
+  if (loading) return <LoadingComponent content="Loading System Report..." />;
 
   return (
     <Segment clearing>
@@ -101,15 +125,25 @@ export default observer(function SystemReportForm() {
               dateFormat="MMMM d, yyyy"
               placeholderText="Please select a date..."
             />
-            <Label content={"Please select a system."} />
-            <MySelectInput
-              disabled={!!systemReport.systemName.name}
-              options={systemNames}
-              text={systemReport.systemName.name}
-              value={systemReport.systemName.id}
-              placeholder={"Please select a system..."}
-              name={"systemNameId"}
-            />
+
+            {id === undefined ? (
+              <Label content={"Please select a system."} />
+            ) : (
+              <Label content={"System Name"} />
+            )}
+
+            {id === undefined ? (
+              <MySelectInput
+                options={options}
+                placeholder={"Please select a system..."}
+                name={"systemNameId"}
+              />
+            ) : (
+              <Item>
+                <ItemContent content={systemName.name} />
+              </Item>
+            )}
+
             <Label content={"Barriers or Challenges"} />
             <MyTextArea
               placeholder={"What barriers or challenges are you facing?"}
@@ -172,4 +206,6 @@ export default observer(function SystemReportForm() {
       </Formik>
     </Segment>
   );
-});
+};
+
+export default SystemReportForm;

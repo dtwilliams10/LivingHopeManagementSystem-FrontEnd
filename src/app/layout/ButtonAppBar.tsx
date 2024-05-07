@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, Container } from "semantic-ui-react";
+import LHMSContext from "../context/LHMSContext";
 
 export default function ButtonAppBar() {
+  const { logoff } = useContext(LHMSContext);
+
   return (
     <Menu fluid widths={4} size="large" style={{ padding: 0, marginTop: 0 }}>
       <Container>
@@ -16,8 +20,7 @@ export default function ButtonAppBar() {
         <Menu.Item
           as={NavLink}
           onClick={() => {
-            localStorage.clear();
-            console.log("Logging off!");
+            logoff();
           }}
           name="Logoff"
           to="/"

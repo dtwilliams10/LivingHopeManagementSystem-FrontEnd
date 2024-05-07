@@ -5,15 +5,18 @@ import { RouterProvider } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.min.css";
 import "semantic-ui-css/semantic.min.css";
 import "./app/layout/styles.css";
-import { store, StoreContext } from "./app/stores/store";
 import { router } from "./app/router/Routes";
+import { LHMSContextProvider } from "./app/context/LHMSContext";
+import { StrictMode } from "react";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 root.render(
-  <StoreContext.Provider value={store}>
-    <RouterProvider router={router} />
-  </StoreContext.Provider>
+  <StrictMode>
+    <LHMSContextProvider>
+      <RouterProvider router={router} />
+    </LHMSContextProvider>
+  </StrictMode>
 );

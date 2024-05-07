@@ -6,7 +6,9 @@ interface Props {
   systemReport: ISystemReport;
 }
 
-export default function SystemReportListItem({ systemReport }: Props) {
+export default function SystemReportListItem({
+  systemReport,
+}: Readonly<Props>) {
   return (
     <Segment.Group>
       <Segment>
@@ -17,9 +19,7 @@ export default function SystemReportListItem({ systemReport }: Props) {
                 {systemReport.reportName}
               </Item.Header>
               <Item.Description>{systemReport.id}</Item.Description>
-              <Item.Content>
-                {systemReport.systemReportStatus.name}
-              </Item.Content>
+              <Item.Content>{systemReport.systemReportStatusId}</Item.Content>
             </Item.Content>
           </Item>
         </Item.Group>

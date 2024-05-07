@@ -1,14 +1,13 @@
-import { observer } from "mobx-react-lite";
-import { useStore } from "../../../app/stores/store";
+import { useContext } from "react";
 import SystemReportListItem from "./SystemReportListItem";
+import { ISystemReport } from "../../../app/models/systemReport";
+import LHMSContext from "../../../app/context/LHMSContext";
 
-export default observer(function SystemReportList() {
-  const { systemReportStore } = useStore();
-  const { systemReports } = systemReportStore;
-
+const SystemReportList = () => {
+  const { systemReports } = useContext(LHMSContext);
   return (
     <>
-      {systemReports.map((systemReport) => (
+      {systemReports.map((systemReport: ISystemReport) => (
         <SystemReportListItem
           key={systemReport.id}
           systemReport={systemReport}
@@ -16,4 +15,6 @@ export default observer(function SystemReportList() {
       ))}
     </>
   );
-});
+};
+
+export default SystemReportList;

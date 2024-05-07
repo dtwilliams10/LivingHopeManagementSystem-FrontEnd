@@ -1,12 +1,13 @@
-import { observer } from "mobx-react-lite";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Container, Header, Segment, Image, Button } from "semantic-ui-react";
-import { useStore } from "../../app/stores/store";
 
 import LoginForm from "./LoginForm";
+import LHMSContext from "../../app/context/LHMSContext";
+import { isEmpty } from "../../app/helpers/isEmpty";
 
-export default observer(function Login() {
-  const { userStore } = useStore();
+export default function Login() {
+  const { user } = useContext(LHMSContext);
   return (
     <Segment textAlign="center" vertical className="masthead">
       <Container>
@@ -22,7 +23,7 @@ export default observer(function Login() {
         <Header as="h2" inverted style={{ margin: 12 }}>
           Better ministry through better management.
         </Header>
-        {userStore.isLoggedIn ? (
+        {!isEmpty(user) ? (
           <>
             <Header
               as="h2"
@@ -34,11 +35,9 @@ export default observer(function Login() {
             </Button>
           </>
         ) : (
-          <>
-            <LoginForm />
-          </>
+          <LoginForm />
         )}
       </Container>
     </Segment>
   );
-});
+}
