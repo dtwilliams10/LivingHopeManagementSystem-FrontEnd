@@ -27,6 +27,7 @@ export const routes: RouteObject[] = [
       { path: "/:id", element: <SystemReportForm key="manage" /> },
       { path: "/status", element: <SystemStatus /> },
       { path: "/not-found", element: <ErrorPage /> },
+      { path: "/server-error", element: <ErrorPage /> },
       { path: "*", element: <Navigate replace to="/not-found" /> },
     ],
   },
