@@ -5,8 +5,8 @@ export interface ISystemReport {
   reportDate: Date | null;
   createdDate: Date | null;
   updatedDate: Date | null;
-  systemReportStatus: SystemReportStatus;
-  systemName: SystemName;
+  systemReportStatusId: number;
+  systemNameId: number;
   systemUpdate: string;
   personnelUpdates: string;
   creativeIdeasAndEvaluations: string;
@@ -49,16 +49,14 @@ export class SystemName implements ISystemName {
   }
 }
 
-export class SystemNameDropdown {
-  key: number = 0;
-  value: number = 0;
-  text: string = "";
+export class SystemNameDropdownValue {
+  id: number = 0;
+  name: string = "";
 
-  constructor(systemNameDropdown: SystemNameDropdown) {
-    if (systemNameDropdown) {
-      this.key = systemNameDropdown.key;
-      this.value = systemNameDropdown.value;
-      this.text = systemNameDropdown.text;
+  constructor(systemName: ISystemName) {
+    if (systemName) {
+      this.id = systemName.id;
+      this.name = systemName.name;
     }
   }
 }
@@ -70,8 +68,8 @@ export class SystemReportFormValues implements ISystemReport {
   reportDate: Date | null = null;
   createdDate: Date | null = null;
   updatedDate: Date | null = null;
-  systemReportStatus: SystemReportStatus = { id: 0, name: "" };
-  systemName: SystemName = { id: 0, name: "" };
+  systemReportStatusId: number = 0;
+  systemNameId: number = 0;
   systemUpdate: string = "";
   personnelUpdates: string = "";
   creativeIdeasAndEvaluations: string = "";
@@ -87,8 +85,8 @@ export class SystemReportFormValues implements ISystemReport {
       this.reportDate = systemReport.reportDate;
       this.createdDate = systemReport.createdDate;
       this.updatedDate = systemReport.updatedDate;
-      this.systemReportStatus = systemReport.systemReportStatus;
-      this.systemName = systemReport.systemName;
+      this.systemReportStatusId = systemReport.systemReportStatusId;
+      this.systemNameId = systemReport.systemNameId;
       this.systemUpdate = systemReport.systemUpdate;
       this.personnelUpdates = systemReport.personnelUpdates;
       this.creativeIdeasAndEvaluations =
