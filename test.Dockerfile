@@ -2,7 +2,7 @@
 FROM node:21-alpine3.19
 # set working directory
 WORKDIR /usr/src/app
-RUN yarn set version .yarn/releases/yarn-4.2.1.cjs
+RUN yarn set version 4.2.1
 # install and cache app dependencies
 COPY package*.json ./
 COPY yarn.lock ./
