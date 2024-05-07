@@ -122,6 +122,10 @@ const SystemNames = {
     requests.get<SystemName[]>(
       `${systemReportsURL}SystemNames/GetAllSystemNames`
     ),
+  getSystemNameById: (id: number) =>
+    requests.get<SystemName>(
+      `${systemReportsURL}SystemNames/GetSystemNameById/` + `${id}`
+    ),
 };
 
 const SystemReportStatuses = {
