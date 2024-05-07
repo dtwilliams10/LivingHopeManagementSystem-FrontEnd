@@ -4,7 +4,7 @@ interface Props {
   errors: any;
 }
 
-export default function ValidationError({ errors }: Props) {
+export default function ValidationError({ errors }: Readonly<Props>) {
   return (
     <Message error>
       {errors && (
