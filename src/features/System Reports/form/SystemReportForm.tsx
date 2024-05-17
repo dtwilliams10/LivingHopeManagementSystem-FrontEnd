@@ -68,7 +68,7 @@ const SystemReportForm = () => {
   };
 
   useEffect(() => {
-    if (!Number.isNaN(parseInt(id!))) {
+    if (parseInt(id!)) {
       loadReport(id);
     } else {
       let systemReport = new SystemReportFormValues();
