@@ -54,9 +54,13 @@ const SystemReportForm = () => {
     setLoading(false);
   }, [systemNames]);
 
-  const { id } = useParams();
+  let { id } = useParams();
 
-  const loadReport = async (id: string | undefined) => {
+  if (id === undefined) {
+    id = "";
+  }
+
+  const loadReport = async (id: string) => {
     setLoading(true);
     let systemReport = await loadSystemReport(parseInt(id!));
     if (systemReport) {
@@ -68,7 +72,7 @@ const SystemReportForm = () => {
   };
 
   useEffect(() => {
-    if (parseInt(id!)) {
+    if (parseInt(id)) {
       loadReport(id);
     } else {
       let systemReport = new SystemReportFormValues();
