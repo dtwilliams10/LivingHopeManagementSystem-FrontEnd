@@ -62,7 +62,7 @@ const SystemReportForm = () => {
 
   const loadReport = async (id: string) => {
     setLoading(true);
-    let systemReport = await loadSystemReport(parseInt(id!));
+    let systemReport = await loadSystemReport(parseInt(id));
     if (systemReport) {
       let systemName = await fetchSystemNamesById(systemReport.systemNameId);
       setSystemName(systemName);
