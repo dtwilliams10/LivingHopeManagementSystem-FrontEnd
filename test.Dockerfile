@@ -7,6 +7,7 @@ RUN yarn set version 4.2.1
 COPY package*.json ./
 COPY yarn.lock ./
 COPY .yarnrc.yml ./
+COPY .env.test .env
 RUN yarn install
 
 COPY . .
