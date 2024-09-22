@@ -72,8 +72,8 @@ const SystemReportForm = () => {
   };
 
   useEffect(() => {
-    if (parseInt(id)) {
-      loadReport(id);
+    if (parseInt(id!)) {
+      loadReport(id!);
     } else {
       let systemReport = new SystemReportFormValues();
       setSystemReport(systemReport);
