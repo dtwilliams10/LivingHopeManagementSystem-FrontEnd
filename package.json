@@ -41,7 +41,8 @@
     "precommit": "lint-staged",
     "start": "vite",
     "build": "tsc && vite build",
-    "test": "vite test --env=jsdom"
+    "test": "vite test --env=jsdom",
+    "build:test": "tsc && vite build --mode test"
   },
   "devDependencies": {
     "@types/jest": "^27.5.2",

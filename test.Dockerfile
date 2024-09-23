@@ -11,8 +11,7 @@ RUN yarn install
 
 COPY . .
 
-COPY .env.test .env
-RUN yarn build
+RUN yarn build:test
 
 # Production stage
 FROM nginx:alpine
