@@ -40,10 +40,4 @@ export default function SystemStatus() {
       <p>{data}</p>
     </div>
   );
-
-  return (
-    <>
-      <h1>This is the System Status Page</h1>
-    </>
-  );
 }
