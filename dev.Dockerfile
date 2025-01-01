@@ -12,10 +12,10 @@ RUN yarn install
 COPY . .
 
 # start app
-ENV VITE_APP_URL http://localhost:3000/
-ENV VITE_APP_API http://localhost:5002/
-ENV VITE_APP_AAS http://localhost:5001/
+ENV VITE_APP_URL=http://localhost:3000/
+ENV VITE_APP_API=http://localhost:5002/
+ENV VITE_APP_AAS=http://localhost:5001/
 
 EXPOSE 3000
 
-CMD ["yarn", "start --host"]
+CMD ["yarn", "start"]
