@@ -1,7 +1,7 @@
 # Build stage
 FROM node:21-alpine3.19 AS builder
 WORKDIR /usr/src/app
-RUN yarn set version 4.2.1
+RUN yarn set version stable
 
 COPY package*.json ./
 COPY yarn.lock ./
@@ -14,7 +14,7 @@ COPY . .
 RUN yarn build:test
 
 # Production stage
-FROM nginx:alpine
+FROM nginxinc/nginx-unprivileged:alpine
 COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
