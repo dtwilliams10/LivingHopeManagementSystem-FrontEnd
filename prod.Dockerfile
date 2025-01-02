@@ -1,7 +1,7 @@
 ### STAGE 1: Build ###
 FROM node:21-alpine3.18 AS builder
 WORKDIR /usr/src/app
-RUN yarn set version stable
+RUN yarn set version 4.6.0
 COPY package*.json ./
 COPY yarn.lock ./
 COPY .yarnrc.yml ./

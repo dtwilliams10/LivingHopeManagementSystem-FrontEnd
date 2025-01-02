@@ -7,7 +7,12 @@ import LHMSContext from "../../app/context/LHMSContext";
 import { isEmpty } from "../../app/helpers/isEmpty";
 
 export default function Login() {
-  const { user } = useContext(LHMSContext);
+  const { user } =
+    useContext(LHMSContext) ||
+    (() => {
+      throw new Error("Login must be used within an LHMSContextProvider");
+    })();
+
   return (
     <Segment textAlign="center" vertical className="masthead">
       <Container>

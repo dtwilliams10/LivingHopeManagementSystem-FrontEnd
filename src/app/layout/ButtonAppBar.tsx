@@ -4,7 +4,13 @@ import { Menu, Container } from "semantic-ui-react";
 import LHMSContext from "../context/LHMSContext";
 
 export default function ButtonAppBar() {
-  const { logoff } = useContext(LHMSContext);
+  const { logoff } =
+    useContext(LHMSContext) ||
+    (() => {
+      throw new Error(
+        "ButtonAppBar must be used within an LHMSContextProvider"
+      );
+    })();
 
   return (
     <Menu fluid widths={4} size="large" style={{ padding: 0, marginTop: 0 }}>

@@ -1,13 +1,18 @@
 import { NavLink } from "react-router-dom";
 import { Button } from "semantic-ui-react";
 import SystemReportList from "./SystemReportList";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
-import LHMSContext from "../../../app/context/LHMSContext";
+import LHMSContext from "@/app/context/LHMSContext";
 
 const SystemReportDashboard = () => {
-  const [loading, setLoading] = useState(true);
-  const { systemReports, fetchSystemReports } = useContext(LHMSContext);
+  const { systemReports, fetchSystemReports, loading, setLoading } =
+    useContext(LHMSContext) ||
+    (() => {
+      throw new Error(
+        "SystemReportDashboard must be used within an LHMSContextProvider"
+      );
+    })();
 
   useEffect(() => {
     if (systemReports === undefined || systemReports.length < 1) {

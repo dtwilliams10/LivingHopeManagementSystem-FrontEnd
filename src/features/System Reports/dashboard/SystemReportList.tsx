@@ -4,7 +4,13 @@ import { ISystemReport } from "../../../app/models/systemReport";
 import LHMSContext from "../../../app/context/LHMSContext";
 
 const SystemReportList = () => {
-  const { systemReports } = useContext(LHMSContext);
+  const { systemReports } =
+    useContext(LHMSContext) ||
+    (() => {
+      throw new Error(
+        "SystemReportList must be used within an LHMSContextProvider"
+      );
+    })();
   return (
     <>
       {systemReports.map((systemReport: ISystemReport) => (

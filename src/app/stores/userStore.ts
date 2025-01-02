@@ -61,26 +61,17 @@ export default class UserStore {
   };
 
   register = async (creds: UserFormValues) => {
-    try {
-      //creds.password - Need to salt and hash the password here before it's sumbitted.
-      const user = await agent.Accounts.register(creds);
-      store.commonStore.setToken(user.jwtToken);
-      runInAction(() => (this.user = user));
-      router.navigate("/home");
-    } catch (error) {
-      throw error;
-    }
+    //creds.password - Need to salt and hash the password here before it's sumbitted.
+    const user = await agent.Accounts.register(creds);
+    store.commonStore.setToken(user.jwtToken);
+    runInAction(() => (this.user = user));
+    router.navigate("/home");
   };
 
   verifyEmail = async (token: JSON) => {
     console.log(token);
     if (token !== null) {
-      try {
-        agent.Accounts.verify(token);
-        //if (response) router.navigate("/");
-      } catch (error) {
-        throw error;
-      }
+      agent.Accounts.verify(token);
     }
   };
 

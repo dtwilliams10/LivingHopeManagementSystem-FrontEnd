@@ -8,7 +8,7 @@ interface Props {
   label?: string;
 }
 
-export default function MyTextArea(props: Props) {
+export default function MyTextArea(props: Readonly<Props>) {
   const [field, meta] = useField(props.name);
 
   return (

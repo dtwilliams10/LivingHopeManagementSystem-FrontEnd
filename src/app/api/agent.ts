@@ -10,17 +10,10 @@ import { store } from "../stores/store";
 import { router } from "../router/Routes";
 import { toast } from "react-toastify";
 
-const sleep = (delay: number) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-};
-
 const accountsURL = import.meta.env.VITE_APP_AAS;
 const systemReportsURL = import.meta.env.VITE_APP_SYSTEMREPORTS;
 
 axios.interceptors.request.use((config) => {
-  //config.headers.Accept = "application/json";
   config.headers["Content-Type"] = "application/json";
   const token = store.commonStore.token;
   if (token && config.headers) config.headers.Authorization = `Bearer ${token}`;
@@ -29,7 +22,6 @@ axios.interceptors.request.use((config) => {
 
 axios.interceptors.response.use(
   async (response) => {
-    await sleep(1000);
     return response;
   },
   (error: AxiosError) => {
@@ -67,7 +59,7 @@ axios.interceptors.response.use(
         router.navigate("/server-error");
         break;
     }
-    return Promise.reject(error);
+    return Promise.reject(new Error(`${error}`));
   }
 );
 
@@ -90,7 +82,7 @@ const Accounts = {
     requests.post<User>(`${accountsURL + "accounts/register"}`, user),
   //logout: () =>
   verify: (token: JSON) => {
-    let newToken = `{"token":"${token}"}`;
+    let newToken = `{"token":"${token.stringify}"}`;
     requests.post<boolean>(
       `${accountsURL + "accounts/verify-email"}`,
       newToken

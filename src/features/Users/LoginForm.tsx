@@ -7,17 +7,25 @@ import { useContext } from "react";
 import LHMSContext from "../../app/context/LHMSContext";
 
 export default function LoginForm() {
-  const { login } = useContext(LHMSContext);
+  const { login } =
+    useContext(LHMSContext) ||
+    (() => {
+      throw new Error("LoginForm must be used within an LHMSContextProvider");
+    })();
+
   const { modalStore } = useStore();
 
   return (
     <Formik
       initialValues={{ email: "", password: "", error: null }}
-      onSubmit={(values, { setErrors }) =>
-        login(values).catch(() =>
-          setErrors({ error: "Invalid email or password" })
-        )
-      }
+      onSubmit={async (values, { setErrors }) => {
+        try {
+          await login(values);
+        } catch (error: any) {
+          console.log(error);
+          setErrors({ error: error.response.data.message });
+        }
+      }}
     >
       {({ handleSubmit, isSubmitting, errors }) => (
         <Form

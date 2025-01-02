@@ -26,5 +26,17 @@
       "database": "LHMS",
       "username": "postgres"
     }
-  ]
+  ],
+  "sonarlint.connectedMode.project": {
+    "connectionId": "https-sonarqube-dtwilliams10-com",
+    "projectKey": "LHMS_app_c1851b69-e99a-4ce6-bc87-22de2fa60a6f"
+  },
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "eslint.nodePath": ".yarn/sdks",
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  }
 }

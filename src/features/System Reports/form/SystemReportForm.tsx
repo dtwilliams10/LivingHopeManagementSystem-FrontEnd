@@ -31,12 +31,18 @@ const SystemReportForm = () => {
     systemNames,
     fetchSystemNamesById,
     fetchSystemNames,
-  } = useContext(LHMSContext);
+  } =
+    useContext(LHMSContext) ||
+    (() => {
+      throw new Error(
+        "SystemReportForm must be used within an LHMSContextProvider"
+      );
+    })();
 
   const [systemReport, setSystemReport] = useState({} as ISystemReport);
   const [systemName, setSystemName] = useState<SystemName>({} as SystemName);
   const [loading, setLoading] = useState(true);
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState(Array);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -72,8 +78,8 @@ const SystemReportForm = () => {
   };
 
   useEffect(() => {
-    if (parseInt(id)) {
-      loadReport(id);
+    if (parseInt(id!)) {
+      loadReport(id!);
     } else {
       let systemReport = new SystemReportFormValues();
       setSystemReport(systemReport);

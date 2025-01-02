@@ -31,15 +31,10 @@ export const UserContextProvider = () => {
   };
 
   const register = async (creds) => {
-    try {
-      //creds.password - Need to salt and hash the password here before it's sumbitted.
-      const user = await agent.Accounts.register(creds);
-      setToken(user.jwtToken);
-      router.navigate("/home");
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
+    //creds.password - Need to salt and hash the password here before it's sumbitted.
+    const user = await agent.Accounts.register(creds);
+    setToken(user.jwtToken);
+    router.navigate("/home");
   };
 
   const contextValue = useMemo(

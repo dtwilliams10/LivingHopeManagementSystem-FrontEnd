@@ -1,13 +1,19 @@
 import { ErrorMessage, Form, Formik } from "formik";
-import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
-import { observer } from "mobx-react-lite";
 import { Button, Header } from "semantic-ui-react";
 import MyTextInput from "../../app/helpers/MyTextInput";
 import ValidationError from "../Errors/ValidationError";
+import LHMSContext from "@/app/context/LHMSContext";
+import { useContext } from "react";
 
-export default observer(function Register() {
-  const { userStore } = useStore();
+export default function Register() {
+  const context = useContext(LHMSContext);
+  if (!context) {
+    throw new Error(
+      "Register component must be used within LHMSContextProvider"
+    );
+  }
+  const { register } = context;
   return (
     <Formik
       initialValues={{
@@ -18,9 +24,14 @@ export default observer(function Register() {
         acceptTerms: true,
         error: null,
       }}
-      onSubmit={(values, { setErrors }) =>
-        userStore.register(values).catch((error) => setErrors({ error }))
-      }
+      onSubmit={async (values, { setErrors }) => {
+        try {
+          await register(values);
+        } catch (error: any) {
+          console.log(error);
+          setErrors({ error: error });
+        }
+      }}
       validationSchema={Yup.object({
         firstName: Yup.string().required("First Name is a required field."),
         lastName: Yup.string().required("Last Name is a required field."),
@@ -59,4 +70,4 @@ export default observer(function Register() {
       )}
     </Formik>
   );
-});
+}
