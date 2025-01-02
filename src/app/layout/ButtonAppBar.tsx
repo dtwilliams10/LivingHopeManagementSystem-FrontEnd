@@ -7,9 +7,7 @@ export default function ButtonAppBar() {
   const { logoff } =
     useContext(LHMSContext) ||
     (() => {
-      throw new Error(
-        "ButtonAppBar must be used within an LHMSContextProvider"
-      );
+      throw new Error("ButtonAppBar must be used within a LHMSContextProvider");
     })();
 
   return (

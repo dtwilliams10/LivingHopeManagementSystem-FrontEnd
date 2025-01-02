@@ -10,7 +10,7 @@ export default function LoginForm() {
   const { login } =
     useContext(LHMSContext) ||
     (() => {
-      throw new Error("LoginForm must be used within an LHMSContextProvider");
+      throw new Error("LoginForm must be used within a LHMSContextProvider");
     })();
 
   const { modalStore } = useStore();

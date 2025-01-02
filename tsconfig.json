@@ -19,7 +19,7 @@
       "@/*": ["src/*"] // Custom path mapping for imports (optional)
     },
     "typeRoots": [
-      ".yarn/sdks/@types", // Point to Yarn PnP SDKs for types
+      ".yarn/sdks/@types" // Point to Yarn PnP SDKs for types
     ]
   },
   "include": [

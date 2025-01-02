@@ -3,7 +3,7 @@ import { Button } from "semantic-ui-react";
 import SystemReportList from "./SystemReportList";
 import { useContext, useEffect } from "react";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
-import LHMSContext from "@/app/context/LHMSContext";
+import LHMSContext from "../../../app/context/LHMSContext";
 
 const SystemReportDashboard = () => {
   const { systemReports, fetchSystemReports, loading, setLoading } =

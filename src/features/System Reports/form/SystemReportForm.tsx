@@ -136,13 +136,13 @@ const SystemReportForm = () => {
               placeholderText="Please select a date..."
             />
 
-            {id === undefined ? (
+            {!id ? (
               <Label content={"Please select a system."} />
             ) : (
               <Label content={"System Name"} />
             )}
 
-            {id === undefined ? (
+            {!id ? (
               <MySelectInput
                 options={options}
                 placeholder={"Please select a system..."}

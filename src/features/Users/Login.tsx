@@ -4,8 +4,6 @@ import { Container, Header, Segment, Image, Button } from "semantic-ui-react";
 
 import LoginForm from "./LoginForm";
 import LHMSContext from "../../app/context/LHMSContext";
-import { isEmpty } from "../../app/helpers/isEmpty";
-
 export default function Login() {
   const { user } =
     useContext(LHMSContext) ||
@@ -28,7 +26,9 @@ export default function Login() {
         <Header as="h2" inverted style={{ margin: 12 }}>
           Better ministry through better management.
         </Header>
-        {!isEmpty(user) ? (
+        {!user.id ? (
+          <LoginForm />
+        ) : (
           <>
             <Header
               as="h2"
@@ -39,8 +39,6 @@ export default function Login() {
               Login
             </Button>
           </>
-        ) : (
-          <LoginForm />
         )}
       </Container>
     </Segment>

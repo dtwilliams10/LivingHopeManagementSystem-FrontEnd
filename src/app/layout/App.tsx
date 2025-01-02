@@ -13,12 +13,11 @@ import LHMSContext from "../context/LHMSContext";
 
 const App = () => {
   const location = useLocation();
-  const context = useContext(LHMSContext);
-  if (!context) {
-    throw new Error("App must be used within LHMSContextProvider");
-  }
-
-  const { setAppLoaded, appLoaded } = context;
+  const { setAppLoaded, appLoaded } =
+    useContext(LHMSContext) ||
+    (() => {
+      throw new Error("App must be used within an LHMSContextProvider");
+    })();
 
   useEffect(() => {
     if (!localStorage.getItem("jwt")) {

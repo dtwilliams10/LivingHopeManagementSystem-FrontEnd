@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { Button, Header } from "semantic-ui-react";
 import MyTextInput from "../../app/helpers/MyTextInput";
 import ValidationError from "../Errors/ValidationError";
-import LHMSContext from "@/app/context/LHMSContext";
+import LHMSContext from "../../app/context/LHMSContext";
 import { useContext } from "react";
 
 export default function Register() {
