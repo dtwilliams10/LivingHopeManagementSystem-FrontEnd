@@ -1,5 +1,5 @@
 # base image
-FROM node:21-alpine3.19
+FROM node:23.5.0-alpine3.21
 # set working directory
 WORKDIR /usr/src/app
 RUN yarn set version stable
