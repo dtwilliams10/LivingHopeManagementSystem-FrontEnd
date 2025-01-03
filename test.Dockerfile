@@ -15,5 +15,5 @@ RUN yarn build:test
 # # Production stage
 FROM nginxinc/nginx-unprivileged:alpine
 COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
-EXPOSE 3000
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
