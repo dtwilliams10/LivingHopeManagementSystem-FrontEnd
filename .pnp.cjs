@@ -1604,7 +1604,7 @@ const RAW_RUNTIME_STATE =
           ["call-bind", "npm:1.0.8"],\
           ["call-bind-apply-helpers", "npm:1.0.1"],\
           ["es-define-property", "npm:1.0.1"],\
-          ["get-intrinsic", "npm:1.2.6"],\
+          ["get-intrinsic", "npm:1.2.7"],\
           ["set-function-length", "npm:1.2.2"]\
         ],\
         "linkType": "HARD"\
@@ -1627,7 +1627,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["call-bound", "npm:1.0.3"],\
           ["call-bind-apply-helpers", "npm:1.0.1"],\
-          ["get-intrinsic", "npm:1.2.6"]\
+          ["get-intrinsic", "npm:1.2.7"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1854,7 +1854,7 @@ const RAW_RUNTIME_STATE =
           ["array-buffer-byte-length", "npm:1.0.2"],\
           ["call-bind", "npm:1.0.8"],\
           ["es-get-iterator", "npm:1.1.3"],\
-          ["get-intrinsic", "npm:1.2.6"],\
+          ["get-intrinsic", "npm:1.2.7"],\
           ["is-arguments", "npm:1.2.0"],\
           ["is-array-buffer", "npm:3.0.5"],\
           ["is-date-object", "npm:1.1.0"],\
@@ -1864,7 +1864,7 @@ const RAW_RUNTIME_STATE =
           ["object-is", "npm:1.1.6"],\
           ["object-keys", "npm:1.1.1"],\
           ["object.assign", "npm:4.1.7"],\
-          ["regexp.prototype.flags", "npm:1.5.3"],\
+          ["regexp.prototype.flags", "npm:1.5.4"],\
           ["side-channel", "npm:1.1.0"],\
           ["which-boxed-primitive", "npm:1.1.1"],\
           ["which-collection", "npm:1.0.2"],\
@@ -2058,7 +2058,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["es-get-iterator", "npm:1.1.3"],\
           ["call-bind", "npm:1.0.8"],\
-          ["get-intrinsic", "npm:1.2.6"],\
+          ["get-intrinsic", "npm:1.2.7"],\
           ["has-symbols", "npm:1.1.0"],\
           ["is-arguments", "npm:1.2.0"],\
           ["is-map", "npm:2.0.3"],\
@@ -2316,20 +2316,31 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["get-intrinsic", [\
-      ["npm:1.2.6", {\
-        "packageLocation": "../../../.yarn/berry/cache/get-intrinsic-npm-1.2.6-e4c30ebc37-10c0.zip/node_modules/get-intrinsic/",\
+      ["npm:1.2.7", {\
+        "packageLocation": "../../../.yarn/berry/cache/get-intrinsic-npm-1.2.7-2e0e0e7564-10c0.zip/node_modules/get-intrinsic/",\
         "packageDependencies": [\
-          ["get-intrinsic", "npm:1.2.6"],\
+          ["get-intrinsic", "npm:1.2.7"],\
           ["call-bind-apply-helpers", "npm:1.0.1"],\
-          ["dunder-proto", "npm:1.0.1"],\
           ["es-define-property", "npm:1.0.1"],\
           ["es-errors", "npm:1.3.0"],\
           ["es-object-atoms", "npm:1.0.0"],\
           ["function-bind", "npm:1.1.2"],\
+          ["get-proto", "npm:1.0.1"],\
           ["gopd", "npm:1.2.0"],\
           ["has-symbols", "npm:1.1.0"],\
           ["hasown", "npm:2.0.2"],\
           ["math-intrinsics", "npm:1.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["get-proto", [\
+      ["npm:1.0.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/get-proto-npm-1.0.1-4d30bac614-10c0.zip/node_modules/get-proto/",\
+        "packageDependencies": [\
+          ["get-proto", "npm:1.0.1"],\
+          ["dunder-proto", "npm:1.0.1"],\
+          ["es-object-atoms", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2613,7 +2624,7 @@ const RAW_RUNTIME_STATE =
           ["is-array-buffer", "npm:3.0.5"],\
           ["call-bind", "npm:1.0.8"],\
           ["call-bound", "npm:1.0.3"],\
-          ["get-intrinsic", "npm:1.2.6"]\
+          ["get-intrinsic", "npm:1.2.7"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2758,7 +2769,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["is-weakset", "npm:2.0.4"],\
           ["call-bound", "npm:1.0.3"],\
-          ["get-intrinsic", "npm:1.2.6"]\
+          ["get-intrinsic", "npm:1.2.7"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3960,13 +3971,15 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["regexp.prototype.flags", [\
-      ["npm:1.5.3", {\
-        "packageLocation": "../../../.yarn/berry/cache/regexp.prototype.flags-npm-1.5.3-09ac29fab0-10c0.zip/node_modules/regexp.prototype.flags/",\
+      ["npm:1.5.4", {\
+        "packageLocation": "../../../.yarn/berry/cache/regexp.prototype.flags-npm-1.5.4-39008ab64c-10c0.zip/node_modules/regexp.prototype.flags/",\
         "packageDependencies": [\
-          ["regexp.prototype.flags", "npm:1.5.3"],\
+          ["regexp.prototype.flags", "npm:1.5.4"],\
           ["call-bind", "npm:1.0.8"],\
           ["define-properties", "npm:1.2.1"],\
           ["es-errors", "npm:1.3.0"],\
+          ["get-proto", "npm:1.0.1"],\
+          ["gopd", "npm:1.2.0"],\
           ["set-function-name", "npm:2.0.2"]\
         ],\
         "linkType": "HARD"\
@@ -4151,7 +4164,7 @@ const RAW_RUNTIME_STATE =
           ["define-data-property", "npm:1.1.4"],\
           ["es-errors", "npm:1.3.0"],\
           ["function-bind", "npm:1.1.2"],\
-          ["get-intrinsic", "npm:1.2.6"],\
+          ["get-intrinsic", "npm:1.2.7"],\
           ["gopd", "npm:1.2.0"],\
           ["has-property-descriptors", "npm:1.0.2"]\
         ],\
@@ -4231,7 +4244,7 @@ const RAW_RUNTIME_STATE =
           ["side-channel-map", "npm:1.0.1"],\
           ["call-bound", "npm:1.0.3"],\
           ["es-errors", "npm:1.3.0"],\
-          ["get-intrinsic", "npm:1.2.6"],\
+          ["get-intrinsic", "npm:1.2.7"],\
           ["object-inspect", "npm:1.13.3"]\
         ],\
         "linkType": "HARD"\
@@ -4244,7 +4257,7 @@ const RAW_RUNTIME_STATE =
           ["side-channel-weakmap", "npm:1.0.2"],\
           ["call-bound", "npm:1.0.3"],\
           ["es-errors", "npm:1.3.0"],\
-          ["get-intrinsic", "npm:1.2.6"],\
+          ["get-intrinsic", "npm:1.2.7"],\
           ["object-inspect", "npm:1.13.3"],\
           ["side-channel-map", "npm:1.0.1"]\
         ],\
