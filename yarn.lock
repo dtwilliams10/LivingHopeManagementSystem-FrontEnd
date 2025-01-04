@@ -889,9 +889,9 @@ __metadata:
   linkType: hard
 
 "@types/lodash@npm:^4.14.175":
-  version: 4.17.13
-  resolution: "@types/lodash@npm:4.17.13"
-  checksum: 10c0/c3d0b7efe7933ac0369b99f2f7bff9240d960680fdb74b41ed4bd1b3ca60cca1e31fe4046d9abbde778f941a41bc2a75eb629abf8659fa6c27b66efbbb0802a9
+  version: 4.17.14
+  resolution: "@types/lodash@npm:4.17.14"
+  checksum: 10c0/343c6f722e0b39969036a885ad5aad6578479ead83987128c9b994e6b7f2fb9808244d802d4d332396bb09096f720a6c7060de16a492f5460e06a44560360322
   languageName: node
   linkType: hard
 
@@ -2368,6 +2368,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"keycloak-js@npm:^26.0.7":
+  version: 26.0.7
+  resolution: "keycloak-js@npm:26.0.7"
+  checksum: 10c0/ecbdf3290e82746d3aae6a85d76a212159cdffe72487f66c2650880a649b1b3b9ab69c4665bf1910b252515e771b987c6be941d4bebe20b554c649422b739993
+  languageName: node
+  linkType: hard
+
 "lhms-app@workspace:.":
   version: 0.0.0-use.local
   resolution: "lhms-app@workspace:."
@@ -2389,6 +2396,7 @@ __metadata:
     bcrypt: "npm:^5.1.1"
     date-fns: "npm:^2.30.0"
     formik: "npm:^2.4.6"
+    keycloak-js: "npm:^26.0.7"
     mobx: "npm:^6.13.5"
     mobx-react-lite: "npm:^3.4.3"
     prettier: "npm:^3.4.2"

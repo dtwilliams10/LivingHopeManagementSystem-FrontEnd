@@ -9,6 +9,7 @@
     "bcrypt": "^5.1.1",
     "date-fns": "^2.30.0",
     "formik": "^2.4.6",
+    "keycloak-js": "^26.0.7",
     "mobx": "^6.13.5",
     "mobx-react-lite": "^3.4.3",
     "query-string": "^8.2.0",

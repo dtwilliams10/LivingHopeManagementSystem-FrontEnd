@@ -44,6 +44,7 @@ const RAW_RUNTIME_STATE =
           ["bcrypt", "npm:5.1.1"],\
           ["date-fns", "npm:2.30.0"],\
           ["formik", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:2.4.6"],\
+          ["keycloak-js", "npm:26.0.7"],\
           ["mobx", "npm:6.13.5"],\
           ["mobx-react-lite", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:3.4.3"],\
           ["prettier", "npm:3.4.2"],\
@@ -1236,10 +1237,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@types/lodash", [\
-      ["npm:4.17.13", {\
-        "packageLocation": "../../../.yarn/berry/cache/@types-lodash-npm-4.17.13-ec44e3530a-10c0.zip/node_modules/@types/lodash/",\
+      ["npm:4.17.14", {\
+        "packageLocation": "../../../.yarn/berry/cache/@types-lodash-npm-4.17.14-6b38705727-10c0.zip/node_modules/@types/lodash/",\
         "packageDependencies": [\
-          ["@types/lodash", "npm:4.17.13"]\
+          ["@types/lodash", "npm:4.17.14"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2899,6 +2900,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["keycloak-js", [\
+      ["npm:26.0.7", {\
+        "packageLocation": "../../../.yarn/berry/cache/keycloak-js-npm-26.0.7-1dc9509a56-10c0.zip/node_modules/keycloak-js/",\
+        "packageDependencies": [\
+          ["keycloak-js", "npm:26.0.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["lhms-app", [\
       ["workspace:.", {\
         "packageLocation": "./",\
@@ -2921,6 +2931,7 @@ const RAW_RUNTIME_STATE =
           ["bcrypt", "npm:5.1.1"],\
           ["date-fns", "npm:2.30.0"],\
           ["formik", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:2.4.6"],\
+          ["keycloak-js", "npm:26.0.7"],\
           ["mobx", "npm:6.13.5"],\
           ["mobx-react-lite", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:3.4.3"],\
           ["prettier", "npm:3.4.2"],\
@@ -4851,7 +4862,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["yup", "npm:0.32.11"],\
           ["@babel/runtime", "npm:7.26.0"],\
-          ["@types/lodash", "npm:4.17.13"],\
+          ["@types/lodash", "npm:4.17.14"],\
           ["lodash", "npm:4.17.21"],\
           ["lodash-es", "npm:4.17.21"],\
           ["nanoclone", "npm:0.2.1"],\
