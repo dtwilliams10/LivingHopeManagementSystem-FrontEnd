@@ -2407,6 +2407,7 @@ __metadata:
     react-calendar: "npm:^4.8.0"
     react-datepicker: "npm:^4.25.0"
     react-dom: "npm:^18.3.1"
+    react-oidc-context: "npm:^3.2.0"
     react-router-dom: "npm:^6.28.1"
     react-toastify: "npm:^9.1.3"
     semantic-ui-css: "npm:^2.5.0"
@@ -3108,6 +3109,16 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 10c0/2bdb6b93fbb1820b024b496042cce405c57e2f85e777c9aabd55f9b26d145408f9f74f5934676ffdc46f3dcff656d78413a6e43968e7b3f92eea35b3052e9053
+  languageName: node
+  linkType: hard
+
+"react-oidc-context@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "react-oidc-context@npm:3.2.0"
+  peerDependencies:
+    oidc-client-ts: ^3.1.0
+    react: ">=16.8.0"
+  checksum: 10c0/a2b5d42813b6a4445840c9a763b5c43ed61e95d390609cbc9d0a669cfac20bd3351e55b3f77a6a1cfc05a579df94b334deab38ff407ef1ceef32cf99bcbb3ef5
   languageName: node
   linkType: hard
 

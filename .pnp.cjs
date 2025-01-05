@@ -55,6 +55,7 @@ const RAW_RUNTIME_STATE =
           ["react-calendar", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:4.8.0"],\
           ["react-datepicker", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:4.25.0"],\
           ["react-dom", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:18.3.1"],\
+          ["react-oidc-context", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:3.2.0"],\
           ["react-router-dom", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:6.28.1"],\
           ["react-toastify", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:9.1.3"],\
           ["semantic-ui-css", "npm:2.5.0"],\
@@ -2942,6 +2943,7 @@ const RAW_RUNTIME_STATE =
           ["react-calendar", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:4.8.0"],\
           ["react-datepicker", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:4.25.0"],\
           ["react-dom", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:18.3.1"],\
+          ["react-oidc-context", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:3.2.0"],\
           ["react-router-dom", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:6.28.1"],\
           ["react-toastify", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:9.1.3"],\
           ["semantic-ui-css", "npm:2.5.0"],\
@@ -3800,6 +3802,32 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/react-is-npm-17.0.2-091bbb8db6-10c0.zip/node_modules/react-is/",\
         "packageDependencies": [\
           ["react-is", "npm:17.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-oidc-context", [\
+      ["npm:3.2.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/react-oidc-context-npm-3.2.0-62704f9d97-10c0.zip/node_modules/react-oidc-context/",\
+        "packageDependencies": [\
+          ["react-oidc-context", "npm:3.2.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:3.2.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-oidc-context-virtual-7bf83fbc47/4/.yarn/berry/cache/react-oidc-context-npm-3.2.0-62704f9d97-10c0.zip/node_modules/react-oidc-context/",\
+        "packageDependencies": [\
+          ["react-oidc-context", "virtual:dfb2be3be7b6fdd49b798bbd65a6bc9750b3fed9b12d1ca6d0392115257e50e055ceff92322a2b29642e4b6d5989ce88bc4190cc6e7de93a6c3202f104e03a0c#npm:3.2.0"],\
+          ["@types/oidc-client-ts", null],\
+          ["@types/react", "npm:18.3.18"],\
+          ["oidc-client-ts", null],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/oidc-client-ts",\
+          "@types/react",\
+          "oidc-client-ts",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
